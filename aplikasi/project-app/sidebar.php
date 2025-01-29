@@ -3,11 +3,15 @@
 $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard'; // Default halaman adalah 'dashboard'
 ?>
 
+
+<!-- Font sidebar cari disini : https://www.w3schools.com/icons/fontawesome5_intro.asp-->
+
+
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-        <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <img src="dist/img/milk-io.png" alt="Milk-io Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Milk.io</span>
     </a>
 
     <!-- Sidebar -->
@@ -15,7 +19,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard'; // Default halaman a
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="dist/img/avatar4.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="#" class="d-block"><?php echo $_SESSION['nama'] . ' | ' . $_SESSION['level']; ?></a>
@@ -37,13 +41,13 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard'; // Default halaman a
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="index.php?page=dashboard" class="nav-link <?php echo $page === 'dashboard' ? 'active' : ''; ?>">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-th nav-icon"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="index.php?page=update-biodata" class="nav-link <?php echo $page === 'update-biodata' ? 'active' : ''; ?>">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="far fa-file-alt nav-icon"></i>
                                 <p>Update Data Diri</p>
                             </a>
                         </li>
@@ -59,7 +63,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard'; // Default halaman a
                 </li>
 
                 <!-- Aplikasi -->
-                <li class="nav-item <?php echo $page === 'cv-generator' || $page === 'app-2' ? 'menu-open' : ''; ?>">
+                <li class="nav-item <?php echo $page === 'cv-generator' || $page === 'app-konversi' | $page === 'tabel-periodik'? 'menu-open' : ''; ?>">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
@@ -70,14 +74,21 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard'; // Default halaman a
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="index.php?page=cv-generator" class="nav-link <?php echo $page === 'cv-generator' ? 'active' : ''; ?>">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="far fa-id-badge nav-icon"></i>
                                 <p>CV Generator</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="index.php?page=app-2" class="nav-link <?php echo $page === 'app-2' ? 'active' : ''; ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Aplikasi 2</p>
+                            <a href="index.php?page=app-konversi" class="nav-link <?php echo $page === 'app-konversi' ? 'active' : ''; ?>">
+                                <i class="fas fa-calculator nav-icon"></i>
+                                <p>Aplikasi Konversi</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="index.php?page=tabel-periodik" class="nav-link <?php echo $page === 'tabel-periodik' ? 'active' : ''; ?>">
+                                <i class="fas fa-flask nav-icon"></i>
+                                <p>Tabel Peridoik</p>
                             </a>
                         </li>
                     </ul>

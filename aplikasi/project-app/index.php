@@ -13,14 +13,14 @@
     ?>
    <?php include 'header.php'; ?>
    <?php include '../config/connection.php'; ?>
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="hold-transition  sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
   
 
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__wobble" src="dist/img/milk-io.png" alt="Milk.io logo" height="100" width="100">
   </div>
 
 
@@ -38,6 +38,12 @@
       else if($_GET['page']=='cv-generator'){
         include 'app_cv.php';
       }
+      else if($_GET['page']=='app-konversi'){
+        include 'app_konversi.php';
+      }
+      else if($_GET['page']=='tabel-periodik'){
+        include 'tabel_periodik.php';
+      }
       else {
         include '404.php';
       }
@@ -49,15 +55,24 @@
      ?>
 
   <!-- Control Sidebar -->
+     <!-- Main Footer -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2025 <a href="https://fairuzmk.my.id">Milk.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 1.0.0
+    </div>
+  </footer>
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
+</div>
 
-  <?php include 'footer.php'; ?>
+<?php include 'footer.php'; ?>
 
 
-<div/>
+
 
 </body>
 </html>

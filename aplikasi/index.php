@@ -3,18 +3,18 @@
   <!--begin::Head-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>AdminLTE 4 | Login Page v2</title>
+    <title>Login to Milk.io App</title>
     <!--begin::Primary Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="title" content="AdminLTE 4 | Login Page v2" />
+    <meta name="title" content="Milk.io | Login App" />
     <meta name="author" content="ColorlibHQ" />
     <meta
       name="description"
-      content="AdminLTE is a Free Bootstrap 5 Admin Dashboard, 30 example pages using Vanilla JS."
+      content="Milk.io is website app made by FairuzMK"
     />
     <meta
       name="keywords"
-      content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard"
+      content="Milk.io, fairuzmk, fairuz website, fairuz milky kuswa"
     />
     <!--end::Primary Meta Tags-->
     <!-- Google Font: Source Sans Pro -->
@@ -28,6 +28,8 @@
 
     <!-- SweetAlert2 -->
   <link rel="stylesheet" href="project-app/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/png" href="milk-io.png">
 
   </head>
   <!--end::Head-->
@@ -35,22 +37,17 @@
 
 
   
-<body class="hold-transition dark-mode login-page">
+<body class="hold-transition login-page">
 
     <div class="login-box">
       <div class="login-logo">
-        <a href="../../index2.html"><b>Admin</b>LTE</a>
+        <a href="index.php"><img class="login-box-msg" src="milk-io-panjang.png" alt="Milk.io logo" height="100" width="300"></a>
       </div>
       <!-- /.login-logo -->
       <div class="card">
         <div class="card-body login-card-body">
           <p class="login-box-msg">Sign in to start your session</p>
-          <p class="login-box-msg"></p>
-          <p class="login-box-msg"></p>
-          <p class="login-box-msg"></p>
-          <p class="login-box-msg"></p>
-          <p class="login-box-msg"></p>
-
+          
 
           <form action="config/auth.php" method="post">
             <div class="input-group mb-3">
