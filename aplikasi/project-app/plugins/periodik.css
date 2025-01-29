@@ -1,0 +1,153 @@
+
+  
+  table {
+    width: 100%;
+    
+    font-family: 'Source Sans Pro';
+    border-style: none;
+    border-collapse: separate;
+    border-spacing: 2px;
+  }
+  
+  th {
+    width: 400px;
+    max-width: 400px;
+    font-family: 'Source Sans Pro';
+    text-align: center;
+  }
+  
+  abbr {
+    text-decoration: underline;
+  }
+  /* Layouting */
+  
+  
+  .indiv {
+    font-size: 0.9em;
+    font-weight: bold;
+  }
+  
+  .kontener {
+    width: 70px;
+    max-width: 70px;
+  }
+  
+  .kontener-per {
+    height: 70px;
+    max-height: 70px;
+  }
+  
+  .kontener-tp {
+    width: 70px;
+    max-width: 70px;
+    height: 70px;
+    max-height: 70px;
+  }
+  
+  .gol {
+    font-size: 0.9em;
+    font-weight: bold;
+  }
+  
+  .per {
+    font-size: 2em;
+    font-weight: bold;
+  }
+  /* For periodic Elements Inside */
+  
+  .na {
+    font-size: 0.7em;
+    float: left;
+  }
+  
+  .ma {
+    font-size: 0.7em;
+    float: right;
+  }
+  
+  .lu {
+    font-size: 1.75em;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    line-height: 1;
+  }
+  
+  .sp {
+    font-size: 0.9em;
+    float: left;
+  }
+  
+  .nu {
+    font-size: 8pt;
+    text-align: center;
+  }
+  
+  .rlra {
+    font-size: 9pt;
+    margin-top: 1px;
+  }
+  
+  td[colspan], td:empty
+  {
+    box-shadow:none;
+  }
+  .nu-desc {
+    font-size: 7pt;
+    text-align: center;
+  }
+  
+  .kotak {
+    width: 85px;
+    height: 85px;
+  }
+  /* CSS for Element Category Starts */
+  
+  .l {
+    background: #FFEB3B;
+  }
+  
+  .c {
+    background: #2196F3;
+  }
+  
+  .g {
+    background: #4CAF50;
+  }
+  
+  .b {
+    background: #F44336;
+  }
+  
+  .h {
+    background: #9E9E9E;
+  }
+  
+  .lan {
+    background: #E91E63;
+  }
+  
+  .lan-b {
+    background: #F44336;
+  }
+  
+  .akt {
+    background: #9C27B0;
+    color: #fff;
+  }
+  
+  .akt-b {
+    background: mediumpurple;
+  }
+  
+  .m {
+    background: brown;
+  }
+  
+  .gm {
+    background: LightskyBlue;
+  }
+  
+  .undef {
+    background: silver;
+  }
