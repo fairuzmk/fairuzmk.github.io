@@ -322,7 +322,7 @@
               </div>               
             
             </div>
-            <!-- TABLE: KARYA ILMIAH -->
+            <!-- TABLE: ASH CHARACTERISTICS -->
                                  
             <!-- TABLE: INDEKS SLAGGING FOULING -->
             <div class="col-md-8">
@@ -346,7 +346,7 @@
                     <table id="tabel1" class="table table-bordered table-striped" style="width:100%">
                         <thead>
                         <tr>
-                          <th>No</th>
+                          <th  style="width: 5%;">No</th>
                           <th>Parameter</th>
                           <th>Hasil</th>
                           <th>Rumus</th>
@@ -359,7 +359,7 @@
                         <tr>
                           <td>1.</td>
                           <td>Base to Acid</td>
-                          <td><p id="result_ba" style="text-align: center;"></p></td>
+                          <td id=ba-tab><p id="result_ba" style="text-align: center;"></p></td>
                           <td><p>$$ \frac{\text{Fe}\text{O}_2 + \text{CaO} + \text{MgO} + \text{Na}_2\text{O} + \text{K}_2\text{O}}{\text{SiO}_2 + \text{Al}_2\text{O}_3 + \text{TiO}_2} $$</p></td>
                           
                         </tr>
@@ -367,7 +367,15 @@
                         <tr>
                           <td>2.</td>
                           <td>Silica Ratio</td>
-                          <td><p id="result_si_ratio" style="text-align: center;"></p></td>
+                          <td id=sr-tab><p id="result_si_ratio" style="text-align: center;"></p></td>
+                          <td><p>$$ \frac{\text{Fe}\text{O}_2 + \text{CaO} + \text{MgO} + \text{Na}_2\text{O} + \text{K}_2\text{O}}{\text{SiO}_2 + \text{Al}_2\text{O}_3 + \text{TiO}_2} $$</p></td>
+                          
+                        </tr>
+
+                        <tr>
+                          <td>3.</td>
+                          <td>Slagging Index</td>
+                          <td id=slag-index-tab><p id="result_slagging_index" style="text-align: center;"></p></td>
                           <td><p>$$ \frac{\text{Fe}\text{O}_2 + \text{CaO} + \text{MgO} + \text{Na}_2\text{O} + \text{K}_2\text{O}}{\text{SiO}_2 + \text{Al}_2\text{O}_3 + \text{TiO}_2} $$</p></td>
                           
                         </tr>
