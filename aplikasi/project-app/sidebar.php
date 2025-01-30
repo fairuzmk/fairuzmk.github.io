@@ -47,7 +47,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard'; // Default halaman a
                         </li>
                         <li class="nav-item">
                             <a href="index.php?page=update-biodata" class="nav-link <?php echo $page === 'update-biodata' ? 'active' : ''; ?>">
-                                <i class="far fa-file-alt nav-icon"></i>
+                                <i class="fas fa-edit nav-icon"></i>
                                 <p>Update Data Diri</p>
                             </a>
                         </li>
@@ -63,7 +63,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard'; // Default halaman a
                 </li>
 
                 <!-- Aplikasi -->
-                <li class="nav-item <?php echo $page === 'cv-generator' || $page === 'app-konversi' | $page === 'tabel-periodik'? 'menu-open' : ''; ?>">
+                <li class="nav-item <?php echo $page === 'cv-generator' || $page === 'app-konversi' || $page === 'tabel-periodik' || $page === 'indeks-sf'? 'menu-open' : ''; ?>">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
@@ -89,6 +89,13 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard'; // Default halaman a
                             <a href="index.php?page=tabel-periodik" class="nav-link <?php echo $page === 'tabel-periodik' ? 'active' : ''; ?>">
                                 <i class="fas fa-flask nav-icon"></i>
                                 <p>Tabel Peridoik</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="index.php?page=indeks-sf" class="nav-link <?php echo $page === 'indeks-sf' ? 'active' : ''; ?>">
+                                <i class="fas fa-code nav-icon"></i>
+                                <p>Indeks Slagging Fouling</p>
                             </a>
                         </li>
                     </ul>
