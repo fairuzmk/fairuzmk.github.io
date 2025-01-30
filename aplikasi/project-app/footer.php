@@ -30,6 +30,9 @@
 <!-- Konversi Satuan JS -->
 <script src="plugins/konversi.js"></script>
 
+<!-- Formula JS -->
+<script src="plugins/formula.js"></script>
+
 <!-- DataTables  & Plugins -->
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>

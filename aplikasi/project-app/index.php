@@ -44,6 +44,9 @@
       else if($_GET['page']=='tabel-periodik'){
         include 'tabel_periodik.php';
       }
+      else if($_GET['page']=='indeks-sf'){
+        include 'app_index_sf.php';
+      }
       else {
         include '404.php';
       }
