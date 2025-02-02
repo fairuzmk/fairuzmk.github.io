@@ -11,6 +11,8 @@
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
+<script src="dist/js/pages/dashboard2.js"></script>
+
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
@@ -32,6 +34,8 @@
 
 <!-- Formula JS -->
 <script src="plugins/formula.js"></script>
+
+
 
 <!-- DataTables  & Plugins -->
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>

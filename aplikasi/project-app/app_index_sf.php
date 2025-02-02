@@ -22,8 +22,139 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-       
-      
+
+
+<!-- Modal untuk memilih data dari database -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Ambil Data Dari Database</h4>
+                <button type="button" class="close" onclick="closeModal()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="sampel-dropdown" class="col-sm-3 col-form-label">Pilih Data</label>
+                        <div class="col-sm-9">
+                            <select class="form-control select2" id="sampel-dropdown" onchange="previewData()">
+                                <option value="">-- Pilih Data --</option>
+                                <?php
+                                $sql = "SELECT * FROM tb_fuel_char";
+                                $result = $koneksi->query($sql);
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<option value='" . $row["id_sampel"] . "' 
+                                              data-nama_s='" . $row["nama_sampel"] . "'
+                                              data-kode_s='" . $row["kode_sampel"] . "'
+                                              data-jenis ='" . $row["jenis_sampel"] . "'
+                                              data-total_m='" . $row["total_moisture"] . "'
+                                              data-i_mois='" . $row["i_moist"] . "'
+                                              data-ash_co='" . $row["ash_content"] . "'
+                                              data-volati='" . $row["volatile_matter"] . "'
+                                              data-fixed_='" . $row["fixed_carbon"] . "'
+                                              data-total_s='" . $row["total_sulfur"] . "'
+                                              data-GCV_ad='" . $row["GCV_adb"] . "'
+                                              data-GCV_ar='" . $row["GCV_ar"] . "'
+                                              data-GCV_db='" . $row["GCV_db"] . "'
+                                              data-hgi='" . $row["hgi"] . "'
+                                              data-carbon='" . $row["carbon"] . "'
+                                              data-hydrog='" . $row["hydrogen"] . "'
+                                              data-nitrog='" . $row["nitrogen"] . "'
+                                              data-oxygen='" . $row["oxygen"] . "'
+                                              data-dt_red='" . $row["dt_reducing"] . "'
+                                              data-st_red='" . $row["st_reducing"] . "'
+                                              data-ht_red='" . $row["ht_reducing"] . "'
+                                              data-ft_red='" . $row["ft_reducing"] . "'
+                                              data-dt_oxi='" . $row["dt_oxidizing"] . "'
+                                              data-st_oxi='" . $row["st_oxidizing"] . "'
+                                              data-ht_oxi='" . $row["ht_oxidizing"] . "'
+                                              data-ft_oxi='" . $row["ft_oxidizing"] . "'
+                                              data-SiO2='" . $row["SiO2"] . "'
+                                              data-Al2O='" . $row["Al2O3"] . "'
+                                              data-Fe2O='" . $row["Fe2O3"] . "'
+                                              data-CaO='" . $row["CaO"] . "'
+                                              data-MgO='" . $row["MgO"] . "'
+                                              data-TiO2='" . $row["TiO2"] . "'
+                                              data-Na2O='" . $row["Na2O"] . "'
+                                              data-K2O='" . $row["K2O"] . "'
+                                              data-Mn3O='" . $row["Mn3O4"] . "'
+                                              data-P2O5='" . $row["P2O5"] . "'
+                                              data-SO3='" . $row["SO3"] . "'
+                                              data-total_c='" . $row["total_chlorine"] . "'
+                                              >"
+                                              . $row["nama_sampel"] . "</option>";
+                                    }
+                                } else {
+                                    echo "<option value=''>Tidak ada data</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Preview Data -->
+
+                    <h4>Preview Data</h4>
+                    <hr>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Jenis Sampel</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="preview-jenis" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Nama Sampel</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="preview-nama_s" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Kode Sampel</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="preview-kode_s" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Total Moisture</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="preview-total_m" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Inherent Moisture</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="preview-i_mois" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Ash Content</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="preview-ash_co" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Nilai Kalor adb</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="preview-gcv_ad" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="closeModal()">Close</button>
+                <button type="button" class="btn btn-info" onclick="pilihData(event)">Pilih Data</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="plugins/inputdatachar.js"></script>
+
+
       <!-- Main row -->
       <div class="row">
         
@@ -48,7 +179,38 @@
                   <!-- /.card-header -->
                   <div class="card-body">
 
-                  <form>
+                  <form method="POST">
+                  <button type="button" class="btn btn-info" data-toggle="modal" onclick="bukaModal()">
+                        Ambil Data
+                        </button>
+                        <br></br>
+
+                  <div class="form-group row">
+                         <label for="nama-sampel" class="col-sm-6 col-form-label">Nama Sampel</sub></label>
+                         <div class="col-sm-6">
+                           <input type="text" class="form-control" id="input-nama" placeholder="Masukkan Nama Sampel" required>
+                         </div>
+                         
+                  </div>
+                  <div class="form-group row">
+                    <label for="jenis-sampel" class="col-sm-6 col-form-label">Jenis Sampel</label>
+                    <div class="col-sm-6">
+                    <select class="form-control select2" id="input-jenis" required>
+                    <option value="Batubara">Batubara</option>
+                    <option value="Biomassa">Biomassa</option>
+                    <option value="Campuran">Campuran</option>
+                    <option value="Lainnya">Lainnya</option>
+                    
+                    </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="kode-sampel" class="col-sm-6 col-form-label">Kode Sampel</label>
+                    <div class="col-sm-6">
+                           <input type="text" class="form-control" id="input-kode" placeholder="Kode Sampel"  required>
+                         </div>
+                  </div>
+                  <hr>
                   <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist" style="margin-bottom: 10px;">
                   <li class="nav-item">
                     <a class="nav-link active" id="custom-content-below-home-tab" data-toggle="pill" href="#custom-content-below-proximate" role="tab" aria-controls="custom-content-below-home" aria-selected="true">Proximate</a>
@@ -112,8 +274,25 @@
                          <div class="col-sm-4">
                            <input type="number" class="form-control" id="gross-cv" placeholder="in adb" >
                          </div>
-                         <p style="padding: 5px;">%</p>
+                         <p style="padding: 5px;">kcal</p>
                       </div>
+
+                      <div class="form-group row">
+                         <label for="gross-cv" class="col-sm-6 col-form-label">Nilai Kalor (ar)</sub></label>
+                         <div class="col-sm-4">
+                           <input type="number" class="form-control" id="gross-cv-ar" placeholder="in ar" readonly>
+                         </div>
+                         <p style="padding: 5px;">kcal</p>
+                      </div>
+
+                      <div class="form-group row">
+                         <label for="gross-cv" class="col-sm-6 col-form-label">Nilai Kalor (db)</sub></label>
+                         <div class="col-sm-4">
+                           <input type="number" class="form-control" id="gross-cv-db" placeholder="in db" readonly>
+                         </div>
+                         <p style="padding: 5px;">kcal</p>
+                      </div>
+
                       <div class="form-group row">
                          <label for="total-chlorine" class="col-sm-6 col-form-label">Total Klorin</sub></label>
                          <div class="col-sm-4">
@@ -314,7 +493,7 @@
                     
                  
                    <button type="button" class="btn btn-warning" style="float: left;">Masukkan ke Database</button>
-                   <button type="button" onclick="calculateBaseAcidIndex()" class="btn btn-info " style="float: right;">Hitung Saja</button>
+                   <button type="button" onclick="tampilkanDataRingkasan()" class="btn btn-info " style="float: right;">Hitung Saja</button>
                 </form>
                 </div><!-- /.card-body -->
                   
@@ -324,8 +503,9 @@
             </div>
             <!-- TABLE: ASH CHARACTERISTICS -->
                                  
-            <!-- TABLE: INDEKS SLAGGING FOULING -->
-            <div class="col-md-8">
+
+            <!-- TABLE: KALKULASI INDEKS SLAGGING FOULING -->
+            <div class="col-md-4">
                                       
               <div class="card card-primary shadow-lg">
                   <div class="card-header">
@@ -343,13 +523,13 @@
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body">
-                    <table id="tabel1" class="table table-bordered table-striped" style="width:100%">
+                    <table class="table table-striped table-hover">
                         <thead>
                         <tr>
                           <th  style="width: 5%;">No</th>
                           <th>Parameter</th>
                           <th>Hasil</th>
-                          <th>Rumus</th>
+                          <th>Skor</th>
                           
                         </tr>
                         </thead>
@@ -359,27 +539,140 @@
                         <tr>
                           <td>1.</td>
                           <td>Base to Acid</td>
-                          <td id=ba-tab><p id="result_ba" style="text-align: center;"></p></td>
-                          <td><p>$$ \frac{\text{Fe}\text{O}_2 + \text{CaO} + \text{MgO} + \text{Na}_2\text{O} + \text{K}_2\text{O}}{\text{SiO}_2 + \text{Al}_2\text{O}_3 + \text{TiO}_2} $$</p></td>
+                          <td><p id="result_ba" style="text-align: center;"></p></td>
+                          <td id="skor-ba" style="text-align: center;">undefined</td>
                           
                         </tr>
 
                         <tr>
                           <td>2.</td>
                           <td>Silica Ratio</td>
-                          <td id=sr-tab><p id="result_si_ratio" style="text-align: center;"></p></td>
-                          <td><p>$$ \frac{\text{Fe}\text{O}_2 + \text{CaO} + \text{MgO} + \text{Na}_2\text{O} + \text{K}_2\text{O}}{\text{SiO}_2 + \text{Al}_2\text{O}_3 + \text{TiO}_2} $$</p></td>
+                          <td><p id="result_si_ratio" style="text-align: center;"></p></td>
+                          <td id="skor-sr" style="text-align: center;">undefined</td>
                           
                         </tr>
 
                         <tr>
                           <td>3.</td>
                           <td>Slagging Index</td>
-                          <td id=slag-index-tab><p id="result_slagging_index" style="text-align: center;"></p></td>
-                          <td><p>$$ \frac{\text{Fe}\text{O}_2 + \text{CaO} + \text{MgO} + \text{Na}_2\text{O} + \text{K}_2\text{O}}{\text{SiO}_2 + \text{Al}_2\text{O}_3 + \text{TiO}_2} $$</p></td>
+                          <td><p id="result_slagging_index" style="text-align: center;"></p></td>
+                          <td id="skor-slag-index" style="text-align: center;">undefined</td>
                           
                         </tr>
 
+                        <tr>
+                          <td>4.</td>
+                          <td>Fussibility</td>
+                          <td><p id="result_fusibility" style="text-align: center;"></p></td>
+                          <td id="skor-fusibility" style="text-align: center;">undefined</td>
+                          
+                        </tr>
+
+                        <tr>
+                          <td>5.</td>
+                          <td>Fe<sub>2</sub>O<sub>3</sub> / CaO</td>
+                          <td><p id="result_ironperca" style="text-align: center;"></p></td>
+                          <td id="skor-ironperca" style="text-align: center;">undefined</td>
+                          
+                        </tr>
+
+                        <tr>
+                          <td>6.</td>
+                          <td>Percentage of Fe<sub>2</sub>O<sub>3</sub></td>
+                          <td><p id="result_iron" style="text-align: center;"></p></td>
+                          <td id="skor-iron" style="text-align: center;">undefined</td>
+                          
+                        </tr>
+
+                        <tr>
+                          <td>7.</td>
+                          <td>Fe<sub>2</sub>O<sub>3</sub> + CaO</td>
+                          <td><p id="result_ironplusca" style="text-align: center;"></p></td>
+                          <td id="skor-ironplusca" style="text-align: center;">undefined</td>
+                          
+                        </tr>
+
+                        <tr>
+                          <td>8.</td>
+                          <td>SiO<sub>2</sub> + Al<sub>2</sub>O<sub>3</sub></td>
+                          <td><p id="result_siperal" style="text-align: center;"></p></td>
+                          <td id="skor-siperal" style="text-align: center;">undefined</td>
+                          
+                        </tr>
+
+                        <tr>
+                          <td>9.</td>
+                          <td>Composite Index</td>
+                          <td><p id="result_composite" style="text-align: center;"></p></td>
+                          <td id="skor-composite" style="text-align: center;">undefined</td>
+                          
+                        </tr>
+
+                        <tr>
+                          <td colspan="3" style="text-align:right; font-weight: bold;" class="bg-gradient-secondary">TOTAL SLAGGING</td>
+                          <td id="total-slagging" style="text-align: center;">undefined</td>
+                        </tr>
+
+                        <tr>
+                          <td>1.</td>
+                          <td>Fouling Index</td>
+                          <td><p id="result_fi" style="text-align: center;"></p></td>
+                          <td id="skor-fi" style="text-align: center;">undefined</td>
+                          
+                        </tr>
+
+                        <tr>
+                          <td>2.</td>
+                          <td>Na2O in Ash</td>
+                          <td><p id="result_na_ash" style="text-align: center;"></p></td>
+                          <td id="skor-na-ash" style="text-align: center;">undefined</td>
+                          
+                        </tr>
+
+                        <tr>
+                          <td>3.</td>
+                          <td>Total Alkali</td>
+                          <td><p id="result_total_alkali" style="text-align: center;"></p></td>
+                          <td id="skor-total-alkali" style="text-align: center;">undefined</td>
+                          
+                        </tr>
+
+                        <tr>
+                          <td>4.</td>
+                          <td>Alkali to Silika</td>
+                          <td><p id="result_alkali_to_silica" style="text-align: center;"></p></td>
+                          <td id="skor-alkali-to-silica" style="text-align: center;">undefined</td>
+                          
+                        </tr>
+
+                                     
+                        <tr>
+                          <td colspan="3" style="text-align:right; font-weight: bold;" class="bg-gradient-secondary">TOTAL SLAGGING</td>
+                          <td id="total-fouling" style="text-align: center;">undefined</td>
+                        </tr>
+
+
+                        <tr>
+                          <td>1.</td>
+                          <td>Chlorine</td>
+                          <td><p id="result_total_klorin" style="text-align: center;"></p></td>
+                          <td id="skor-total-klorin" style="text-align: center;">undefined</td>
+                          
+                        </tr>
+
+                        <tr>
+                          <td>2.</td>
+                          <td>Sulfur / Chlorine</td>
+                          <td><p id="result_spercl" style="text-align: center;"></p></td>
+                          <td id="skor-spercl" style="text-align: center;">undefined</td>
+                          
+                        </tr>
+
+                                                            
+                        <tr>
+                          <td colspan="3" style="text-align:right; font-weight: bold;" class="bg-gradient-secondary">TOTAL SLAGGING</td>
+                          <td id="total-corrosion" style="text-align: center;">undefined</td>
+                        </tr>
                         </tbody>
                         
                       </table>
@@ -389,8 +682,79 @@
               </div>               
             
             </div>
-            <!-- TABLE: KARYA ILMIAH -->
-            
+        
+
+             <!-- BAR CHART -->
+            <div class ="col-md-4">
+             
+            <div class="card card-success">
+              <div class="card-header">
+                <h3 class="card-title">Detail Lainnya</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <h4>Ash Fusion Temperature</h4>
+                <hr>
+                <div class="chart">
+                <canvas id="myChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+
+                <h4>RINGKASAN</h4>
+                <hr>
+                <section id="ringkasan">
+                <div class = "row">
+                  <div class="col-sm-3">
+                    <p style="font-weight:bold;">Jenis Sampel</p>
+                  </div>
+                  <div class="col-sm-1">
+                    <p style="font-weight:bold;">:</p>
+                  </div>
+                  <div class="col-sm-8">
+                    <p id="jenis-sampel">Jenis Sampel disini</p>
+                  </div>
+                </div>
+                <div class = "row">
+                  <div class="col-sm-3">
+                    <p style="font-weight:bold;">Nama Sampel</p>
+                  </div>
+                  <div class="col-sm-1">
+                    <p style="font-weight:bold;">:</p>
+                  </div>
+                  <div class="col-sm-8">
+                    <p id="nama-sampel">Nama Sampel disini</p>
+                  </div>
+                </div>
+
+                <div class = "row">
+                  <div class="col-sm-3">
+                    <p style="font-weight:bold;">Kode Sampel</p>
+                  </div>
+                  <div class="col-sm-1">
+                    <p style="font-weight:bold;">:</p>
+                  </div>
+                  <div class="col-sm-8">
+                    <p id="kode-sampel">Kode Sampel disini</p>
+                  </div>
+                </div>
+                
+                <div class = "row">
+                  <p id="info-paragraf"></p>
+                </div>
+                </section>
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            </div>
 
       </div>   <!-- /.row -->
     </div><!-- /.container -->
@@ -404,7 +768,12 @@
     <!-- /.content -->
   
   <!-- /.content-wrapper -->
-</div>
+
+
+
+
+
+ 
 
 <script>
 MathJax = {

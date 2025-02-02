@@ -47,7 +47,7 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         
-                    <table>
+                    <table class="table-periodik">
                       
                       <thead>
                         <tr class="gol">
