@@ -8,9 +8,11 @@
     session_start();
     if (!$_SESSION['nama']){
         header('Location: ../index.php?session=expired');
+        exit;
 
     }
     ?>
+    
    <?php include 'header.php'; ?>
    <?php include '../config/connection.php'; ?>
 <body class="hold-transition  sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -47,6 +49,22 @@
       else if($_GET['page']=='indeks-sf'){
         include 'app_index_sf.php';
       }
+      else if($_GET['page']=='data-diri'){
+        include 'pages/data_diri.php';
+      }
+      else if($_GET['page']=='data-pendidikan'){
+        include 'pages/data_pendidikan.php';
+      }
+      else if($_GET['page']=='data-kti'){
+        include 'pages/data_kti.php';
+      }
+      else if($_GET['page']=='data-work'){
+        include 'pages/data_work.php';
+      }
+      else if($_GET['page']=='data-pelatihan'){
+        include 'pages/data_pelatihan.php';
+      }
+      
       else {
         include '404.php';
       }

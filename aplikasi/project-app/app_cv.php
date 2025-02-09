@@ -25,10 +25,10 @@
        
       
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Monthly Recap Report</h5>
+                <h5 class="card-title">REKAP BIODATA</h5>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -52,359 +52,266 @@
                 </div>
               </div>
               <!-- /.card-header -->
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-8">
-                    <p class="text-center">
-                      <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
-                    </p>
-
-                    <div class="chart">
-                      <!-- Sales Chart Canvas -->
-                      <canvas id="salesChart" height="180" style="height: 180px;"></canvas>
-                    </div>
-                    <!-- /.chart-responsive -->
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-md-4">
-                    <p class="text-center">
-                      <strong>Goal Completion</strong>
-                    </p>
-
-                    <div class="progress-group">
-                      Add Products to Cart
-                      <span class="float-right"><b>160</b>/200</span>
-                      <div class="progress progress-sm">
-                        <div class="progress-bar bg-primary" style="width: 80%"></div>
-                      </div>
-                    </div>
-                    <!-- /.progress-group -->
-
-                    <div class="progress-group">
-                      Complete Purchase
-                      <span class="float-right"><b>310</b>/400</span>
-                      <div class="progress progress-sm">
-                        <div class="progress-bar bg-danger" style="width: 75%"></div>
-                      </div>
-                    </div>
-
-                    <!-- /.progress-group -->
-                    <div class="progress-group">
-                      <span class="progress-text">Visit Premium Page</span>
-                      <span class="float-right"><b>480</b>/800</span>
-                      <div class="progress progress-sm">
-                        <div class="progress-bar bg-success" style="width: 60%"></div>
-                      </div>
-                    </div>
-
-                    <!-- /.progress-group -->
-                    <div class="progress-group">
-                      Send Inquiries
-                      <span class="float-right"><b>250</b>/500</span>
-                      <div class="progress progress-sm">
-                        <div class="progress-bar bg-warning" style="width: 50%"></div>
-                      </div>
-                    </div>
-                    <!-- /.progress-group -->
-                  </div>
-                  <!-- /.col -->
-                </div>
-                <!-- /.row -->
-              </div>
-              <!-- ./card-body -->
-              <div class="card-footer">
-                <div class="row">
-                  <div class="col-sm-3 col-6">
-                    <div class="description-block border-right">
-                      <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 17%</span>
-                      <h5 class="description-header">$35,210.43</h5>
-                      <span class="description-text">TOTAL REVENUE</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-3 col-6">
-                    <div class="description-block border-right">
-                      <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i> 0%</span>
-                      <h5 class="description-header">$10,390.90</h5>
-                      <span class="description-text">TOTAL COST</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-3 col-6">
-                    <div class="description-block border-right">
-                      <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 20%</span>
-                      <h5 class="description-header">$24,813.53</h5>
-                      <span class="description-text">TOTAL PROFIT</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-3 col-6">
-                    <div class="description-block">
-                      <span class="description-percentage text-danger"><i class="fas fa-caret-down"></i> 18%</span>
-                      <h5 class="description-header">1200</h5>
-                      <span class="description-text">GOAL COMPLETIONS</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                </div>
-                <!-- /.row -->
-              </div>
-              <!-- /.card-footer -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-        
-        <!-- /.row -->
-        <div class="col-md-4">
-            <!-- Info Boxes Style 2 -->
-            <div class="info-box mb-3 bg-warning">
-              <span class="info-box-icon"><i class="fas fa-tag"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Inventory</span>
-                <span class="info-box-number">5,200</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-            <div class="info-box mb-3 bg-success">
-              <span class="info-box-icon"><i class="far fa-heart"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Mentions</span>
-                <span class="info-box-number">92,050</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-            <div class="info-box mb-3 bg-danger">
-              <span class="info-box-icon"><i class="fas fa-cloud-download-alt"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Downloads</span>
-                <span class="info-box-number">114,381</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-            <div class="info-box mb-3 bg-info">
-              <span class="info-box-icon"><i class="far fa-comment"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Direct Messages</span>
-                <span class="info-box-number">163,921</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-
-        </div> 
-
             
-            <!-- /.card -->
-      </div>
-        <!-- Main row -->
-      <div class="row">
-        
-                <!-- TABLE: KARYA ILMIAH -->
-                <div class="col-md-6">
-                                      
-                <div class="card card-warning shadow-lg">
-                    <div class="card-header">
-                      <h3 class="card-title">KARYA ILMIAH</h3>
+            <!--DATA DIRI-->
 
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                          <i class="fas fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove">
-                          <i class="fas fa-times"></i>
-                        </button>
-                      </div>
+            <div class="card-body">
+              <h3>Data Diri</h3>
+              <hr>
+              <div class="row">
+              <div class="col-md-9">
+                    <table id="" class="table table-bordered table-striped" style="width:100%">
+                      
+                      <tbody>
+                      
+                      <tr>
+                        <td style="width: 5%;">1</td>
+                        <td style="width:30%;">Nama Lengkap</td>
+                        <td>Fairuz Milkiy Kuswa</td>                    
+                      </tr>
 
+                      <tr>
+                        <td style="width: 5%;">2</td>
+                        <td style="width:30%;">NIP</td>
+                        <td>199504292018011001</td>                    
+                      </tr>
+
+                      <tr>
+                        <td style="width: 5%;">3</td>
+                        <td style="width:30%;">No Seri Karpeg</td>
+                        <td>B 00040355</td>                    
+                      </tr>
+
+                      <tr>
+                        <td style="width: 5%;">4</td>
+                        <td style="width:30%;">Tempat/Tanggal Lahir</td>
+                        <td>Bangkalan / 29 April 1995</td>                    
+                      </tr>
+                      <tr>
+                        <td style="width: 5%;">5</td>
+                        <td style="width:30%;">Pangkat / Golongan / TMT</td>
+                        <td>III /b / 01 Januari 2018</td>                    
+                      </tr>
+
+                      <tr>
+                        <td style="width: 5%;">6</td>
+                        <td style="width:30%;">Jabatan Saat Ini</td>
+                        <td>Perekayasa Pertama</td>                    
+                      </tr>
+
+                      <tr>
+                        <td style="width: 5%;">7</td>
+                        <td style="width:30%;">Instansi / Unit Kerja</td>
+                        <td>BRIN / PR - Konversi dan Konservasi Energi</td>                    
+                      </tr>
+
+                      <tr>
+                        <td style="width: 5%;">8</td>
+                        <td style="width:30%;">Alamat Kantor</td>
+                        <td>Gedung 480 Kawasan Puspiptek</td>                    
+                      </tr>
+
+                      <tr>
+                        <td style="width: 5%;">9</td>
+                        <td style="width:30%;">Alamat Rumah</td>
+                        <td>Perumahan Taman Sari Bukit Damai Blok A1 No 22C</td>                    
+                      </tr>
+
+                      
+                      <tr>
+                        <td style="width: 5%;">10</td>
+                        <td style="width:30%;">No Handphone</td>
+                        <td>+62 81336276096</td>                    
+                      </tr>
+
+                      <tr>
+                        <td style="width: 5%;">11</td>
+                        <td style="width:30%;">Email</td>
+                        <td>fairuzmilkiy@gmail.com</td>                    
+                      </tr>
+
+                      </tbody>
+                      
+                    </table>
                     </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-lg">
-                        Input Data
-                        </button>
-                        <br></br>
-                      <table id="tabel1" class="table table-bordered table-striped" style="width:100%">
-                        <thead>
-                        <tr>
-                          <th>No</th>
-                          <th>Author</th>
-                          <th>Judul</th>
-                          <th>Publisher/Jurnal</th>
-                          <th>Year</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        
-                        <?php 
-                        $nomor = 0;
-                        $query = mysqli_query($koneksi, "SELECT * FROM tb_karyailmiah");
-                        while($karyailmiah = mysqli_fetch_array($query)){
-                            $nomor++
-
-                        ?>
-
-                        <tr>
-                          <td><?php echo $nomor;?></td>
-                          <td><?php echo $karyailmiah['author'];?></td>
-                          <td><?php echo $karyailmiah['judul'];?></td>
-                          <td><?php echo $karyailmiah['jurnal'];?></td>
-                          <td><?php echo $karyailmiah['year'];?></td>
-                        </tr>
-
-                          <?php } ?>
-
-                        </tbody>
-                        
-                      </table>
-                    </div>
+                <div class="col-md-3">
+                </div>
+                
+              </div>
+            </div>
                     <!-- /.card-body -->
 
-              </div>               
-              
-          </div>
-          <!-- TABLE: KARYA ILMIAH -->
-           
-          
-          <!-- TABLE: PENGALAMAN KERJA -->
-           <div class="col-md-6">
-                              
-            <div class="card card-success shadow-lg">
-              <div class="card-header">
-                <h3 class="card-title">PENGALAMAN KERJA</h3>
 
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
+            <!--PENDIDIKAN-->
 
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="tabel2" class="table table-bordered table-striped" style="width:100%">
+            <div class="card-body">
+            <h3>Pendidikan</h3>
+              <hr>
+                <table id="" class="table table-bordered table-striped" style="width:100%">
                   <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th style="width : 5%;">No</th>
+                    <th>Author</th>
+                    <th>Judul</th>
+                    <th>Publisher/Jurnal</th>
+                    <th>Year</th>
                   </tr>
                   </thead>
                   <tbody>
                   
+                  <?php 
+                  $nomor = 0;
+                  $query = mysqli_query($koneksi, "SELECT * FROM tb_karyailmiah");
+                  while($karyailmiah = mysqli_fetch_array($query)){
+                      $nomor++
+
+                  ?>
+
                   <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>U</td>
+                    <td><?php echo $nomor;?></td>
+                    <td><?php echo $karyailmiah['author'];?></td>
+                    <td><?php echo $karyailmiah['judul'];?></td>
+                    <td><?php echo $karyailmiah['jurnal'];?></td>
+                    <td><?php echo $karyailmiah['year'];?></td>
                   </tr>
+
+                    <?php } ?>
+
                   </tbody>
                   
                 </table>
               </div>
-              <!-- /.card-body -->
-                <!-- /.table-responsive -->
-            </div>
-              
-              <!-- /.card-footer -->
-          </div>
-          <!-- TABLE: PENGALAMAN KERJA -->
+                    <!-- /.card-body -->
 
+            <!--PENGALAMAN KERJA-->
 
-      </div>
-          <!-- /.col -->
-    </div>
-      <!-- /.row -->
-       
-      
-
-      
-    </section>
-    <!-- /.content -->
-  <!-- /.modal -->
-
-  <div class="modal fade" id="modal-lg">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Input Data Karya Tulis Ilmiah (KTI)</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-
-            <form class="form-horizontal" method="get" action="add/input_kti.php">
-            <div class="modal-body">
-            
-                <div class="card-body">
-                <div class="form-group row">
-                    <label for="judul" class="col-sm-2 col-form-label">Judul Paper</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" name="judul" placeholder="Tittle" required>
-                    </div>
-                  </div>  
-                <div class="form-group row">
-                    <label for="author" class="col-sm-2 col-form-label">Author</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" name="author" placeholder="Author 1, Author 2, ..." required>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="publisher" class="col-sm-2 col-form-label">Publisher</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" name="publisher" placeholder="Nama Jurnal/Publisher">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="year" class="col-sm-2 col-form-label">Tahun Terbit</label>
-                    <div class="col-sm-10">
-                      <input type="number" class="form-control" name="year" placeholder="Tahun terbit">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="reputasi" class="col-sm-2 col-form-label">Reputasi</label>
-                    <div class="col-sm-10">
-                    <select class="form-control select2" name="reputasi" required>
-                    <option>Conference</option>
-                    <option>Rendah</option>
-                    <option>Menengah</option>
-                    <option>Tinggi</option>
-                    
-                    </select>
-                    </div>
-                  </div>
-
+            <div class="card-body">
+              <h3>Pengalaman Kerja</h3>
+              <hr>
+                <table id="" class="table table-bordered table-striped" style="width:100%">
+                  <thead>
+                  <tr>
+                    <th style="width : 5%;">No</th>
+                    <th>Author</th>
+                    <th>Judul</th>
+                    <th>Publisher/Jurnal</th>
+                    <th>Year</th>
+                  </tr>
+                  </thead>
+                  <tbody>
                   
-                </div>
-                
+                  <?php 
+                  $nomor = 0;
+                  $query = mysqli_query($koneksi, "SELECT * FROM tb_karyailmiah");
+                  while($karyailmiah = mysqli_fetch_array($query)){
+                      $nomor++
+
+                  ?>
+
+                  <tr>
+                    <td><?php echo $nomor;?></td>
+                    <td><?php echo $karyailmiah['author'];?></td>
+                    <td><?php echo $karyailmiah['judul'];?></td>
+                    <td><?php echo $karyailmiah['jurnal'];?></td>
+                    <td><?php echo $karyailmiah['year'];?></td>
+                  </tr>
+
+                    <?php } ?>
+
+                  </tbody>
+                  
+                </table>
+              </div>
+                    <!-- /.card-body -->
+
+
+            <!--PELATIHAN-->
+
+            <div class="card-body">
+              <h3>Pelatihan</h3>
+              <hr>
+                <table id="" class="table table-bordered table-striped" style="width:100%">
+                  <thead>
+                  <tr>
+                    <th style="width : 5%;">No</th>
+                    <th>Author</th>
+                    <th>Judul</th>
+                    <th>Publisher/Jurnal</th>
+                    <th>Year</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  
+                  <?php 
+                  $nomor = 0;
+                  $query = mysqli_query($koneksi, "SELECT * FROM tb_karyailmiah");
+                  while($karyailmiah = mysqli_fetch_array($query)){
+                      $nomor++
+
+                  ?>
+
+                  <tr>
+                    <td><?php echo $nomor;?></td>
+                    <td><?php echo $karyailmiah['author'];?></td>
+                    <td><?php echo $karyailmiah['judul'];?></td>
+                    <td><?php echo $karyailmiah['jurnal'];?></td>
+                    <td><?php echo $karyailmiah['year'];?></td>
+                  </tr>
+
+                    <?php } ?>
+
+                  </tbody>
+                  
+                </table>
+              </div>
+                    <!-- /.card-body -->
+
+              <!--KARYA ILMIAH-->
+
+              <div class="card-body">
+              <h3>Karya Ilmiah</h3>
+              <hr>
+                <table id="" class="table table-bordered table-striped" style="width:100%">
+                  <thead>
+                  <tr>
+                    <th style="width : 5%;">No</th>
+                    <th>Author</th>
+                    <th>Judul</th>
+                    <th>Publisher/Jurnal</th>
+                    <th>Year</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  
+                  <?php 
+                  $nomor = 0;
+                  $query = mysqli_query($koneksi, "SELECT * FROM tb_karyailmiah");
+                  while($karyailmiah = mysqli_fetch_array($query)){
+                      $nomor++
+
+                  ?>
+
+                  <tr>
+                    <td><?php echo $nomor;?></td>
+                    <td><?php echo $karyailmiah['author'];?></td>
+                    <td><?php echo $karyailmiah['judul'];?></td>
+                    <td><?php echo $karyailmiah['jurnal'];?></td>
+                    <td><?php echo $karyailmiah['year'];?></td>
+                  </tr>
+
+                    <?php } ?>
+
+                  </tbody>
+                  
+                </table>
+              </div>
+                    <!-- /.card-body -->
+
+          </div>               
               
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-info">Save changes</button>
-          </form>
-            </div>
-          </div>
-          <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
+          <!-- TABLE: KARYA ILMIAH -->
+           
       </div>
-      <!-- /.modal -->
-  <!-- /.content-wrapper -->
-</div>
+    </section>
 
