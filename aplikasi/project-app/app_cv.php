@@ -1,5 +1,14 @@
+<?php 
 
-  <!-- Content Wrapper. Contains page content -->
+$nama = $_SESSION['nama'];
+
+
+$biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
+
+
+?>
+ 
+ <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -67,67 +76,67 @@
                       <tr>
                         <td style="width: 5%;">1</td>
                         <td style="width:30%;">Nama Lengkap</td>
-                        <td>Fairuz Milkiy Kuswa</td>                    
+                        <td><?= $biodata["nama"] ?></td>                    
                       </tr>
 
                       <tr>
                         <td style="width: 5%;">2</td>
                         <td style="width:30%;">NIP</td>
-                        <td>199504292018011001</td>                    
+                        <td><?= $biodata["nip"] ?></td>                    
                       </tr>
 
                       <tr>
                         <td style="width: 5%;">3</td>
                         <td style="width:30%;">No Seri Karpeg</td>
-                        <td>B 00040355</td>                    
+                        <td><?= $biodata["no_karpeg"] ?></td>                    
                       </tr>
 
                       <tr>
                         <td style="width: 5%;">4</td>
                         <td style="width:30%;">Tempat/Tanggal Lahir</td>
-                        <td>Bangkalan / 29 April 1995</td>                    
+                        <td><?= $biodata["tempatlahir"] ?> / <?= date("d F Y", strtotime($biodata["tgl_lahir"])) ?></td>                    
                       </tr>
                       <tr>
                         <td style="width: 5%;">5</td>
                         <td style="width:30%;">Pangkat / Golongan / TMT</td>
-                        <td>III /b / 01 Januari 2018</td>                    
+                        <td><?= $biodata["pangkat_gol"] ?> / <?= date("d F Y", strtotime($biodata["tmt_jabatan"])) ?></td>                    
                       </tr>
 
                       <tr>
                         <td style="width: 5%;">6</td>
                         <td style="width:30%;">Jabatan Saat Ini</td>
-                        <td>Perekayasa Pertama</td>                    
+                        <td><?= $biodata["jabatan"] ?></td>                    
                       </tr>
 
                       <tr>
                         <td style="width: 5%;">7</td>
                         <td style="width:30%;">Instansi / Unit Kerja</td>
-                        <td>BRIN / PR - Konversi dan Konservasi Energi</td>                    
+                        <td><?= $biodata["instansi"] ?> / <?= $biodata["unit_kerja"] ?></td>                    
                       </tr>
 
                       <tr>
                         <td style="width: 5%;">8</td>
                         <td style="width:30%;">Alamat Kantor</td>
-                        <td>Gedung 480 Kawasan Puspiptek</td>                    
+                        <td><?= $biodata["alamat_kantor"] ?></td>                    
                       </tr>
 
                       <tr>
                         <td style="width: 5%;">9</td>
                         <td style="width:30%;">Alamat Rumah</td>
-                        <td>Perumahan Taman Sari Bukit Damai Blok A1 No 22C</td>                    
+                        <td><?= $biodata["alamat_rumah"] ?></td>                    
                       </tr>
 
                       
                       <tr>
                         <td style="width: 5%;">10</td>
                         <td style="width:30%;">No Handphone</td>
-                        <td>+62 81336276096</td>                    
+                        <td><?= $biodata["contact_hp"] ?></td>                    
                       </tr>
 
                       <tr>
                         <td style="width: 5%;">11</td>
                         <td style="width:30%;">Email</td>
-                        <td>fairuzmilkiy@gmail.com</td>                    
+                        <td><?= $biodata["email"] ?></td>                    
                       </tr>
 
                       </tbody>

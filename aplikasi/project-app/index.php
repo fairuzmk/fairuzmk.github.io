@@ -6,7 +6,7 @@
     <?php 
     
     session_start();
-    if (!$_SESSION['nama']){
+    if (!$_SESSION["nama"]){
         header('Location: ../index.php?session=expired');
         exit;
 
@@ -15,8 +15,10 @@
     
    <?php include 'header.php'; ?>
    <?php include '../config/connection.php'; ?>
-<body class="hold-transition  sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-<div class="wrapper">
+   <?php include '../config/query.php'; ?>
+   
+    <body class="hold-transition  sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+    <div class="wrapper">
   
 
 
