@@ -51,7 +51,7 @@
 
           <form action="config/auth.php" method="post">
             <div class="input-group mb-3">
-              <input name="username" id="password" type ="text" class="form-control" placeholder="Username">
+              <input name="username" id="username" type ="text" class="form-control" placeholder="Username">
               <div class="input-group-append">
                 <div class="input-group-text">
                 <i class="fas fa-user"></i>
@@ -74,7 +74,7 @@
                 
             
               <div class="col-6">
-                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                <button type="submit" name="signin" class="btn btn-primary btn-block">Sign In</button>
               </div>
             
 
