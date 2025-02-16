@@ -223,3 +223,28 @@
 </script>
 
 
+<!--UPDATE DATA DIRI SCRIPT-->
+<?php
+    if (isset ($_POST["upd_datadiri"])){
+
+        if (updDataDiri($_POST) > 0){
+    
+          echo "<script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Update Berhasil Dilakukan!',
+                showConfirmButton: false,
+                timer: 1500
+                });
+                </script>";
+        header("Location : index.php");
+          
+        } else {
+          echo mysqli_error($koneksi);
+    
+        }
+    
+    
+
+    } ;
+?>
