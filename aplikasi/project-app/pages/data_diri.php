@@ -47,7 +47,7 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
         <!-- /.card-header -->
 
         <div class="card-body">            
-            <form class="form-horizontal" method="POST" action="add/input_datadiri.php">
+            <form class="form-horizontal" method="POST" action="">
                 <div class="row">    
                     <div class="col-md-6">
                         <input type="text" class="form-control" name="id" placeholder="" value="<?=$biodata["id"]?>" hidden>
@@ -123,7 +123,7 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
                         <div class="form-group row">
                             <label for="no_karpeg" class="col-sm-3 col-form-label">No Seri Karpeg</label>
                             <div class="col-sm-8">
-                            <input type="text" class="form-control" name="no_karpeg" placeholder="Nama Jurnal/Publisher" value="<?=$biodata["no_karpeg"]?>">
+                            <input type="text" class="form-control" name="no_karpeg" placeholder="Mis. : B3928293" value="<?=$biodata["no_karpeg"]?>">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -171,10 +171,11 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
 
                 </div>
                     <div class="row mt-5">
-                    <button type="submit" class="btn btn-primary" style="position: absolute; bottom: 20px; right: 20px;">Save changes</button>
+                    <button type="submit" class="btn btn-primary" id="btn-update" style="position: absolute; bottom: 20px; right: 20px;" name="upd_datadiri">Save changes</button>
                     </div>  
             </form>
         
+
         </div><!-- /.card-body -->
 
     </div>
@@ -187,4 +188,5 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
 </div>
 </section>
 </div>
+
 <!-- /.content -->
