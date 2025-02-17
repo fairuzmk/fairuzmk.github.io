@@ -78,6 +78,8 @@
 <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
 <!-- Toastr -->
 <script src="plugins/toastr/toastr.min.js"></script>
+<!-- bs-custom-file-input -->
+<script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 
 <!-- Page specific script -->
 <script>
@@ -188,7 +190,11 @@
   
 </script>
 
-
+<script>
+$(function () {
+  bsCustomFileInput.init();
+});
+</script>
 
 <!-- Script Hightlight Menu Navigasi -->
 <script>
@@ -238,6 +244,58 @@
                 });
                 </script>";
         header("Location : index.php");
+          
+        } else {
+          echo mysqli_error($koneksi);
+    
+        }
+    
+    
+
+    } ;
+?>
+
+<!--UPDATE DATA DIRI SCRIPT-->
+<?php
+    if (isset ($_POST["updFoto"])){
+
+        if (updFoto($_POST) > 0){
+    
+          echo "<script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Update Berhasil Dilakukan!',
+                showConfirmButton: false,
+                timer: 1500
+                });
+                </script>";
+        header("Location : index.php");
+          
+        } else {
+          echo mysqli_error($koneksi);
+    
+        }
+    
+    
+
+    } ;
+?>
+
+<!--INPUT DATA DIRI SCRIPT-->
+<?php
+    if (isset ($_POST["inputDataPendidikan"])){
+
+        if (tambahPendidikan(data: $_POST) > 0){
+    
+          echo "<script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Data Berhasil Dimasukkan!',
+                showConfirmButton: false,
+                timer: 1500
+                });
+                </script>";
+          header(header: "Location : index.php");
           
         } else {
           echo mysqli_error($koneksi);

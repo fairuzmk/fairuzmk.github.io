@@ -45,7 +45,11 @@ function updDataDiri($data){
    $instansi = isset($data['instansi']) ? htmlspecialchars($data['instansi']) : '';
    $unit_kerja = isset($data['unit_kerja']) ? htmlspecialchars($data['unit_kerja']) : '';
    $alamat_kantor = isset($data['alamat_kantor']) ? htmlspecialchars($data['alamat_kantor']) : '';
-   
+
+  
+
+ 
+ 
 
 
    // // Validasi data tidak boleh kosong
@@ -70,12 +74,117 @@ function updDataDiri($data){
              alamat_rumah = '$alamat_rumah',
              alamat_kantor = '$alamat_kantor',
              contact_hp = '$contact_hp',
-             email = '$email',
-             foto = '$foto'
-         WHERE id = $id";
+             email = '$email'
+             WHERE id = $id";
 
    mysqli_query($koneksi, $upd_datadiri);
 
    return mysqli_affected_rows($koneksi);
 
 }
+
+function updFoto($data){
+    
+    global $koneksi;
+
+   //UPLOAD FOTO GAMBAR
+   $id = isset($data['id']) ? ($data['id']) : '';
+   $foto = upload();
+   if (!$foto) {
+    return false;
+   }
+
+   $upd_foto = "UPDATE tb_personal 
+   SET 
+       foto='$foto'
+     WHERE id = $id";
+
+mysqli_query($koneksi, $upd_foto);
+
+return mysqli_affected_rows($koneksi);
+
+}
+
+function upload(){
+
+    $namaFile = $_FILES ['foto']['name'];
+    $ukuranFile = $_FILES ['foto']['size'];
+    $error = $_FILES['foto']['error'];
+    $tmpName = $_FILES['foto']['tmp_name'];
+
+    // //CEK APAKAH GAMBAR SUDAH DIPILIH
+    if ($error === 4){
+        echo "<script>
+        alert ('Silahkan Pilih Gambar');
+        </script>";
+        return false;
+    }
+
+    //CEK APAKAH YANG DIUPLOAD ADALAH GAMBAR
+    $validasiEkstensi = ['jpg','jpeg', 'png'];
+    $ekstensiFoto = explode('.', $namaFile);
+    $ekstensiFoto = strtolower(end($ekstensiFoto));
+
+    if(!in_array($ekstensiFoto,$validasiEkstensi)){
+        echo "<script>
+        alert ('Silahkan Upload Gambar yang benar');
+        </script>";
+    }
+
+    //CEK UKURAN FILE 
+    if ($ukuranFile > 50000000) {
+        echo "<script>
+        alert ('Ukuran Gambar Maksimal 5MB');
+        </script>";
+        return false;
+    }
+
+    //
+    $namaFileBaru = uniqid();
+    $namaFileBaru .= '.';
+    $namaFileBaru .= $ekstensiFoto;
+
+    if (!is_dir('img')) {
+        mkdir('img', 0777, true);
+    }
+
+    if (move_uploaded_file($tmpName, 'img/' . $namaFileBaru)) {
+        return $namaFileBaru;
+    } else {
+        echo "<script>alert('Gagal mengupload gambar');</script>";
+        return false;
+    }
+
+}
+
+function tambahPendidikan($data){
+
+    global $koneksi;
+    
+    $nama = isset($data['nama']) ? htmlspecialchars($data['nama']) : '';
+    $jenjang = isset($data['jenjang']) ? htmlspecialchars($data['jenjang']) : '';
+    $kampus = isset($data['kampus']) ? htmlspecialchars($data['kampus']) : '';
+    $jurusan = isset($data['jurusan']) ? htmlspecialchars($data['jurusan']) : '';
+    $tahun_masuk = isset($data['tahun_masuk']) ? htmlspecialchars($data['tahun_masuk']) : '';
+    $tahun = isset($data['tahun']) ? htmlspecialchars($data['tahun']) : '';
+   
+  
+  
+ 
+ 
+    // // Validasi data tidak boleh kosong
+    // if (empty($nama) || empty($jenjang) || empty($nip)) {
+    //     echo json_encode(["status" => "error", "message" => "Nama, Jenis Kelamin, dan NIP wajib diisi!"]);
+    //     exit();
+    // }
+ 
+    // Query untuk menyimpan data ke database
+    $tambah_pendidikan = "INSERT INTO tb_pendidikan (id,nama,kampus, jenjang, jurusan, tahun_masuk , tahun) 
+                                            VALUES ('','$nama','$kampus', '$jenjang', '$jurusan','$tahun_masuk', '$tahun')";
+          
+ 
+    mysqli_query($koneksi, $tambah_pendidikan);
+ 
+    return mysqli_affected_rows($koneksi);
+ 
+ }
