@@ -47,10 +47,11 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
         <!-- /.card-header -->
 
         <div class="card-body">            
-            <form class="form-horizontal" method="POST" action="">
+            <form class="form-horizontal" method="POST" action="" >
                 <div class="row">    
                     <div class="col-md-6">
                         <input type="text" class="form-control" name="id" placeholder="" value="<?=$biodata["id"]?>" hidden>
+                        
                         <div class="form-group row">
                             <label for="nama" class="col-sm-3 col-form-label">Nama Lengkap</label>
                             <div class="col-sm-8">
@@ -58,18 +59,17 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
                             </div>
                         </div>  
                         <div class="form-group row">
-                            <label for="kelamin" class="col-sm-3 col-form-label">Jenis Kelamin</label>
-                            <div class="col-sm-8">
-                            <select class="form-control select2" name="kelamin" required>
-                            <option selected disabled>Pilih Jenis Kelamin</option>
-                            <option>Laki-laki</option>
-                            <option>Perempuan</option>
-                            <option>Tidak Tahu</option>
-                           
-                            
+                        <label for="kelamin" class="col-sm-3 col-form-label">Jenis Kelamin</label>
+                        <div class="col-sm-8">
+                            <select class="form-control select2" name="kelamin">
+                                <option disabled <?= (!isset($biodata["kelamin"]) || empty($biodata["kelamin"])) ? 'selected' : ''; ?>>Pilih Jenis Kelamin</option>
+                                <option value="Laki-laki" <?= ($biodata["kelamin"] == "Laki-laki") ? 'selected' : ''; ?>>Laki-laki</option>
+                                <option value="Perempuan" <?= ($biodata["kelamin"] == "Perempuan") ? 'selected' : ''; ?>>Perempuan</option>
+                                <option value="Tidak Tahu" <?= ($biodata["kelamin"] == "Tidak Tahu") ? 'selected' : ''; ?>>Tidak Tahu</option>
                             </select>
-                            </div>
                         </div>
+                    </div>
+
                         <div class="form-group row">
                             <label for="tempatlahir" class="col-sm-3 col-form-label">Tempat Lahir</label>
                             <div class="col-sm-8">
@@ -105,12 +105,19 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
                             <input type="text" class="form-control" name="email" placeholder="" value="<?=$biodata["email"]?>"readonly>
                             </div>
                         </div>
+                        
+                        
+                         
                         <div class="form-group row">
-                        <label for="foto" class="col-sm-3 col-form-label">Foto Anda</label>
+                        
+                        <label for="foto" class="col-sm-3 col-form-label">Foto Sebelumnya</label>
                             <div class="col-sm-8">
-                            <input type="text" class="form-control" name="foto" placeholder="" readonly>
+                            <img src="img/<?= $biodata["foto"]; ?>" alt="Gambar" width="200">
+                            <hr>
+                            <button type="button" class="btn btn-primary" id="btn-update" style="" data-toggle="modal" data-target="#modal-foto">Upload Foto</button>
                             </div>
-                        </div>  
+                        </div> 
+                        
                     </div>
                     
                     <div class="col-md-6">
@@ -176,6 +183,8 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
             </form>
         
 
+
+
         </div><!-- /.card-body -->
 
     </div>
@@ -187,6 +196,47 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
 
 </div>
 </section>
+
+<div class="modal fade" id="modal-foto">
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Upload Foto Profil</h4>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
+    <div class="modal-body">
+
+            <input type="text" class="form-control" name="id" placeholder="" value="<?=$biodata["id"]?>" hidden>
+            
+            <label for="foto" class="col-form-label">UPLOAD DISINI: </label>
+             <br>       
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="foto" >
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <br>
+                      <p style="padding: 5px;font-style: italic;">(FILE : .jpeg, .jpg, .png dengan ukuran Max. 5MB)</p>
+                    <!-- <input type="file" class="form-control" name="foto" placeholder="" readonly> -->
+                    
+                   
+                
+            
+            </div>
+            <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-info" name="updFoto">UPLOAD</button>
+    </div>
+    </form>
+  
+
+    </div>
+  </div>
+  <!-- /.modal-content -->
 </div>
 
-<!-- /.content -->
+
+

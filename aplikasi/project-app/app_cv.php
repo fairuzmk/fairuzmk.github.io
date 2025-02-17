@@ -4,7 +4,7 @@ $nama = $_SESSION['nama'];
 
 
 $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
-
+$pendidikan = query("SELECT * from tb_pendidikan WHERE nama = '$nama' ");
 
 ?>
  
@@ -144,6 +144,7 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
                     </table>
                     </div>
                 <div class="col-md-3">
+                <img src="img/<?= $biodata["foto"]; ?>" alt="Gambar" width="200">
                 </div>
                 
               </div>
@@ -157,37 +158,34 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
             <h3>Pendidikan</h3>
               <hr>
                 <table id="" class="table table-bordered table-striped" style="width:100%">
-                  <thead>
-                  <tr>
-                    <th style="width : 5%;">No</th>
-                    <th>Author</th>
-                    <th>Judul</th>
-                    <th>Publisher/Jurnal</th>
-                    <th>Year</th>
-                  </tr>
-                  </thead>
-                  <tbody>
+                <thead>
+                <tr>
+
+                  <th style="width:10%;">Jenjang</th>
+                  <th>Perguruan Tinggi</th>
+                  <th>Jurusan</th>
+                  <th>Tahun Masuk</th>
+                  <th>Tahun Lulus</th>
+                
+                </tr>
+                </thead>
+                <tbody>
+                <?php $i=1; ?>
+                <?php foreach ($pendidikan as $pend) : ?>
+
+                <tr style="text-align: center;">
+                  <td><?= $pend["jenjang"];?></td>
+                  <td><?= $pend["kampus"];?>Universitas Brawijaya</td>
+                  <td><?= $pend["jurusan"];?></td>
+                  <td><?= $pend["tahun_masuk"];?></td>
+                  <td><?= $pend["tahun"];?></td>
                   
-                  <?php 
-                  $nomor = 0;
-                  $query = mysqli_query($koneksi, "SELECT * FROM tb_karyailmiah");
-                  while($karyailmiah = mysqli_fetch_array($query)){
-                      $nomor++
 
-                  ?>
-
-                  <tr>
-                    <td><?php echo $nomor;?></td>
-                    <td><?php echo $karyailmiah['author'];?></td>
-                    <td><?php echo $karyailmiah['judul'];?></td>
-                    <td><?php echo $karyailmiah['jurnal'];?></td>
-                    <td><?php echo $karyailmiah['year'];?></td>
-                  </tr>
-
-                    <?php } ?>
-
-                  </tbody>
-                  
+                </tr>
+                <?php $i++; ?>
+                <?php endforeach ?>
+                </tbody>
+                
                 </table>
               </div>
                     <!-- /.card-body -->

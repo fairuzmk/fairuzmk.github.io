@@ -23,9 +23,9 @@
 
 
   <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
+  <!-- <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__wobble" src="dist/img/milk-io.png" alt="Milk.io logo" height="100" width="100">
-  </div>
+  </div> -->
 
 
 
