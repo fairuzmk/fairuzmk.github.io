@@ -10,6 +10,18 @@
     </div>
     <!-- /.content-header -->
 
+<?php
+
+
+$nama = $_SESSION['nama'];
+
+
+$biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
+$diklat = query("SELECT * from tb_diklat WHERE nama = '$nama' ");
+
+?>
+
+
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -39,9 +51,9 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-lg">
-            Input Data
-            </button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-pelatihan">
+                <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>Input Data  
+                </button>
             <br></br>
               <table id="tabel3" class="table table-bordered table-striped" style="width:100%">
                 <thead>
@@ -51,17 +63,31 @@
                   <th>Penyelenggara</th>
                   <th>Tempat Penyelenggaraan</th>
                   <th style="width:10%;">Tahun</th>
+                  <th style="width:10%;">Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 
-                <tr>
-                  <td>1</td>
-                  <td>All others</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>2025</td>
-                </tr>
+                
+                <?php $i=1; ?>
+                  <?php foreach ($diklat as $row) : ?>
+
+                  <tr>
+                    <td><?php echo $i;?></td>
+                    <td><?php echo $row['diklat'];?></td>
+                    <td><?php echo $row['penyelenggara'];?></td>
+                    <td><?php echo $row['tempat'];?></td>
+                    <td><?php echo $row['year'];?></td>
+                    <td>
+                    <button type="button" class="btn btn-outline-success"><i class="fas fa-pen"></i></button>
+                    <button type="button" class="btn btn-outline-danger"><i class="fas fa-trash"></i></button>
+                    
+                  </td>
+                  </tr>
+                  <?php $i++; ?>
+                  <?php endforeach ?>
+
+                
                 </tbody>
                 
               </table>
@@ -88,3 +114,65 @@
 
 </div>
     <!-- /.content -->
+
+
+<!-- /.MODAL -->
+
+<div class="modal fade" id="modal-pelatihan">
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Input Data Pelatihan</h4>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <form class="form-horizontal" method="POST" action="">
+    <div class="modal-body">
+    
+        <div class="card-body">
+        <input type="hidden" value="">
+        <input type="hidden" name="nama" value="<?=$biodata["nama"]?>">
+         <div class="form-group row">
+            <label for="diklat" class="col-sm-4 col-form-label">Nama Pelatihan</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="diklat" placeholder="Isikan Judul/Nama Pelatihan" required>
+            </div>
+          </div>  
+         <div class="form-group row">
+            <label for="penyelenggara" class="col-sm-4 col-form-label">Penyelenggara</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="penyelenggara" placeholder="Lembaga Penyelenggara Pelatihan" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="tempat" class="col-sm-4 col-form-label">Tempat</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="tempat" placeholder="Tempat diselenggarakannya pelatihan">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="year" class="col-sm-4 col-form-label">Tahun</label>
+            <div class="col-sm-8">
+              <input type="number" class="form-control" name="year" placeholder="Tahun Berlangsungnya Pelatihan">
+            </div>
+          </div>
+          
+
+          
+        </div>
+        
+      
+    </div>
+    <div class="modal-footer justify-content-between">
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      <button type="submit" class="btn btn-info" name="inputDiklat">Save changes</button>
+  </form>
+    </div>
+  </div>
+  <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

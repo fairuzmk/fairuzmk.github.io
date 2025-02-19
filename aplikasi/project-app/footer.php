@@ -241,9 +241,11 @@ $(function () {
                 title: 'Update Berhasil Dilakukan!',
                 showConfirmButton: false,
                 timer: 1500
+                }).then(() => {
+                  window.location.href = 'index.php';
                 });
                 </script>";
-        header("Location : index.php");
+        //header("Location : index.php");
           
         } else {
           echo mysqli_error($koneksi);
@@ -267,9 +269,11 @@ $(function () {
                 title: 'Update Berhasil Dilakukan!',
                 showConfirmButton: false,
                 timer: 1500
+                }).then(() => {
+                  window.location.href = 'index.php';
                 });
                 </script>";
-        header("Location : index.php");
+        //header("Location : index.php");
           
         } else {
           echo mysqli_error($koneksi);
@@ -293,9 +297,11 @@ $(function () {
                 title: 'Data Berhasil Dimasukkan!',
                 showConfirmButton: false,
                 timer: 1500
+                }).then(() => {
+                  window.location.href = 'index.php';
                 });
                 </script>";
-          header(header: "Location : index.php");
+          //header(header: "Location : index.php");
           
         } else {
           echo mysqli_error($koneksi);
@@ -319,9 +325,11 @@ $(function () {
                 title: 'Data Berhasil Dimasukkan!',
                 showConfirmButton: false,
                 timer: 1500
+                }).then(() => {
+                  window.location.href = 'index.php';
                 });
                 </script>";
-          header(header: "Location : index.php");
+          //header(header: "Location : index.php");
           
         } else {
           echo mysqli_error($koneksi);
@@ -345,9 +353,43 @@ $(function () {
                 title: 'Data Berhasil Dimasukkan!',
                 showConfirmButton: false,
                 timer: 1500
-                });
+                }).then(() => {
+                  window.location.href = 'index.php'; 
+              });
                 </script>";
-          header(header: "Location : index.php");
+          //header("Location: index.php");
+          exit;
+          
+        } else {
+          echo mysqli_error($koneksi);
+    
+        }
+    
+    
+
+    } ;
+?>
+
+
+
+<!--INPUT DATA DIKLAT SCRIPT-->
+<?php
+    if (isset ($_POST["inputDiklat"])){
+
+        if (tambahDiklat(data: $_POST) > 0){
+    
+          echo "<script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Data Berhasil Dimasukkan!',
+                showConfirmButton: false,
+                timer: 1500
+                }).then(() => {
+                  window.location.href = 'index.php'; 
+              });
+                </script>";
+          //header("Location: index.php");
+          exit;
           
         } else {
           echo mysqli_error($koneksi);

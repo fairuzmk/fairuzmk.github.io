@@ -10,7 +10,8 @@
     </div>
     <!-- /.content-header -->
 
-    <?php
+
+<?php
 
 
 $nama = $_SESSION['nama'];
@@ -49,7 +50,7 @@ $work_exp = query("SELECT * from tb_experience WHERE nama = '$nama' ");
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-kti">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-work">
                 <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>Input Data  
                 </button>
                         <br></br>
@@ -115,7 +116,7 @@ $work_exp = query("SELECT * from tb_experience WHERE nama = '$nama' ");
 
 <!-- /.MODAL -->
 
-<div class="modal fade" id="modal-kti">
+<div class="modal fade" id="modal-work">
 <div class="modal-dialog modal-lg">
   <div class="modal-content">
     <div class="modal-header">
@@ -138,9 +139,9 @@ $work_exp = query("SELECT * from tb_experience WHERE nama = '$nama' ");
             </div>
           </div>  
          <div class="form-group row">
-            <label for="pendanaan" class="col-sm-2 col-form-label">Sumber Pendanaan</label>
+            <label for="kerjasama" class="col-sm-2 col-form-label">Sumber Pendanaan</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="pendanaan" placeholder="Lembaga Pemberi Pendanaan" required>
+              <input type="text" class="form-control" name="kerjasama" placeholder="Lembaga Pemberi Pendanaan" required>
             </div>
           </div>
           <div class="form-group row">
