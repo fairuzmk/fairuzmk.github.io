@@ -14,7 +14,16 @@
     <section class="content">
       <div class="container-fluid">
        
-      
+<?php
+
+
+$nama = $_SESSION['nama'];
+
+
+$biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
+$kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
+
+?>
         
       <div class="row">
 
@@ -37,9 +46,9 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-lg">
-                  Input Data
-                  </button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-kti">
+                <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>Input Data  
+                </button>
                   <br></br>
                 <table id="tabel1" class="table table-bordered table-striped" style="width:100%">
                   <thead>
@@ -49,28 +58,29 @@
                     <th>Judul</th>
                     <th>Publisher/Jurnal</th>
                     <th style="width:10%;">Year</th>
+                    <th style="width:10%;">Action</th>
                   </tr>
                   </thead>
                   <tbody>
                   
-                  <?php 
-                  $nomor = 0;
-                  $query = mysqli_query($koneksi, "SELECT * FROM tb_karyailmiah");
-                  while($karyailmiah = mysqli_fetch_array($query)){
-                      $nomor++
-
-                  ?>
+                  <?php $i=1; ?>
+                  <?php foreach ($kti as $row) : ?>
 
                   <tr>
-                    <td><?php echo $nomor;?></td>
-                    <td><?php echo $karyailmiah['author'];?></td>
-                    <td><?php echo $karyailmiah['judul'];?></td>
-                    <td><?php echo $karyailmiah['jurnal'];?></td>
-                    <td><?php echo $karyailmiah['year'];?></td>
+                    <td><?php echo $i;?></td>
+                    <td><?php echo $row['author'];?></td>
+                    <td><?php echo $row['judul'];?></td>
+                    <td><?php echo $row['jurnal'];?></td>
+                    <td><?php echo $row['year'];?></td>
+                    <td>
+                    <button type="button" class="btn btn-outline-success"><i class="fas fa-pen"></i></button>
+                    <button type="button" class="btn btn-outline-danger"><i class="fas fa-trash"></i></button>
+                    
+                  </td>
                   </tr>
-
-                    <?php } ?>
-
+                  <?php $i++; ?>
+                  <?php endforeach ?>
+                  
                   </tbody>
                   
                 </table>
@@ -99,7 +109,7 @@
 
 <!-- /.MODAL -->
 
-<div class="modal fade" id="modal-lg">
+<div class="modal fade" id="modal-kti">
 <div class="modal-dialog modal-lg">
   <div class="modal-content">
     <div class="modal-header">
@@ -109,10 +119,12 @@
       </button>
     </div>
 
-    <form class="form-horizontal" method="get" action="add/input_kti.php">
+    <form class="form-horizontal" method="POST" action="">
     <div class="modal-body">
     
         <div class="card-body">
+        <input type="hidden" value="">
+        <input type="hidden" name="nama" value="<?=$biodata["nama"]?>">
         <div class="form-group row">
             <label for="judul" class="col-sm-2 col-form-label">Judul Paper</label>
             <div class="col-sm-10">
@@ -157,7 +169,7 @@
     </div>
     <div class="modal-footer justify-content-between">
       <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      <button type="submit" class="btn btn-info">Save changes</button>
+      <button type="submit" class="btn btn-info" name="inputDataKti">Save changes</button>
   </form>
     </div>
   </div>
