@@ -281,11 +281,63 @@ $(function () {
     } ;
 ?>
 
-<!--INPUT DATA DIRI SCRIPT-->
+<!--INPUT DATA PENDIDIKAN SCRIPT-->
 <?php
     if (isset ($_POST["inputDataPendidikan"])){
 
         if (tambahPendidikan(data: $_POST) > 0){
+    
+          echo "<script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Data Berhasil Dimasukkan!',
+                showConfirmButton: false,
+                timer: 1500
+                });
+                </script>";
+          header(header: "Location : index.php");
+          
+        } else {
+          echo mysqli_error($koneksi);
+    
+        }
+    
+    
+
+    } ;
+?>
+
+<!--INPUT DATA KTI SCRIPT-->
+<?php
+    if (isset ($_POST["inputDataKti"])){
+
+        if (tambahKti(data: $_POST) > 0){
+    
+          echo "<script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Data Berhasil Dimasukkan!',
+                showConfirmButton: false,
+                timer: 1500
+                });
+                </script>";
+          header(header: "Location : index.php");
+          
+        } else {
+          echo mysqli_error($koneksi);
+    
+        }
+    
+    
+
+    } ;
+?>
+
+<!--INPUT DATA WORK EXP SCRIPT-->
+<?php
+    if (isset ($_POST["inputWorkExp"])){
+
+        if (tambahWorkExp(data: $_POST) > 0){
     
           echo "<script>
                 Swal.fire({
