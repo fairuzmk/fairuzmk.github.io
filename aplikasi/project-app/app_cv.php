@@ -5,6 +5,11 @@ $nama = $_SESSION['nama'];
 
 $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
 $pendidikan = query("SELECT * from tb_pendidikan WHERE nama = '$nama' ");
+$work_exp = query("SELECT * from tb_experience WHERE nama = '$nama' ");
+$diklat = query("SELECT * from tb_diklat WHERE nama = '$nama' ");
+$kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
+
+
 
 ?>
  
@@ -143,8 +148,11 @@ $pendidikan = query("SELECT * from tb_pendidikan WHERE nama = '$nama' ");
                       
                     </table>
                     </div>
-                <div class="col-md-3">
-                <img src="img/<?= $biodata["foto"]; ?>" alt="Gambar" width="200">
+                <!-- <div class="col-md-3"style="display: flex; justify-content: center; align-items: center; width: 200px; height: 550px; overflow: hidden;">
+                <img src="img/<?= $biodata["foto"]; ?>" alt="Gambar" width=100% height="auto">
+                </div> -->
+                <div class="col-md-3"style="width: 100%; aspect-ratio: 300 / 400; overflow: hidden;">
+                <img src="img/<?= $biodata["foto"]; ?>" alt="Gambar" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 
               </div>
@@ -192,40 +200,41 @@ $pendidikan = query("SELECT * from tb_pendidikan WHERE nama = '$nama' ");
 
             <!--PENGALAMAN KERJA-->
 
+
             <div class="card-body">
               <h3>Pengalaman Kerja</h3>
               <hr>
                 <table id="" class="table table-bordered table-striped" style="width:100%">
                   <thead>
                   <tr>
-                    <th style="width : 5%;">No</th>
-                    <th>Author</th>
-                    <th>Judul</th>
-                    <th>Publisher/Jurnal</th>
-                    <th>Year</th>
+                    <th style="width:5%;">No</th>
+                    <th>Nama Kegiatan</th>
+                    <th>Pendanaan</th>
+                    <th>Peran</th>
+                    <th style="width:10%;">Tahun</th>
+
+                    
                   </tr>
                   </thead>
                   <tbody>
                   
-                  <?php 
-                  $nomor = 0;
-                  $query = mysqli_query($koneksi, "SELECT * FROM tb_karyailmiah");
-                  while($karyailmiah = mysqli_fetch_array($query)){
-                      $nomor++
-
-                  ?>
+                  <?php $i=1; ?>
+                  <?php foreach ($work_exp as $work) : ?>
 
                   <tr>
-                    <td><?php echo $nomor;?></td>
-                    <td><?php echo $karyailmiah['author'];?></td>
-                    <td><?php echo $karyailmiah['judul'];?></td>
-                    <td><?php echo $karyailmiah['jurnal'];?></td>
-                    <td><?php echo $karyailmiah['year'];?></td>
+                    <td style="text-align:center;"><?php echo $i;?></td>
+                    <td><?php echo $work['kegiatan'];?></td>
+                    <td><?php echo $work['kerjasama'];?></td>
+                    <td><?php echo $work['peran'];?></td>
+                    <td style="text-align:center;"><?php echo $work['year'];?></td>
+                    
                   </tr>
-
-                    <?php } ?>
+                  <?php $i++; ?>
+                  <?php endforeach ?>
 
                   </tbody>
+
+                  
                   
                 </table>
               </div>
@@ -238,36 +247,35 @@ $pendidikan = query("SELECT * from tb_pendidikan WHERE nama = '$nama' ");
               <h3>Pelatihan</h3>
               <hr>
                 <table id="" class="table table-bordered table-striped" style="width:100%">
-                  <thead>
-                  <tr>
-                    <th style="width : 5%;">No</th>
-                    <th>Author</th>
-                    <th>Judul</th>
-                    <th>Publisher/Jurnal</th>
-                    <th>Year</th>
-                  </tr>
-                  </thead>
-                  <tbody>
+                <thead>
+                <tr>
+                  <th style="width: 5%;">No</th>
+                  <th>Nama Diklat</th>
+                  <th>Penyelenggara</th>
+                  <th>Tempat Penyelenggaraan</th>
+                  <th style="width:10%;">Tahun</th>
                   
-                  <?php 
-                  $nomor = 0;
-                  $query = mysqli_query($koneksi, "SELECT * FROM tb_karyailmiah");
-                  while($karyailmiah = mysqli_fetch_array($query)){
-                      $nomor++
-
-                  ?>
+                </tr>
+                </thead>
+                <tbody>
+                
+                
+                <?php $i=1; ?>
+                  <?php foreach ($diklat as $dik) : ?>
 
                   <tr>
-                    <td><?php echo $nomor;?></td>
-                    <td><?php echo $karyailmiah['author'];?></td>
-                    <td><?php echo $karyailmiah['judul'];?></td>
-                    <td><?php echo $karyailmiah['jurnal'];?></td>
-                    <td><?php echo $karyailmiah['year'];?></td>
+                    <td style="text-align: center;"><?php echo $i;?></td>
+                    <td><?php echo $dik['diklat'];?></td>
+                    <td><?php echo $dik['penyelenggara'];?></td>
+                    <td><?php echo $dik['tempat'];?></td>
+                    <td style="text-align: center;"><?php echo $dik['year'];?></td>
+                    
                   </tr>
+                  <?php $i++; ?>
+                  <?php endforeach ?>
 
-                    <?php } ?>
-
-                  </tbody>
+                
+                </tbody>
                   
                 </table>
               </div>
@@ -279,35 +287,32 @@ $pendidikan = query("SELECT * from tb_pendidikan WHERE nama = '$nama' ");
               <h3>Karya Ilmiah</h3>
               <hr>
                 <table id="" class="table table-bordered table-striped" style="width:100%">
-                  <thead>
+                <thead>
                   <tr>
-                    <th style="width : 5%;">No</th>
+                    <th style="width:5%;">No</th>
                     <th>Author</th>
                     <th>Judul</th>
                     <th>Publisher/Jurnal</th>
-                    <th>Year</th>
+                    <th style="width:10%;">Year</th>
+                  
                   </tr>
                   </thead>
                   <tbody>
                   
-                  <?php 
-                  $nomor = 0;
-                  $query = mysqli_query($koneksi, "SELECT * FROM tb_karyailmiah");
-                  while($karyailmiah = mysqli_fetch_array($query)){
-                      $nomor++
-
-                  ?>
+                  <?php $i=1; ?>
+                  <?php foreach ($kti as $ktie) : ?>
 
                   <tr>
-                    <td><?php echo $nomor;?></td>
-                    <td><?php echo $karyailmiah['author'];?></td>
-                    <td><?php echo $karyailmiah['judul'];?></td>
-                    <td><?php echo $karyailmiah['jurnal'];?></td>
-                    <td><?php echo $karyailmiah['year'];?></td>
+                    <td style="text-align: center;"><?php echo $i;?></td>
+                    <td><?php echo $ktie['author'];?></td>
+                    <td><?php echo $ktie['judul'];?></td>
+                    <td><?php echo $ktie['jurnal'];?></td>
+                    <td style="text-align: center;"><?php echo $ktie['year'];?></td>
+                  
                   </tr>
-
-                    <?php } ?>
-
+                  <?php $i++; ?>
+                  <?php endforeach ?>
+                  
                   </tbody>
                   
                 </table>

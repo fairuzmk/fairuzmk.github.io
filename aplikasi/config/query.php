@@ -211,17 +211,39 @@ function tambahPendidikan($data){
     
     $nama = isset($data['nama']) ? htmlspecialchars($data['nama']) : '';
     $kegiatan = isset($data['kegiatan']) ? htmlspecialchars($data['kegiatan']) : '';
-    $pendanaan = isset($data['pendanaan']) ? htmlspecialchars($data['pendanaan']) : '';
+    $kerjasama = isset($data['kerjasama']) ? htmlspecialchars($data['kerjasama']) : '';
     $peran = isset($data['peran']) ? htmlspecialchars($data['peran']) : '';
     $year = isset($data['year']) ? htmlspecialchars($data['year']) : '';
  
   
 
-    $tambah_workexp = "INSERT INTO tb_experience (id,nama, kegiatan, pendanaan, peran, year) 
-                                            VALUES ('','$nama','$kegiatan', '$pendanaan', '$peran','$year')";
+    $tambah_workexp = "INSERT INTO tb_experience (id,nama, kegiatan, kerjasama, peran, year) 
+                                            VALUES ('','$nama','$kegiatan', '$kerjasama', '$peran','$year')";
           
  
     mysqli_query($koneksi, $tambah_workexp);
+ 
+    return mysqli_affected_rows($koneksi);
+ 
+ }
+
+ function tambahDiklat($data){
+
+    global $koneksi;
+    
+    $nama = isset($data['nama']) ? htmlspecialchars($data['nama']) : '';
+    $diklat = isset($data['diklat']) ? htmlspecialchars($data['diklat']) : '';
+    $penyelenggara = isset($data['penyelenggara']) ? htmlspecialchars($data['penyelenggara']) : '';
+    $tempat = isset($data['tempat']) ? htmlspecialchars($data['tempat']) : '';
+    $year = isset($data['year']) ? htmlspecialchars($data['year']) : '';
+ 
+  
+
+    $tambah_diklat = "INSERT INTO tb_diklat (id,nama, diklat, penyelenggara, tempat, year) 
+                                            VALUES ('','$nama','$diklat', '$penyelenggara', '$tempat','$year')";
+          
+ 
+    mysqli_query($koneksi, $tambah_diklat);
  
     return mysqli_affected_rows($koneksi);
  
