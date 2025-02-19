@@ -170,16 +170,7 @@ function tambahPendidikan($data){
    
   
   
- 
- 
-    // // Validasi data tidak boleh kosong
-    // if (empty($nama) || empty($jenjang) || empty($nip)) {
-    //     echo json_encode(["status" => "error", "message" => "Nama, Jenis Kelamin, dan NIP wajib diisi!"]);
-    //     exit();
-    // }
- 
-    // Query untuk menyimpan data ke database
-    $tambah_pendidikan = "INSERT INTO tb_pendidikan (id,nama,kampus, jenjang, jurusan, tahun_masuk , tahun) 
+     $tambah_pendidikan = "INSERT INTO tb_pendidikan (id,nama,kampus, jenjang, jurusan, tahun_masuk , tahun) 
                                             VALUES ('','$nama','$kampus', '$jenjang', '$jurusan','$tahun_masuk', '$tahun')";
           
  
@@ -188,3 +179,51 @@ function tambahPendidikan($data){
     return mysqli_affected_rows($koneksi);
  
  }
+
+ function tambahKti($data){
+
+    global $koneksi;
+    
+    $nama = isset($data['nama']) ? htmlspecialchars($data['nama']) : '';
+    $judul = isset($data['judul']) ? htmlspecialchars($data['judul']) : '';
+    $jurnal = isset($data['jurnal']) ? htmlspecialchars($data['jurnal']) : '';
+    $author = isset($data['author']) ? htmlspecialchars($data['author']) : '';
+    $year = isset($data['year']) ? htmlspecialchars($data['year']) : '';
+    $reputasi = isset($data['reputasi']) ? htmlspecialchars($data['reputasi']) : '';
+   
+  
+  
+
+    $tambah_kti = "INSERT INTO tb_karyailmiah (id,nama, judul, jurnal, author, year , reputasi) 
+                                            VALUES ('','$nama','$judul', '$jurnal', '$author','$year', '$reputasi')";
+          
+ 
+    mysqli_query($koneksi, $tambah_kti);
+ 
+    return mysqli_affected_rows($koneksi);
+ 
+ }
+
+
+ function tambahWorkExp($data){
+
+    global $koneksi;
+    
+    $nama = isset($data['nama']) ? htmlspecialchars($data['nama']) : '';
+    $kegiatan = isset($data['kegiatan']) ? htmlspecialchars($data['kegiatan']) : '';
+    $pendanaan = isset($data['pendanaan']) ? htmlspecialchars($data['pendanaan']) : '';
+    $peran = isset($data['peran']) ? htmlspecialchars($data['peran']) : '';
+    $year = isset($data['year']) ? htmlspecialchars($data['year']) : '';
+ 
+  
+
+    $tambah_workexp = "INSERT INTO tb_experience (id,nama, kegiatan, pendanaan, peran, year) 
+                                            VALUES ('','$nama','$kegiatan', '$pendanaan', '$peran','$year')";
+          
+ 
+    mysqli_query($koneksi, $tambah_workexp);
+ 
+    return mysqli_affected_rows($koneksi);
+ 
+ }
+
