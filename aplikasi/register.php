@@ -53,7 +53,7 @@
         <a href="index.php"><img class="login-box-msg" src="milk-io-panjang.png" alt="Milk.io logo" height="100" width="300"></a>
       </div>
       <!-- /.login-logo -->
-      <p class="login-box-msg">Register New User</p>
+      <hr>
       <div class="card">
         <div class="card-body login-card-body">
 

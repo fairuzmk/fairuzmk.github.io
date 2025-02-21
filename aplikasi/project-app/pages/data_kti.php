@@ -73,8 +73,17 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
                     <td><?php echo $row['jurnal'];?></td>
                     <td><?php echo $row['year'];?></td>
                     <td>
-                    <button type="button" class="btn btn-outline-success"><i class="fas fa-pen"></i></button>
-                    <button type="button" class="btn btn-outline-danger"><i class="fas fa-trash"></i></button>
+                    <a class="edit-dataKti btn btn-outline-success" 
+                    data-id="<?= $row["id"];?>"
+                    data-author="<?= $row["author"];?>"
+                    data-judul="<?= $row["judul"];?>"
+                    data-jurnal="<?= $row["jurnal"];?>"
+                    data-tahun="<?= $row["year"];?>"
+                    data-reputasi="<?= $row["reputasi"];?>"
+                    
+                    data-toggle="modal" data-target="#modal-editKti"
+                    ><i class="fas fa-pen"></i></a>
+                    <button type="button" class="btn btn-outline-danger" onclick=deleteData(<?= $row["id"];?>)><i class="fas fa-trash"></i></button>
                     
                   </td>
                   </tr>
@@ -107,7 +116,7 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
   </div>
     <!-- /.content -->
 
-<!-- /.MODAL -->
+<!-- /.MODAL INPUT -->
 
 <div class="modal fade" id="modal-kti">
 <div class="modal-dialog modal-lg">
@@ -120,58 +129,133 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
     </div>
 
     <form class="form-horizontal" method="POST" action="">
-    <div class="modal-body">
+      <div class="modal-body">
     
         <div class="card-body">
-        <input type="hidden" value="">
-        <input type="hidden" name="nama" value="<?=$biodata["nama"]?>">
-        <div class="form-group row">
+          <input type="hidden" value="">
+          <input type="hidden" name="nama" value="<?=$biodata["nama"]?>">
+            <div class="form-group row">
             <label for="judul" class="col-sm-2 col-form-label">Judul Paper</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" name="judul" placeholder="Tittle" required>
             </div>
-          </div>  
-        <div class="form-group row">
-            <label for="author" class="col-sm-2 col-form-label">Author</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="author" placeholder="Author 1, Author 2, ..." required>
+            </div>  
+            <div class="form-group row">
+              <label for="author" class="col-sm-2 col-form-label">Author</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="author" placeholder="Author 1, Author 2, ..." required>
+              </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label for="publisher" class="col-sm-2 col-form-label">Publisher</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="publisher" placeholder="Nama Jurnal/Publisher">
+            <div class="form-group row">
+              <label for="jurnal" class="col-sm-2 col-form-label">Publisher</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="jurnal" placeholder="Nama Jurnal/Publisher">
+              </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label for="year" class="col-sm-2 col-form-label">Tahun Terbit</label>
-            <div class="col-sm-10">
-              <input type="number" class="form-control" name="year" placeholder="Tahun terbit">
+            <div class="form-group row">
+              <label for="year" class="col-sm-2 col-form-label">Tahun Terbit</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" name="year" placeholder="Tahun terbit">
+              </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label for="reputasi" class="col-sm-2 col-form-label">Reputasi</label>
-            <div class="col-sm-10">
-            <select class="form-control select2" name="reputasi" required>
-            <option>Conference</option>
-            <option>Rendah</option>
-            <option>Menengah</option>
-            <option>Tinggi</option>
-            
-            </select>
+            <div class="form-group row">
+              <label for="reputasi" class="col-sm-2 col-form-label">Reputasi</label>
+              <div class="col-sm-10">
+              <select class="form-control select2" name="reputasi"  required>
+              <option>Conference</option>
+              <option>Rendah</option>
+              <option>Menengah</option>
+              <option>Tinggi</option>
+              
+              </select>
+              </div>
             </div>
-          </div>
 
           
         </div>
         
-      
+        <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-info" name="inputDataKti">Save changes</button>
+        </div>
+      </div>
+                    
+    </form>
+
+  </div>
+  <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!-- /.MODAL EDIT KTI-->
+
+<div class="modal fade" id="modal-editKti">
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header bg-warning">
+      <h4 class="modal-title">Edit Data Karya Tulis Ilmiah (KTI)</h4>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
-    <div class="modal-footer justify-content-between">
-      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      <button type="submit" class="btn btn-info" name="inputDataKti">Save changes</button>
-  </form>
-    </div>
+
+    <form class="form-horizontal" method="POST" action="">
+      <div class="modal-body">
+    
+        <div class="card-body">
+          <input type="hidden" id="idKti" name="idKti">
+          <input type="hidden" name="nama" value="<?=$biodata["nama"]?>">
+            <div class="form-group row">
+            <label for="judul" class="col-sm-2 col-form-label">Judul Paper</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="judul" id="judul" placeholder="Tittle" required>
+            </div>
+            </div>  
+            <div class="form-group row">
+              <label for="author" class="col-sm-2 col-form-label">Author</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="author" id="author" placeholder="Author 1, Author 2, ..." required>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="jurnal" class="col-sm-2 col-form-label">Publisher</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="jurnal" id="jurnal" placeholder="Nama Jurnal/Publisher">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="year" class="col-sm-2 col-form-label">Tahun Terbit</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" name="year" id="year" placeholder="Tahun terbit">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="reputasi" class="col-sm-2 col-form-label">Reputasi</label>
+              <div class="col-sm-10">
+              <select class="form-control select2" name="reputasi" id="reputasi" required>
+              <option>Conference</option>
+              <option>Rendah</option>
+              <option>Menengah</option>
+              <option>Tinggi</option>
+              
+              </select>
+              </div>
+            </div>
+
+          
+        </div>
+        
+        <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-info" name="editDataKti">Save changes</button>
+        </div>
+      </div>
+                    
+    </form>
+
   </div>
   <!-- /.modal-content -->
 </div>
@@ -180,4 +264,47 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
 <!-- /.modal -->
 
 
+<script>
+  function deleteData(data_id){
+    //alert('ok');
+  
+      Swal.fire({
+      title: "Apakah anda yakin?",
+      text: "Kamu akan menghapus data ini",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, hapus saja!"
+      }).then((result) => {
+      if (result.isConfirmed) {
+        
+        let timerInterval;
+        Swal.fire({
+          title: "Hapus Data",
+          html: "Sedang menghapus data",
+          icon: "warning",
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+              timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+          },
+          willClose: () => {
+            clearInterval(timerInterval);
+          }
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            window.location=("del/delete.php?id="+data_id+"&page=data-kti");
+          }
+        });
+        
+      }
+    });
+  }
 
+</script>
