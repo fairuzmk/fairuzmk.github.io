@@ -191,6 +191,83 @@
 </script>
 
 <script>
+//Panggil data Pendidikan
+$('.edit-dataPendidikan').click(function(){
+var idPend= $(this).attr('data-id');
+var dataJenjang= $(this).attr('data-jenjang');
+var dataKampus= $(this).attr('data-kampus');
+var dataJurusan= $(this).attr('data-jurusan');
+var tahunMasuk= $(this).attr('data-tahun-masuk');
+var tahunKeluar= $(this).attr('data-tahun');
+
+document.getElementById('idPend').value = idPend;
+document.getElementById('jenjang').value = dataJenjang;
+document.getElementById('kampus').value = dataKampus;
+document.getElementById('jurusan').value = dataJurusan;
+document.getElementById('tahun_masuk').value = tahunMasuk;
+document.getElementById('tahun').value = tahunKeluar;
+
+})
+
+//Panggil data work_exp
+$('.edit-dataWork').click(function(){
+var idWork= $(this).attr('data-id');
+var dataKegiatan= $(this).attr('data-kegiatan');
+var dataKerjasama= $(this).attr('data-kerjasama');
+var dataPeran= $(this).attr('data-peran');
+var tahun = $(this).attr('data-tahun');
+
+
+document.getElementById('idWork').value = idWork;
+document.getElementById('kegiatan').value = dataKegiatan;
+document.getElementById('kerjasama').value = dataKerjasama;
+document.getElementById('peran').value = dataPeran;
+document.getElementById('year').value = tahun;
+
+})
+
+
+//Panggil data KTI
+$('.edit-dataKti').click(function(){
+var idKti= $(this).attr('data-id');
+var dataJudul= $(this).attr('data-judul');
+var dataAuthor= $(this).attr('data-author');
+var dataJurnal= $(this).attr('data-jurnal');
+var tahun = $(this).attr('data-tahun');
+var dataReputasi = $(this).attr('data-reputasi');
+
+document.getElementById('idKti').value = idKti;
+document.getElementById('judul').value = dataJudul;
+document.getElementById('author').value = dataAuthor;
+document.getElementById('jurnal').value = dataJurnal;
+document.getElementById('year').value = tahun;
+document.getElementById('reputasi').value = dataReputasi;
+
+})
+  
+   //Panggil data Pelatihan
+$('.edit-dataPelatihan').click(function(){
+var idPelatihan= $(this).attr('data-id');
+var dataDiklat= $(this).attr('data-diklat');
+var dataPenyelenggara= $(this).attr('data-penyelenggara');
+var dataTempat= $(this).attr('data-tempat');
+var tahun = $(this).attr('data-tahun');
+
+
+document.getElementById('idPelatihan').value = idPelatihan;
+document.getElementById('diklat').value = dataDiklat;
+document.getElementById('penyelenggara').value = dataPenyelenggara;
+document.getElementById('tempat').value = dataTempat;
+document.getElementById('year').value = tahun;
+
+
+})
+
+
+  
+  
+</script>
+<script>
 $(function () {
   bsCustomFileInput.init();
 });
@@ -242,7 +319,7 @@ $(function () {
                 showConfirmButton: false,
                 timer: 1500
                 }).then(() => {
-                  window.location.href = 'index.php';
+                  window.location.href = 'index.php?page=data-diri';
                 });
                 </script>";
         //header("Location : index.php");
@@ -270,7 +347,7 @@ $(function () {
                 showConfirmButton: false,
                 timer: 1500
                 }).then(() => {
-                  window.location.href = 'index.php';
+                  window.location.href = 'index.php?page=data-diri';
                 });
                 </script>";
         //header("Location : index.php");
@@ -298,7 +375,7 @@ $(function () {
                 showConfirmButton: false,
                 timer: 1500
                 }).then(() => {
-                  window.location.href = 'index.php';
+                  window.location.href = 'index.php?page=data-pendidikan';
                 });
                 </script>";
           //header(header: "Location : index.php");
@@ -313,6 +390,35 @@ $(function () {
     } ;
 ?>
 
+<!--EDIT DATA PENDIDIKAN SCRIPT-->
+<?php
+    if (isset ($_POST["editDataPendidikan"])){
+
+        if (editPendidikan(data: $_POST) > 0){
+    
+          echo "<script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Update Berhasil Dilakukan!',
+                showConfirmButton: false,
+                timer: 1500
+                }).then(() => {
+                  window.location.href = 'index.php?page=data-pendidikan';
+                });
+                </script>";
+          //header(header: "Location : index.php");
+          
+        } else {
+          echo mysqli_error($koneksi);
+    
+        }
+    
+    
+
+    } ;
+?>
+
+
 <!--INPUT DATA KTI SCRIPT-->
 <?php
     if (isset ($_POST["inputDataKti"])){
@@ -326,7 +432,35 @@ $(function () {
                 showConfirmButton: false,
                 timer: 1500
                 }).then(() => {
-                  window.location.href = 'index.php';
+                  window.location.href = 'index.php?page=data-kti';
+                });
+                </script>";
+          //header(header: "Location : index.php");
+          
+        } else {
+          echo mysqli_error($koneksi);
+    
+        }
+    
+    
+
+    } ;
+?>
+
+<!--EDIT DATA KTI SCRIPT-->
+<?php
+    if (isset ($_POST["editDataKti"])){
+
+        if (editKti(data: $_POST) > 0){
+    
+          echo "<script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Update Berhasil Dilakukan!',
+                showConfirmButton: false,
+                timer: 1500
+                }).then(() => {
+                  window.location.href = 'index.php?page=data-kti';
                 });
                 </script>";
           //header(header: "Location : index.php");
@@ -354,7 +488,36 @@ $(function () {
                 showConfirmButton: false,
                 timer: 1500
                 }).then(() => {
-                  window.location.href = 'index.php'; 
+                  window.location.href = 'index.php?page=data-work'; 
+              });
+                </script>";
+          //header("Location: index.php");
+          exit;
+          
+        } else {
+          echo mysqli_error($koneksi);
+    
+        }
+    
+    
+
+    } ;
+?>
+
+<!--EDIT DATA WORK EXP SCRIPT-->
+<?php
+    if (isset ($_POST["editWorkExp"])){
+
+        if (editWorkExp(data: $_POST) > 0){
+    
+          echo "<script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Update Berhasil Dilakukan!',
+                showConfirmButton: false,
+                timer: 1500
+                }).then(() => {
+                  window.location.href = 'index.php?page=data-work'; 
               });
                 </script>";
           //header("Location: index.php");
@@ -385,7 +548,36 @@ $(function () {
                 showConfirmButton: false,
                 timer: 1500
                 }).then(() => {
-                  window.location.href = 'index.php'; 
+                  window.location.href = 'index.php?page=data-pelatihan'; 
+              });
+                </script>";
+          //header("Location: index.php");
+          exit;
+          
+        } else {
+          echo mysqli_error($koneksi);
+    
+        }
+    
+    
+
+    } ;
+?>
+
+<!--EDIT DATA DIKLAT SCRIPT-->
+<?php
+    if (isset ($_POST["editDiklat"])){
+
+        if (editDiklat(data: $_POST) > 0){
+    
+          echo "<script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Update Berhasil Dilakukan!',
+                showConfirmButton: false,
+                timer: 1500
+                }).then(() => {
+                  window.location.href = 'index.php?page=data-pelatihan'; 
               });
                 </script>";
           //header("Location: index.php");

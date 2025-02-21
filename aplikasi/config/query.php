@@ -49,14 +49,7 @@ function updDataDiri($data){
   
 
  
- 
 
-
-   // // Validasi data tidak boleh kosong
-   // if (empty($nama) || empty($kelamin) || empty($nip)) {
-   //     echo json_encode(["status" => "error", "message" => "Nama, Jenis Kelamin, dan NIP wajib diisi!"]);
-   //     exit();
-   // }
 
    // Query untuk menyimpan data ke database
    $upd_datadiri = "UPDATE tb_personal 
@@ -180,6 +173,39 @@ function tambahPendidikan($data){
  
  }
 
+ function editPendidikan($data){
+
+    global $koneksi;
+    
+    $id = isset($data['idPend']) ? ($data['idPend']) : '';
+    $nama = isset($data['nama']) ? htmlspecialchars($data['nama']) : '';
+    $jenjang = isset($data['jenjang']) ? htmlspecialchars($data['jenjang']) : '';
+    $kampus = isset($data['kampus']) ? htmlspecialchars($data['kampus']) : '';
+    $jurusan = isset($data['jurusan']) ? htmlspecialchars($data['jurusan']) : '';
+    $tahun_masuk = isset($data['tahun_masuk']) ? htmlspecialchars($data['tahun_masuk']) : '';
+    $tahun = isset($data['tahun']) ? htmlspecialchars($data['tahun']) : '';
+    
+  
+  
+     $upd_pendidikan = "UPDATE tb_pendidikan 
+                            SET 
+                            nama = '$nama',
+                            kampus = '$kampus', 
+                            jenjang = '$jenjang', 
+                            jurusan = '$jurusan', 
+                            tahun_masuk = '$tahun_masuk', 
+                            tahun = '$tahun' 
+                            
+                            WHERE id = $id";
+          
+ 
+    mysqli_query($koneksi, $upd_pendidikan);
+ 
+    return mysqli_affected_rows($koneksi);
+ 
+ }
+
+
  function tambahKti($data){
 
     global $koneksi;
@@ -199,6 +225,37 @@ function tambahPendidikan($data){
           
  
     mysqli_query($koneksi, $tambah_kti);
+ 
+    return mysqli_affected_rows($koneksi);
+ 
+ }
+
+ function editKti($data){
+
+    global $koneksi;
+    
+    $id = isset($data['idKti']) ? ($data['idKti']) : '';
+    $nama = isset($data['nama']) ? htmlspecialchars($data['nama']) : '';
+    $judul = isset($data['judul']) ? htmlspecialchars($data['judul']) : '';
+    $jurnal = isset($data['jurnal']) ? htmlspecialchars($data['jurnal']) : '';
+    $author = isset($data['author']) ? htmlspecialchars($data['author']) : '';
+    $year = isset($data['year']) ? htmlspecialchars($data['year']) : '';
+    $reputasi = isset($data['reputasi']) ? htmlspecialchars($data['reputasi']) : '';
+   
+  
+  
+
+    $edit_kti = "UPDATE tb_karyailmiah 
+                    SET nama= '$nama', 
+                    judul = '$judul', 
+                    jurnal = '$jurnal', 
+                    author = '$author', 
+                    year ='$year', 
+                    reputasi  = '$reputasi' 
+                    WHERE id = $id ";
+          
+ 
+    mysqli_query($koneksi, $edit_kti);
  
     return mysqli_affected_rows($koneksi);
  
@@ -227,6 +284,34 @@ function tambahPendidikan($data){
  
  }
 
+ function editWorkExp($data){
+
+    global $koneksi;
+    
+    $id = isset($data['idWork']) ? ($data['idWork']) : '';
+    $nama = isset($data['nama']) ? htmlspecialchars($data['nama']) : '';
+    $kegiatan = isset($data['kegiatan']) ? htmlspecialchars($data['kegiatan']) : '';
+    $kerjasama = isset($data['kerjasama']) ? htmlspecialchars($data['kerjasama']) : '';
+    $peran = isset($data['peran']) ? htmlspecialchars($data['peran']) : '';
+    $year = isset($data['year']) ? htmlspecialchars($data['year']) : '';
+ 
+  
+
+    $edit_workexp = "UPDATE tb_experience 
+                        SET nama = '$nama', 
+                        kegiatan = '$kegiatan', 
+                        kerjasama = '$kerjasama', 
+                        peran = '$peran', 
+                        year = '$year'                                         
+                    WHERE id = $id";
+          
+ 
+    mysqli_query($koneksi, $edit_workexp);
+ 
+    return mysqli_affected_rows($koneksi);
+ 
+ }
+
  function tambahDiklat($data){
 
     global $koneksi;
@@ -244,6 +329,34 @@ function tambahPendidikan($data){
           
  
     mysqli_query($koneksi, $tambah_diklat);
+ 
+    return mysqli_affected_rows($koneksi);
+ 
+ }
+
+ function editDiklat($data){
+
+    global $koneksi;
+    
+    $id = isset($data['idPelatihan']) ? ($data['idPelatihan']) : '';
+    $nama = isset($data['nama']) ? htmlspecialchars($data['nama']) : '';
+    $diklat = isset($data['diklat']) ? htmlspecialchars($data['diklat']) : '';
+    $penyelenggara = isset($data['penyelenggara']) ? htmlspecialchars($data['penyelenggara']) : '';
+    $tempat = isset($data['tempat']) ? htmlspecialchars($data['tempat']) : '';
+    $year = isset($data['year']) ? htmlspecialchars($data['year']) : '';
+ 
+  
+
+    $edit_diklat = "UPDATE tb_diklat 
+                        SET nama = '$nama',
+                        diklat =  '$diklat', 
+                        penyelenggara = '$penyelenggara', 
+                        tempat = '$tempat', 
+                        year = '$year'
+                    WHERE id=$id";
+          
+ 
+    mysqli_query($koneksi, $edit_diklat);
  
     return mysqli_affected_rows($koneksi);
  

@@ -1,17 +1,22 @@
 <!-- Main Sidebar Container -->
 <?php
 $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard'; // Default halaman adalah 'dashboard'
+
+
+$nama = $_SESSION['nama'];
+$biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
+
 ?>
 
 
 <!-- Font sidebar cari disini : https://www.w3schools.com/icons/fontawesome5_intro.asp-->
 
 
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-2">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="dist/img/milk-io.png" alt="Milk-io Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Milk.io</span>
+    <a href="index.php" class="brand-link">
+        <img src="dist/img/milk-io.png" alt="Milk-io Logo" class="brand-image" style="opacity:">
+        <span class="brand-text font-weight-light">Milk.io App</span>
     </a>
 
     <!-- Sidebar -->

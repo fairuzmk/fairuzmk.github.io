@@ -79,8 +79,16 @@ $diklat = query("SELECT * from tb_diklat WHERE nama = '$nama' ");
                     <td><?php echo $row['tempat'];?></td>
                     <td><?php echo $row['year'];?></td>
                     <td>
-                    <button type="button" class="btn btn-outline-success"><i class="fas fa-pen"></i></button>
-                    <button type="button" class="btn btn-outline-danger"><i class="fas fa-trash"></i></button>
+                    <a class="edit-dataPelatihan btn btn-outline-success" 
+                    data-id="<?= $row["id"];?>"
+                    data-diklat="<?= $row["diklat"];?>"
+                    data-penyelenggara="<?= $row["penyelenggara"];?>"
+                    data-tempat="<?= $row["tempat"];?>"
+                    data-tahun="<?= $row["year"];?>"
+                    
+                    data-toggle="modal" data-target="#modal-editPelatihan"
+                    ><i class="fas fa-pen"></i></a>
+                    <button type="button" class="btn btn-outline-danger" onclick=deleteData(<?= $row["id"];?>)><i class="fas fa-trash"></i></button>
                     
                   </td>
                   </tr>
@@ -116,7 +124,7 @@ $diklat = query("SELECT * from tb_diklat WHERE nama = '$nama' ");
     <!-- /.content -->
 
 
-<!-- /.MODAL -->
+<!-- /.MODAL INPUT-->
 
 <div class="modal fade" id="modal-pelatihan">
 <div class="modal-dialog modal-lg">
@@ -163,16 +171,123 @@ $diklat = query("SELECT * from tb_diklat WHERE nama = '$nama' ");
           
         </div>
         
-      
-    </div>
-    <div class="modal-footer justify-content-between">
+      <div class="modal-footer justify-content-between">
       <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       <button type="submit" class="btn btn-info" name="inputDiklat">Save changes</button>
-  </form>
+      </div>
     </div>
-  </div>
+    </form>
+    
+</div>
   <!-- /.modal-content -->
 </div>
 <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
+
+<!-- /.MODAL EDIT-->
+
+<div class="modal fade" id="modal-editPelatihan">
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header bg-warning">
+      <h4 class="modal-title">Edit Data Pelatihan</h4>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <form class="form-horizontal" method="POST" action="">
+    <div class="modal-body">
+    
+        <div class="card-body">
+        <input type="hidden" id="idPelatihan" name="idPelatihan">
+        <input type="hidden" name="nama" value="<?=$biodata["nama"]?>">
+         <div class="form-group row">
+            <label for="diklat" class="col-sm-4 col-form-label">Nama Pelatihan</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="diklat" id="diklat" placeholder="Isikan Judul/Nama Pelatihan" required>
+            </div>
+          </div>  
+         <div class="form-group row">
+            <label for="penyelenggara" class="col-sm-4 col-form-label">Penyelenggara</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="penyelenggara" name="penyelenggara" placeholder="Lembaga Penyelenggara Pelatihan" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="tempat" class="col-sm-4 col-form-label">Tempat</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="tempat" id="tempat"placeholder="Tempat diselenggarakannya pelatihan">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="year" class="col-sm-4 col-form-label">Tahun</label>
+            <div class="col-sm-8">
+              <input type="number" class="form-control" name="year" id="year" placeholder="Tahun Berlangsungnya Pelatihan">
+            </div>
+          </div>
+          
+
+          
+        </div>
+        
+      <div class="modal-footer justify-content-between">
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      <button type="submit" class="btn btn-info" name="editDiklat">Update Data</button>
+      </div>
+    </div>
+    </form>
+    
+</div>
+  <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+
+<script>
+  function deleteData(data_id){
+    //alert('ok');
+  
+      Swal.fire({
+      title: "Apakah anda yakin?",
+      text: "Kamu akan menghapus data ini",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, hapus saja!"
+      }).then((result) => {
+      if (result.isConfirmed) {
+        
+        let timerInterval;
+        Swal.fire({
+          title: "Hapus Data",
+          html: "Sedang menghapus data",
+          icon: "warning",
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+              timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+          },
+          willClose: () => {
+            clearInterval(timerInterval);
+          }
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            window.location=("del/delete.php?id="+data_id+"&page=data-pelatihan");
+          }
+        });
+        
+      }
+    });
+  }
+
+</script>
