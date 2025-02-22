@@ -4,10 +4,10 @@ $nama = $_SESSION['nama'];
 
 
 $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
-$pendidikan = query("SELECT * from tb_pendidikan WHERE nama = '$nama' ");
-$work_exp = query("SELECT * from tb_experience WHERE nama = '$nama' ");
-$diklat = query("SELECT * from tb_diklat WHERE nama = '$nama' ");
-$kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
+$pendidikan = query("SELECT * from tb_pendidikan WHERE nama = '$nama' ORDER BY tahun ASC");
+$work_exp = query("SELECT * from tb_experience WHERE nama = '$nama' ORDER BY year ASC");
+$diklat = query("SELECT * from tb_diklat WHERE nama = '$nama' ORDER BY year ASC");
+$kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ORDER BY year ASC");
 
 
 
@@ -45,24 +45,20 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
                 <h5 class="card-title">REKAP BIODATA</h5>
 
                 <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
+                  
                   <div class="btn-group">
-                    <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
-                      <i class="fas fa-wrench"></i>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                      <i class="fas fa-dharmachakra"></i><span style="padding:5px;">Generate CV</span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" role="menu">
-                      <a href="#" class="dropdown-item">Action</a>
-                      <a href="#" class="dropdown-item">Another action</a>
+                      <a href="#" class="dropdown-item">Export PDF</a>
+                      <a href="print/export_word.php" class="dropdown-item">Format Standard (.docx)</a>
                       <a href="#" class="dropdown-item">Something else here</a>
                       <a class="dropdown-divider"></a>
                       <a href="#" class="dropdown-item">Separated link</a>
                     </div>
                   </div>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
+                  
                 </div>
               </div>
               <!-- /.card-header -->
@@ -81,7 +77,7 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
                       <tr>
                         <td style="width: 5%;">1</td>
                         <td style="width:30%;">Nama Lengkap</td>
-                        <td><?= $biodata["nama"] ?></td>                    
+                        <td><?= $biodata["nama"] . " " . $biodata["gelar_belakang"] ?></td>                    
                       </tr>
 
                       <tr>
