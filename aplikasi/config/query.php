@@ -20,6 +20,8 @@ function updDataDiri($data){
    $id = isset($data['id']) ? ($data['id']) : '';
 
    $nama = isset($data['nama']) ? htmlspecialchars($data['nama']) : '';
+   $gelarDepan = isset($data['gelarDepan']) ? htmlspecialchars($data['gelarDepan']) : '';
+   $gelarBelakang = isset($data['gelarBelakang']) ? htmlspecialchars($data['gelarBelakang']) : '';
    $kelamin = isset($data['kelamin']) ? htmlspecialchars($data['kelamin']) : '';
    $tempatlahir = isset($data['tempatlahir']) ? htmlspecialchars($data['tempatlahir']) : '';
    if (isset($data['tgl_lahir'])) {
@@ -54,6 +56,8 @@ function updDataDiri($data){
    // Query untuk menyimpan data ke database
    $upd_datadiri = "UPDATE tb_personal 
          SET nama = '$nama',
+             gelar_depan = '$gelarDepan',
+             gelar_belakang = '$gelarBelakang',
              nip = '$nip',
              tempatlahir = '$tempatlahir',
              tgl_lahir = '$tgl_lahir',

@@ -96,13 +96,13 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
                         <div class="form-group row">
                         <label for="contact_hp" class="col-sm-3 col-form-label">Nomor HP</label>
                             <div class="col-sm-8">
-                            <input type="text" class="form-control" name="contact_hp" placeholder="" value="<?=$biodata["contact_hp"]?>" readonly>
+                            <input type="text" class="form-control" name="contact_hp" placeholder="" value="<?=$biodata["contact_hp"]?>">
                             </div>
                         </div>
                         <div class="form-group row">
                         <label for="email" class="col-sm-3 col-form-label">Email</label>
                             <div class="col-sm-8">
-                            <input type="text" class="form-control" name="email" placeholder="" value="<?=$biodata["email"]?>"readonly>
+                            <input type="text" class="form-control" name="email" placeholder="" value="<?=$biodata["email"]?>">
                             </div>
                         </div>
                         
@@ -121,6 +121,16 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
                     </div>
                     
                     <div class="col-md-6">
+                            <div class="form-group row">
+                            <label for="gelarDepan" class="col-sm-3 col-form-label">Gelar Depan</label>
+                            <div class="col-sm-3">
+                            <input type="text" class="form-control" name="gelarDepan" placeholder="Kosongkan jika tidak ada" value="<?=$biodata["gelar_depan"]?>">
+                            </div>
+                            <label for="gelarBelakang" class="col-sm-2 col-form-label">Gelar Belakang</label>
+                            <div class="col-sm-3">
+                            <input type="text" class="form-control" name="gelarBelakang" placeholder="S.T., M.T." value="<?=$biodata["gelar_belakang"]?>">
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label for="nip" class="col-sm-3 col-form-label">NIP/ID</label>
                             <div class="col-sm-8">
