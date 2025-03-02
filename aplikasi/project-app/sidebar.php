@@ -15,8 +15,8 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
 <aside class="main-sidebar sidebar-dark-primary elevation-2">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-        <img src="dist/img/milk-io.png" alt="Milk-io Logo" class="brand-image" style="opacity:">
-        <span class="brand-text font-weight-light">Milk.io App</span>
+        <img src="dist/img/MILKio-white.png" alt="Milk-io Logo" class="brand-image-xl" style="opacity:">
+        <span class="brand-text font-weight-light">MILK.io APP</span>
     </a>
 
     <!-- Sidebar -->
@@ -35,7 +35,7 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Dashboard -->
-                <li class="nav-item <?php echo $page === 'dashboard' || $page === 'data-diri' || $page === 'data-pendidikan'|| $page === 'data-kti' || $page === 'data-work' || $page === 'data-pelatihan' ? 'menu-open' : ''; ?>">
+                <li class="nav-item <?php echo $page === 'dashboard' || $page === 'cv-generator' || $page === 'data-diri' || $page === 'data-pendidikan'|| $page === 'data-kti' || $page === 'data-work' || $page === 'data-pelatihan' ? 'menu-open' : ''; ?>">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -52,42 +52,48 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
                         </li>
                         
                       
-                        <li class="nav-item <?php echo $page === 'data-diri' || $page === 'data-pendidikan'|| $page === 'data-kti' || $page === 'data-work' || $page === 'data-pelatihan' ? 'menu-open' : ''; ?>">
+                        <li class="nav-item <?php echo $page === 'cv-generator' || $page === 'data-diri' || $page === 'data-pendidikan'|| $page === 'data-kti' || $page === 'data-work' || $page === 'data-pelatihan' ? 'menu-open' : ''; ?>">
                             <a href="#" class="nav-link <?php echo $page === 'data-diri' || $page === 'data-pendidikan'|| $page === 'data-kti' || $page === 'data-work' || $page === 'data-pelatihan' ? 'active' : ''; ?>">
-                                <i class="fas fa-edit nav-icon"></i>
-                                <p>Update Biodata
+                                <i class="far fa-address-card nav-icon"></i>
+                                <p>CV Generator
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
+                                    <a href="index.php?page=cv-generator" class="nav-link <?php echo $page === 'cv-generator' ? 'active' : ''; ?>">
+                                        <i class="far fa-id-badge nav-icon"></i>
+                                        <p>Dashboard</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="index.php?page=data-diri" class="nav-link <?php echo $page === 'data-diri' ? 'active' : ''; ?>">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-edit nav-icon"></i>
                                         <p>Data Diri</p>
                                     </a>
                                 </li>
                                 
                                 <li class="nav-item">
                                     <a href="index.php?page=data-pendidikan" class="nav-link <?php echo $page === 'data-pendidikan' ? 'active' : ''; ?>">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-edit nav-icon"></i>
                                         <p>Pendidikan</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="index.php?page=data-kti" class="nav-link <?php echo $page === 'data-kti' ? 'active' : ''; ?>">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-edit nav-icon"></i>
                                         <p>Karya Tulis Ilmiah</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="index.php?page=data-work" class="nav-link <?php echo $page === 'data-work' ? 'active' : ''; ?>">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-edit nav-icon"></i>
                                         <p>Pengalaman Pekerjaan</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="index.php?page=data-pelatihan" class="nav-link <?php echo $page === 'data-pelatihan' ? 'active' : ''; ?>">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-edit nav-icon"></i>
                                         <p>Pelatihan</p>
                                     </a>
                                 </li>
@@ -98,28 +104,23 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
 
                 <!-- Widgets -->
                 <li class="nav-item">
-                    <a href="index.php?page=widget" class="nav-link <?php echo $page === 'widget' ? 'active' : ''; ?>">
+                    <a href="index.php?page=widget-app" class="nav-link <?php echo $page === 'widget-app' ? 'active' : ''; ?>">
                         <i class="nav-icon fas fa-th"></i>
                         <p>Widgets</p>
                     </a>
                 </li>
 
                 <!-- Aplikasi -->
-                <li class="nav-item <?php echo $page === 'cv-generator' || $page === 'app-konversi' || $page === 'tabel-periodik'  || $page === 'indeks-sf'? 'menu-open' : ''; ?>">
+                <li class="nav-item <?php echo  $page === 'app-konversi' || $page === 'tabel-periodik'  || $page === 'indeks-sf'? 'menu-open' : ''; ?>">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
-                            Aplikasi
+                            Sciencetific App
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="index.php?page=cv-generator" class="nav-link <?php echo $page === 'cv-generator' ? 'active' : ''; ?>">
-                                <i class="far fa-id-badge nav-icon"></i>
-                                <p>CV Generator</p>
-                            </a>
-                        </li>
+                        
                         <li class="nav-item">
                             <a href="index.php?page=app-konversi" class="nav-link <?php echo $page === 'app-konversi' ? 'active' : ''; ?>">
                                 <i class="fas fa-calculator nav-icon"></i>
@@ -143,9 +144,64 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
                     </ul>
                 </li>
 
+                <!-- Trading -->
+                <li class="nav-item <?php echo $page === 'trading-dashboard' || $page === 'trading-diary' || $page === 'pips-calculator'  || $page === 'chart-tradingview'? 'menu-open' : ''; ?>">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-hand-holding-usd"></i>
+                        <p>
+                            Trading App
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="index.php?page=trading-dashboard" class="nav-link <?php echo $page === 'trading-dashboard' ? 'active' : ''; ?>">
+                                <i class="fas fa-chart-pie nav-icon"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.php?page=trading-diary" class="nav-link <?php echo $page === 'trading-diary' ? 'active' : ''; ?>">
+                                <i class="	fas fa-tasks nav-icon"></i>
+                                <p>Trading Diary</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="index.php?page=pips-calculator" class="nav-link <?php echo $page === 'pips-calculator' ? 'active' : ''; ?>">
+                                <i class="fas fa-calculator nav-icon"></i>
+                                <p>Pips Calculator</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="index.php?page=chart-tradingview" class="nav-link <?php echo $page === 'chart-tradingview' ? 'active' : ''; ?>">
+                                <i class="fas fa-chart-line nav-icon"></i>
+                                <p>Tradingview</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Project IoT -->
+                <li class="nav-item">
+                    <a href="index.php?page=project-iot" class="nav-link <?php echo $page === 'project-iot' ? 'active' : ''; ?>">
+                        <i class="nav-icon fas fa-globe"></i>
+                        <p>Project IoT</p>
+                    </a>
+                </li>
+
+                <!-- Project AI -->
+                <li class="nav-item">
+                    <a href="index.php?page=project-ai" class="nav-link <?php echo $page === 'project-ai' ? 'active' : ''; ?>">
+                        <i class="nav-icon 	fas fa-brain" style="color:green;"></i>
+                        <p>Project AI</p>
+                    </a>
+                </li>
+
                 <!-- Sign Out -->
                 <li class="nav-item">
-                    <a href="../config/logout.php" class="nav-link text-danger">
+                    <a href="../config/logout.php" class="nav-link text-warning">
                         <i class="fas fa-sign-out-alt nav-icon"></i>
                         <p>Sign Out</p>
                     </a>

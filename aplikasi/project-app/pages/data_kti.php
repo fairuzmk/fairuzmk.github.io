@@ -56,7 +56,8 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
                     <th style="width:5%;">No</th>
                     <th>Author</th>
                     <th>Judul</th>
-                    <th>Publisher/Jurnal</th>
+                    <th>Nama Jurnal</th>
+                    <th>Publisher</th>
                     <th style="width:10%;">Year</th>
                     <th style="width:10%;">Action</th>
                   </tr>
@@ -71,6 +72,7 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
                     <td><?php echo $row['author'];?></td>
                     <td><?php echo $row['judul'];?></td>
                     <td><?php echo $row['jurnal'];?></td>
+                    <td><?php echo $row['publisher'];?></td>
                     <td><?php echo $row['year'];?></td>
                     <td>
                     <a class="edit-dataKti btn btn-outline-success" 
@@ -80,6 +82,7 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
                     data-jurnal="<?= $row["jurnal"];?>"
                     data-tahun="<?= $row["year"];?>"
                     data-reputasi="<?= $row["reputasi"];?>"
+                    data-publisher="<?= $row["publisher"];?>"
                     
                     data-toggle="modal" data-target="#modal-editKti"
                     ><i class="fas fa-pen"></i></a>
@@ -147,7 +150,7 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
               </div>
             </div>
             <div class="form-group row">
-              <label for="jurnal" class="col-sm-2 col-form-label">Publisher</label>
+              <label for="jurnal" class="col-sm-2 col-form-label">Nama Jurnal</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" name="jurnal" placeholder="Nama Jurnal/Publisher">
               </div>
@@ -170,6 +173,21 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
               </select>
               </div>
             </div>
+
+            <div class="form-group row">
+              <label for="publisher" class="col-sm-2 col-form-label">Publisher</label>
+              <div class="col-sm-10">
+              <select class="form-control select2" name="publisher">
+              <option>Scopus/Elsevier</option>
+              <option>Springer</option>
+              <option>Taylor & Francis</option>
+              <option>MDPI</option>
+              <option>Lainnya</option>
+              
+              </select>
+              </div>
+            </div>
+
 
           
         </div>
@@ -220,7 +238,7 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
               </div>
             </div>
             <div class="form-group row">
-              <label for="jurnal" class="col-sm-2 col-form-label">Publisher</label>
+              <label for="jurnal" class="col-sm-2 col-form-label">Nama Jurnal</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" name="jurnal" id="jurnal" placeholder="Nama Jurnal/Publisher">
               </div>
@@ -245,6 +263,19 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
               </div>
             </div>
 
+            <div class="form-group row">
+              <label for="publisher" class="col-sm-2 col-form-label">Publisher</label>
+              <div class="col-sm-10">
+              <select class="form-control select2" name="publisher" id="publisher">
+              <option>Scopus/Elsevier</option>
+              <option>Springer</option>
+              <option>Taylor & Francis</option>
+              <option>MDPI</option>
+              <option>Lainnya</option>
+              
+              </select>
+              </div>
+            </div>
           
         </div>
         

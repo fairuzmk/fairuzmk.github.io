@@ -80,6 +80,7 @@
 <script src="plugins/toastr/toastr.min.js"></script>
 <!-- bs-custom-file-input -->
 <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<script src="plugins/pipscalculator.js"></script>
 
 <!-- Page specific script -->
 <script>
@@ -235,6 +236,8 @@ var dataAuthor= $(this).attr('data-author');
 var dataJurnal= $(this).attr('data-jurnal');
 var tahun = $(this).attr('data-tahun');
 var dataReputasi = $(this).attr('data-reputasi');
+var dataPublisher = $(this).attr('data-publisher');
+
 
 document.getElementById('idKti').value = idKti;
 document.getElementById('judul').value = dataJudul;
@@ -242,6 +245,7 @@ document.getElementById('author').value = dataAuthor;
 document.getElementById('jurnal').value = dataJurnal;
 document.getElementById('year').value = tahun;
 document.getElementById('reputasi').value = dataReputasi;
+document.getElementById('publisher').value = dataPublisher;
 
 })
   
@@ -592,3 +596,4 @@ $(function () {
 
     } ;
 ?>
+

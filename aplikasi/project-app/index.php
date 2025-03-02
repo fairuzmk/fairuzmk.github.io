@@ -66,7 +66,22 @@
       else if($_GET['page']=='data-pelatihan'){
         include 'pages/data_pelatihan.php';
       }
-      
+      else if($_GET['page']=='widget-app'){
+        include 'widget.php';
+      }
+        else if($_GET['page']=='trading-dashboard'){
+          include 'apptrading/dashboard.php';
+        }
+        else if($_GET['page']=='trading-diary'){
+          include 'apptrading/tradingdiary.php';
+        }
+        else if($_GET['page']=='pips-calculator'){
+          include 'apptrading/pips.php';
+        }
+        else if($_GET['page']=='chart-tradingview'){
+          include 'apptrading/tradingview.php';
+        }
+
       else {
         include '404.php';
       }

@@ -22,7 +22,8 @@ $nama = $_SESSION['nama'];
 
 
 $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
-
+$value_tgl_lahir = isset($biodata["tgl_lahir"]) ? date("d-M-Y", strtotime($biodata["tgl_lahir"])) : "";
+$value_tmt_jabatan = isset($biodata["tmt_jabatan"]) ? date("d-M-Y", strtotime($biodata["tmt_jabatan"])) : "";
 
 ?>
 
@@ -80,7 +81,7 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
                         <label for="tgl_lahir" class="col-sm-3 col-form-label">Tanggal Lahir</label>
                             <div class="col-sm-8">
                             <div class="input-group date" id="tgl_lahir" data-target-input="nearest">
-                                <input type="text" name="tgl_lahir" class="form-control datetimepicker-input" data-target="#tgl_lahir" value="<?=$biodata["tgl_lahir"]?>"/>
+                                <input type="text" name="tgl_lahir" class="form-control datetimepicker-input" data-target="#tgl_lahir" value="<?=$value_tgl_lahir?>" autocomplete="off"/>
                                 <div class="input-group-append" data-target="#tgl_lahir" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                 </div>
@@ -159,7 +160,7 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
                             <label for="tmt_jabatan" class="col-sm-3 col-form-label">TMT Jabatan</label>
                             <div class="col-sm-8">
                             <div class="input-group date" id="tmt_jabatan" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input" data-target="#tmt_jabatan" name ="tmt_jabatan" value="<?=$biodata["tmt_jabatan"]?>"/>
+                                <input type="text" class="form-control datetimepicker-input" data-target="#tmt_jabatan" name ="tmt_jabatan" value="<?=$value_tmt_jabatan?>"/>
                                 <div class="input-group-append" data-target="#tmt_jabatan" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                 </div>

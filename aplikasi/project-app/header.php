@@ -1,7 +1,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Milk.io APP | V-1.0</title>
+  <title>MILK.io APP | V-1.0</title>
   <link rel="shortcut icon" type="image/png" href="dist/img/milk-io.png">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -43,6 +43,10 @@
   <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <!-- Toastr -->
   <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
+  <!-- Tradingview -->
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 
+  <!-- Tabel Periodik -->
+  <link rel="stylesheet" href="plugins/pipscalculator.css">
 
 </head>

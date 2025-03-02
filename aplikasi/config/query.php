@@ -220,12 +220,12 @@ function tambahPendidikan($data){
     $author = isset($data['author']) ? htmlspecialchars($data['author']) : '';
     $year = isset($data['year']) ? htmlspecialchars($data['year']) : '';
     $reputasi = isset($data['reputasi']) ? htmlspecialchars($data['reputasi']) : '';
-   
+    $publisher = isset($data['publisher']) ? htmlspecialchars($data['publisher']) : '';
   
   
 
-    $tambah_kti = "INSERT INTO tb_karyailmiah (id,nama, judul, jurnal, author, year , reputasi) 
-                                            VALUES ('','$nama','$judul', '$jurnal', '$author','$year', '$reputasi')";
+    $tambah_kti = "INSERT INTO tb_karyailmiah (id,nama, judul, jurnal, author, year , reputasi, publisher) 
+                                            VALUES ('','$nama','$judul', '$jurnal', '$author','$year', '$reputasi', '$publisher')";
           
  
     mysqli_query($koneksi, $tambah_kti);
@@ -245,7 +245,7 @@ function tambahPendidikan($data){
     $author = isset($data['author']) ? htmlspecialchars($data['author']) : '';
     $year = isset($data['year']) ? htmlspecialchars($data['year']) : '';
     $reputasi = isset($data['reputasi']) ? htmlspecialchars($data['reputasi']) : '';
-   
+    $publisher = isset($data['publisher']) ? htmlspecialchars($data['publisher']) : '';
   
   
 
@@ -255,7 +255,8 @@ function tambahPendidikan($data){
                     jurnal = '$jurnal', 
                     author = '$author', 
                     year ='$year', 
-                    reputasi  = '$reputasi' 
+                    reputasi  = '$reputasi',
+                    publisher = '$publisher'
                     WHERE id = $id ";
           
  

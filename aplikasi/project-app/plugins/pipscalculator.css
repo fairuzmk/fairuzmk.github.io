@@ -1,0 +1,26 @@
+.calculator {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+  }
+  
+
+  
+  #resultpips {
+    margin-top: 20px;
+    margin-left: 10px;
+    text-align: left;
+  }
+  
+  .positionResult {
+    font-weight: bold;
+    font-size: 25px;
+    color: #28a745;
+  }
+  .stopLossResult {
+    font-weight: bold;
+    font-size: 25px;
+    color: #e60101;
+  }
