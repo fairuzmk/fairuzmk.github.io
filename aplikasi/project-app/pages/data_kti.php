@@ -56,12 +56,8 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
                     <th style="width:5%;">No</th>
                     <th>Author</th>
                     <th>Judul</th>
-<<<<<<< HEAD
                     <th>Nama Jurnal</th>
                     <th>Publisher</th>
-=======
-                    <th>Publisher/Jurnal</th>
->>>>>>> 9fd2939fcb44eac5ea907920e230ecf7d2c5814d
                     <th style="width:10%;">Year</th>
                     <th style="width:10%;">Action</th>
                   </tr>
@@ -76,10 +72,7 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
                     <td><?php echo $row['author'];?></td>
                     <td><?php echo $row['judul'];?></td>
                     <td><?php echo $row['jurnal'];?></td>
-<<<<<<< HEAD
                     <td><?php echo $row['publisher'];?></td>
-=======
->>>>>>> 9fd2939fcb44eac5ea907920e230ecf7d2c5814d
                     <td><?php echo $row['year'];?></td>
                     <td>
                     <a class="edit-dataKti btn btn-outline-success" 
@@ -89,10 +82,7 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
                     data-jurnal="<?= $row["jurnal"];?>"
                     data-tahun="<?= $row["year"];?>"
                     data-reputasi="<?= $row["reputasi"];?>"
-<<<<<<< HEAD
                     data-publisher="<?= $row["publisher"];?>"
-=======
->>>>>>> 9fd2939fcb44eac5ea907920e230ecf7d2c5814d
                     
                     data-toggle="modal" data-target="#modal-editKti"
                     ><i class="fas fa-pen"></i></a>
@@ -160,11 +150,7 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
               </div>
             </div>
             <div class="form-group row">
-<<<<<<< HEAD
               <label for="jurnal" class="col-sm-2 col-form-label">Nama Jurnal</label>
-=======
-              <label for="jurnal" class="col-sm-2 col-form-label">Publisher</label>
->>>>>>> 9fd2939fcb44eac5ea907920e230ecf7d2c5814d
               <div class="col-sm-10">
                 <input type="text" class="form-control" name="jurnal" placeholder="Nama Jurnal/Publisher">
               </div>
@@ -188,7 +174,6 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
               </div>
             </div>
 
-<<<<<<< HEAD
             <div class="form-group row">
               <label for="publisher" class="col-sm-2 col-form-label">Publisher</label>
               <div class="col-sm-10">
@@ -204,8 +189,6 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
             </div>
 
 
-=======
->>>>>>> 9fd2939fcb44eac5ea907920e230ecf7d2c5814d
           
         </div>
         
@@ -255,11 +238,7 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
               </div>
             </div>
             <div class="form-group row">
-<<<<<<< HEAD
               <label for="jurnal" class="col-sm-2 col-form-label">Nama Jurnal</label>
-=======
-              <label for="jurnal" class="col-sm-2 col-form-label">Publisher</label>
->>>>>>> 9fd2939fcb44eac5ea907920e230ecf7d2c5814d
               <div class="col-sm-10">
                 <input type="text" class="form-control" name="jurnal" id="jurnal" placeholder="Nama Jurnal/Publisher">
               </div>
@@ -284,7 +263,6 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
               </div>
             </div>
 
-<<<<<<< HEAD
             <div class="form-group row">
               <label for="publisher" class="col-sm-2 col-form-label">Publisher</label>
               <div class="col-sm-10">
@@ -298,8 +276,6 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
               </select>
               </div>
             </div>
-=======
->>>>>>> 9fd2939fcb44eac5ea907920e230ecf7d2c5814d
           
         </div>
         

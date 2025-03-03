@@ -66,7 +66,6 @@
       else if($_GET['page']=='data-pelatihan'){
         include 'pages/data_pelatihan.php';
       }
-<<<<<<< HEAD
       else if($_GET['page']=='widget-app'){
         include 'widget.php';
       }
@@ -83,9 +82,6 @@
           include 'apptrading/tradingview.php';
         }
 
-=======
-      
->>>>>>> 9fd2939fcb44eac5ea907920e230ecf7d2c5814d
       else {
         include '404.php';
       }

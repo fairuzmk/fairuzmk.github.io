@@ -179,11 +179,7 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ORDER BY year AS
 
                 <tr style="text-align: center;">
                   <td><?= $pend["jenjang"];?></td>
-<<<<<<< HEAD
                   <td><?= $pend["kampus"];?></td>
-=======
-                  <td><?= $pend["kampus"];?>Universitas Brawijaya</td>
->>>>>>> 9fd2939fcb44eac5ea907920e230ecf7d2c5814d
                   <td><?= $pend["jurusan"];?></td>
                   <td><?= $pend["tahun_masuk"];?></td>
                   <td><?= $pend["tahun"];?></td>
