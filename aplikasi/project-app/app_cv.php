@@ -153,19 +153,48 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ORDER BY year AS
                 
               </div>
             </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-        
-        <!-- /.row -->
-        <div class="col-md-4">
-            <!-- Info Boxes Style 2 -->
-            <div class="info-box mb-3 bg-warning">
-              <span class="info-box-icon"><i class="fas fa-tag"></i></span>
+                    <!-- /.card-body -->
 
-              <div class="info-box-content">
-                <span class="info-box-text">Inventory</span>
-                <span class="info-box-number">5,200</span>
+
+            <!--PENDIDIKAN-->
+
+            <div class="card-body">
+            <h3>Pendidikan</h3>
+              <hr>
+                <table id="" class="table table-bordered table-striped" style="width:100%">
+                <thead>
+                <tr>
+
+                  <th style="width:10%;">Jenjang</th>
+                  <th>Perguruan Tinggi</th>
+                  <th>Jurusan</th>
+                  <th>Tahun Masuk</th>
+                  <th>Tahun Lulus</th>
+                
+                </tr>
+                </thead>
+                <tbody>
+                <?php $i=1; ?>
+                <?php foreach ($pendidikan as $pend) : ?>
+
+                <tr style="text-align: center;">
+                  <td><?= $pend["jenjang"];?></td>
+<<<<<<< HEAD
+                  <td><?= $pend["kampus"];?></td>
+=======
+                  <td><?= $pend["kampus"];?>Universitas Brawijaya</td>
+>>>>>>> 9fd2939fcb44eac5ea907920e230ecf7d2c5814d
+                  <td><?= $pend["jurusan"];?></td>
+                  <td><?= $pend["tahun_masuk"];?></td>
+                  <td><?= $pend["tahun"];?></td>
+                  
+
+                </tr>
+                <?php $i++; ?>
+                <?php endforeach ?>
+                </tbody>
+                
+                </table>
               </div>
                     <!-- /.card-body -->
 
