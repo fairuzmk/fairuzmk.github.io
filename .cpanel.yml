@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/prit8692/public_html/fairuzmk.my.id
+    - export DEPLOYPATH=/home/jzvljezs/public_html
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp -R aplikasi $DEPLOYPATH
     - /bin/cp -R assets $DEPLOYPATH
