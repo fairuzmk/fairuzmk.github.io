@@ -80,10 +80,7 @@
 <script src="plugins/toastr/toastr.min.js"></script>
 <!-- bs-custom-file-input -->
 <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-<<<<<<< HEAD
 <script src="plugins/pipscalculator.js"></script>
-=======
->>>>>>> 9fd2939fcb44eac5ea907920e230ecf7d2c5814d
 
 <!-- Page specific script -->
 <script>
@@ -239,11 +236,8 @@ var dataAuthor= $(this).attr('data-author');
 var dataJurnal= $(this).attr('data-jurnal');
 var tahun = $(this).attr('data-tahun');
 var dataReputasi = $(this).attr('data-reputasi');
-<<<<<<< HEAD
 var dataPublisher = $(this).attr('data-publisher');
 
-=======
->>>>>>> 9fd2939fcb44eac5ea907920e230ecf7d2c5814d
 
 document.getElementById('idKti').value = idKti;
 document.getElementById('judul').value = dataJudul;
@@ -251,10 +245,7 @@ document.getElementById('author').value = dataAuthor;
 document.getElementById('jurnal').value = dataJurnal;
 document.getElementById('year').value = tahun;
 document.getElementById('reputasi').value = dataReputasi;
-<<<<<<< HEAD
 document.getElementById('publisher').value = dataPublisher;
-=======
->>>>>>> 9fd2939fcb44eac5ea907920e230ecf7d2c5814d
 
 })
   
@@ -605,7 +596,4 @@ $(function () {
 
     } ;
 ?>
-<<<<<<< HEAD
 
-=======
->>>>>>> 9fd2939fcb44eac5ea907920e230ecf7d2c5814d
