@@ -51,4 +51,5 @@
   
   <!-- SweetAlert2 JS-->
   <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+  
 </head>

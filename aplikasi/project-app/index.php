@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
 
-
-
-    <?php 
+<?php 
     
     session_start();
     if (!$_SESSION["nama"]){
@@ -15,7 +11,10 @@
     $nama = $_SESSION["nama"];
 
     ?>
-    
+
+<!DOCTYPE html>
+<html lang="en">
+
    <?php include 'header.php'; ?>
    <?php include '../config/connection.php'; ?>
    <?php include '../config/query.php'; ?>
