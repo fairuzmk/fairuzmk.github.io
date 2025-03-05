@@ -11,6 +11,9 @@
         exit;
 
     }
+    
+    $nama = $_SESSION["nama"];
+
     ?>
     
    <?php include 'header.php'; ?>

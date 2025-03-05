@@ -5,6 +5,7 @@ include("connection.php");
 if (empty($_POST["username"]) || empty($_POST["password"])) {
     header('Location: ../index.php?error=10');
     exit;
+    
 }
 
 $username = $_POST["username"];

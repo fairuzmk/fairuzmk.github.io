@@ -2,8 +2,6 @@
 <?php
 $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard'; // Default halaman adalah 'dashboard'
 
-
-$nama = $_SESSION['nama'];
 $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
 
 ?>
