@@ -25,6 +25,58 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
 $value_tgl_lahir = isset($biodata["tgl_lahir"]) ? date("d-M-Y", strtotime($biodata["tgl_lahir"])) : "";
 $value_tmt_jabatan = isset($biodata["tmt_jabatan"]) ? date("d-M-Y", strtotime($biodata["tmt_jabatan"])) : "";
 
+if (isset ($_POST["upd_datadiri"])){
+
+    if (updDataDiri($_POST) > 0){
+
+        echo "
+            <script>
+            Swal.fire({
+            icon: 'success',
+            title: 'Update Berhasil Dilakukan!',
+            showConfirmButton: false,
+            timer: 1500
+            }).then(() => {
+                window.location.href = 'index.php?page=data-diri';
+            });
+            </script>";
+
+        
+    } else {
+        echo mysqli_error($koneksi);
+
+    }
+
+
+
+} ;
+
+
+if (isset ($_POST["updFoto"])){
+
+    if (updFoto($_POST) > 0){
+
+        echo "<script>
+            Swal.fire({
+            icon: 'success',
+            title: 'Update Berhasil Dilakukan!',
+            showConfirmButton: false,
+            timer: 1500
+            }).then(() => {
+                window.location.href = 'index.php?page=data-diri';
+            });
+            </script>";
+    //header("Location : index.php");
+        
+    } else {
+        echo mysqli_error($koneksi);
+
+    }
+
+
+
+} ;
+
 ?>
 
 <div class="row">

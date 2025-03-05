@@ -19,6 +19,58 @@ $nama = $_SESSION['nama'];
 $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
 $diklat = query("SELECT * from tb_diklat WHERE nama = '$nama' ");
 
+if (isset ($_POST["inputDiklat"])){
+
+  if (tambahDiklat(data: $_POST) > 0){
+
+    echo "<script>
+          Swal.fire({
+          icon: 'success',
+          title: 'Data Berhasil Dimasukkan!',
+          showConfirmButton: false,
+          timer: 1500
+          }).then(() => {
+            window.location.href = 'index.php?page=data-pelatihan'; 
+        });
+          </script>";
+    //header("Location: index.php");
+    exit;
+    
+  } else {
+    echo mysqli_error($koneksi);
+
+  }
+
+
+
+} ;
+
+if (isset ($_POST["editDiklat"])){
+
+  if (editDiklat(data: $_POST) > 0){
+
+    echo "<script>
+          Swal.fire({
+          icon: 'success',
+          title: 'Update Berhasil Dilakukan!',
+          showConfirmButton: false,
+          timer: 1500
+          }).then(() => {
+            window.location.href = 'index.php?page=data-pelatihan'; 
+        });
+          </script>";
+    //header("Location: index.php");
+    exit;
+    
+  } else {
+    echo mysqli_error($koneksi);
+
+  }
+
+
+
+} ;
+
 ?>
 
 

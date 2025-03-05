@@ -24,6 +24,61 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
 $pendidikan = query("SELECT * from tb_pendidikan WHERE nama = '$nama' ");
 
 
+
+    if (isset ($_POST["inputDataPendidikan"])){
+
+        if (tambahPendidikan(data: $_POST) > 0){
+    
+          echo "<script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Data Berhasil Dimasukkan!',
+                showConfirmButton: false,
+                timer: 1500
+                }).then(() => {
+                  window.location.href = 'index.php?page=data-pendidikan';
+                });
+                </script>";
+          //header(header: "Location : index.php");
+          
+        } else {
+          echo mysqli_error($koneksi);
+    
+        }
+    
+    
+
+    } ;
+
+
+    if (isset ($_POST["editDataPendidikan"])){
+
+        if (editPendidikan(data: $_POST) > 0){
+    
+          echo "<script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Update Berhasil Dilakukan!',
+                showConfirmButton: false,
+                timer: 1500
+                }).then(() => {
+                  window.location.href = 'index.php?page=data-pendidikan';
+                });
+                </script>";
+          //header(header: "Location : index.php");
+          
+        } else {
+          echo mysqli_error($koneksi);
+    
+        }
+    
+    
+
+    } ;
+
+
+
+
 ?>
         
       <div class="row">

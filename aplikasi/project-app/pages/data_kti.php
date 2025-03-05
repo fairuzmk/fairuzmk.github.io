@@ -23,6 +23,56 @@ $nama = $_SESSION['nama'];
 $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
 $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
 
+if (isset ($_POST["inputDataKti"])){
+
+  if (tambahKti(data: $_POST) > 0){
+
+    echo "<script>
+          Swal.fire({
+          icon: 'success',
+          title: 'Data Berhasil Dimasukkan!',
+          showConfirmButton: false,
+          timer: 1500
+          }).then(() => {
+            window.location.href = 'index.php?page=data-kti';
+          });
+          </script>";
+    //header(header: "Location : index.php");
+    
+  } else {
+    echo mysqli_error($koneksi);
+
+  }
+
+
+
+} ;
+
+if (isset ($_POST["editDataKti"])){
+
+  if (editKti(data: $_POST) > 0){
+
+    echo "<script>
+          Swal.fire({
+          icon: 'success',
+          title: 'Update Berhasil Dilakukan!',
+          showConfirmButton: false,
+          timer: 1500
+          }).then(() => {
+            window.location.href = 'index.php?page=data-kti';
+          });
+          </script>";
+    //header(header: "Location : index.php");
+    
+  } else {
+    echo mysqli_error($koneksi);
+
+  }
+
+
+
+} ;
+
 ?>
         
       <div class="row">
