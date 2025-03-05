@@ -38,9 +38,9 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ORDER BY year AS
       <div class="container-fluid">
        
       
-        <div class="row">
-          <div class="col-md">
-            <div class="card">
+      <div class="row">
+        <div class="col-md">
+          <div class="card">
               <div class="card-header">
                 <h5 class="card-title">REKAP BIODATA</h5>
 
@@ -155,171 +155,198 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ORDER BY year AS
             </div>
                     <!-- /.card-body -->
 
+            <hr>
+            <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist" style="margin-bottom: 10px;">
+            <li class="nav-item" >
+            <a class="nav-link active" id="below-tab-pendidikan" data-toggle="pill" href="#tabpendidikan" role="tab" aria-controls="proximate" aria-selected="true" style="font-size: 20px;">PENDIDIKAN</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" id="below-tab-pekerjaan" data-toggle="pill" href="#tab-pekerjaan" role="tab" aria-controls="custom-content-below-profile" aria-selected="false" style="font-size: 20px;">PENGALAMAN PEKERJAAN</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" id="below-tab-pelatihan" data-toggle="pill" href="#tab-pelatihan" role="tab" aria-controls="custom-content-below-messages" aria-selected="false" style="font-size: 20px;">PELATIHAN</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" id="below-tab-kti" data-toggle="pill" href="#tab-kti" role="tab" aria-controls="custom-content-below-settings" aria-selected="false" style="font-size: 20px;">KARYA TULIS ILMIAH</a>
+            </li>
+            </ul>
+                  <div class="tab-content" id="custom-content-below-tabContent">
+                  <div class="tab-pane fade show active" id="tabpendidikan" role="tabpanel" aria-labelledby="below-tab-pendidikan">
+                       <!--PENDIDIKAN-->
 
-            <!--PENDIDIKAN-->
+                          <div class="card-body">
+                          <h3>Pendidikan</h3>
+                            <hr>
+                              <table id="" class="table table-bordered table-striped" style="width:100%">
+                              <thead>
+                              <tr>
 
-            <div class="card-body">
-            <h3>Pendidikan</h3>
-              <hr>
-                <table id="" class="table table-bordered table-striped" style="width:100%">
-                <thead>
-                <tr>
+                                <th style="width:10%;">Jenjang</th>
+                                <th>Perguruan Tinggi</th>
+                                <th>Jurusan</th>
+                                <th>Tahun Masuk</th>
+                                <th>Tahun Lulus</th>
+                              
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <?php $i=1; ?>
+                              <?php foreach ($pendidikan as $pend) : ?>
 
-                  <th style="width:10%;">Jenjang</th>
-                  <th>Perguruan Tinggi</th>
-                  <th>Jurusan</th>
-                  <th>Tahun Masuk</th>
-                  <th>Tahun Lulus</th>
-                
-                </tr>
-                </thead>
-                <tbody>
-                <?php $i=1; ?>
-                <?php foreach ($pendidikan as $pend) : ?>
+                              <tr style="text-align: center;">
+                                <td><?= $pend["jenjang"];?></td>
+                                <td><?= $pend["kampus"];?></td>
+                                <td><?= $pend["jurusan"];?></td>
+                                <td><?= $pend["tahun_masuk"];?></td>
+                                <td><?= $pend["tahun"];?></td>
+                                
 
-                <tr style="text-align: center;">
-                  <td><?= $pend["jenjang"];?></td>
-                  <td><?= $pend["kampus"];?></td>
-                  <td><?= $pend["jurusan"];?></td>
-                  <td><?= $pend["tahun_masuk"];?></td>
-                  <td><?= $pend["tahun"];?></td>
-                  
+                              </tr>
+                              <?php $i++; ?>
+                              <?php endforeach ?>
+                              </tbody>
+                              
+                              </table>
+                            </div>
+                                  <!-- /.card-body -->
 
-                </tr>
-                <?php $i++; ?>
-                <?php endforeach ?>
-                </tbody>
-                
-                </table>
-              </div>
-                    <!-- /.card-body -->
-
-            <!--PENGALAMAN KERJA-->
-
-
-            <div class="card-body">
-              <h3>Pengalaman Kerja</h3>
-              <hr>
-                <table id="" class="table table-bordered table-striped" style="width:100%">
-                  <thead>
-                  <tr>
-                    <th style="width:5%;">No</th>
-                    <th>Nama Kegiatan</th>
-                    <th>Pendanaan</th>
-                    <th>Peran</th>
-                    <th style="width:10%;">Tahun</th>
-
+                    </div>
                     
-                  </tr>
-                  </thead>
-                  <tbody>
-                  
-                  <?php $i=1; ?>
-                  <?php foreach ($work_exp as $work) : ?>
+                    <div class="tab-pane fade" id="tab-pekerjaan" role="tabpanel" aria-labelledby="below-tab-pekerjaan">
+                       <!--PENGALAMAN KERJA-->
+                        <div class="card-body">
+                          <h3>Pengalaman Kerja</h3>
+                          <hr>
+                            <table id="" class="table table-bordered table-striped" style="width:100%">
+                              <thead>
+                              <tr>
+                                <th style="width:5%;">No</th>
+                                <th>Nama Kegiatan</th>
+                                <th>Pendanaan</th>
+                                <th>Peran</th>
+                                <th style="width:10%;">Tahun</th>
 
-                  <tr>
-                    <td style="text-align:center;"><?php echo $i;?></td>
-                    <td><?php echo $work['kegiatan'];?></td>
-                    <td><?php echo $work['kerjasama'];?></td>
-                    <td><?php echo $work['peran'];?></td>
-                    <td style="text-align:center;"><?php echo $work['year'];?></td>
-                    
-                  </tr>
-                  <?php $i++; ?>
-                  <?php endforeach ?>
+                                
+                              </tr>
+                              </thead>
+                              <tbody>
+                              
+                              <?php $i=1; ?>
+                              <?php foreach ($work_exp as $work) : ?>
 
-                  </tbody>
+                              <tr>
+                                <td style="text-align:center;"><?php echo $i;?></td>
+                                <td><?php echo $work['kegiatan'];?></td>
+                                <td><?php echo $work['kerjasama'];?></td>
+                                <td><?php echo $work['peran'];?></td>
+                                <td style="text-align:center;"><?php echo $work['year'];?></td>
+                                
+                              </tr>
+                              <?php $i++; ?>
+                              <?php endforeach ?>
 
-                  
-                  
-                </table>
-              </div>
-                    <!-- /.card-body -->
+                              </tbody>
+
+                              
+                              
+                            </table>
+                          </div>
+                                <!-- /.card-body -->
+
+                    </div>
+
+                    <div class="tab-pane fade" id="tab-pelatihan" role="tabpanel" aria-labelledby="below-tab-pelatihan">
+                       <!--PELATIHAN-->
+
+                        <div class="card-body">
+                          <h3>Pelatihan</h3>
+                          <hr>
+                            <table id="" class="table table-bordered table-striped" style="width:100%">
+                            <thead>
+                            <tr>
+                              <th style="width: 5%;">No</th>
+                              <th>Nama Diklat</th>
+                              <th>Penyelenggara</th>
+                              <th>Tempat Penyelenggaraan</th>
+                              <th style="width:10%;">Tahun</th>
+                              
+                            </tr>
+                            </thead>
+                            <tbody>
+                            
+                            
+                            <?php $i=1; ?>
+                              <?php foreach ($diklat as $dik) : ?>
+
+                              <tr>
+                                <td style="text-align: center;"><?php echo $i;?></td>
+                                <td><?php echo $dik['diklat'];?></td>
+                                <td><?php echo $dik['penyelenggara'];?></td>
+                                <td><?php echo $dik['tempat'];?></td>
+                                <td style="text-align: center;"><?php echo $dik['year'];?></td>
+                                
+                              </tr>
+                              <?php $i++; ?>
+                              <?php endforeach ?>
+
+                            
+                            </tbody>
+                              
+                            </table>
+                          </div>
+
+                    </div>
+
+                    <div class="tab-pane fade" id="tab-kti" role="tabpanel" aria-labelledby="below-tab-kti">
+                        <!--KARYA ILMIAH-->
+
+                          <div class="card-body">
+                          <h3>Karya Ilmiah</h3>
+                          <hr>
+                            <table id="" class="table table-bordered table-striped" style="width:100%">
+                            <thead>
+                              <tr>
+                                <th style="width:5%;">No</th>
+                                <th>Author</th>
+                                <th>Judul</th>
+                                <th>Publisher/Jurnal</th>
+                                <th style="width:10%;">Year</th>
+                              
+                              </tr>
+                              </thead>
+                              <tbody>
+                              
+                              <?php $i=1; ?>
+                              <?php foreach ($kti as $ktie) : ?>
+
+                              <tr>
+                                <td style="text-align: center;"><?php echo $i;?></td>
+                                <td><?php echo $ktie['author'];?></td>
+                                <td><?php echo $ktie['judul'];?></td>
+                                <td><?php echo $ktie['jurnal'];?></td>
+                                <td style="text-align: center;"><?php echo $ktie['year'];?></td>
+                              
+                              </tr>
+                              <?php $i++; ?>
+                              <?php endforeach ?>
+                              
+                              </tbody>
+                              
+                            </table>
+                          </div>
+                                <!-- /.card-body -->
+                      </div>
 
 
-            <!--PELATIHAN-->
+                  </div>
+                      
 
-            <div class="card-body">
-              <h3>Pelatihan</h3>
-              <hr>
-                <table id="" class="table table-bordered table-striped" style="width:100%">
-                <thead>
-                <tr>
-                  <th style="width: 5%;">No</th>
-                  <th>Nama Diklat</th>
-                  <th>Penyelenggara</th>
-                  <th>Tempat Penyelenggaraan</th>
-                  <th style="width:10%;">Tahun</th>
-                  
-                </tr>
-                </thead>
-                <tbody>
-                
-                
-                <?php $i=1; ?>
-                  <?php foreach ($diklat as $dik) : ?>
-
-                  <tr>
-                    <td style="text-align: center;"><?php echo $i;?></td>
-                    <td><?php echo $dik['diklat'];?></td>
-                    <td><?php echo $dik['penyelenggara'];?></td>
-                    <td><?php echo $dik['tempat'];?></td>
-                    <td style="text-align: center;"><?php echo $dik['year'];?></td>
-                    
-                  </tr>
-                  <?php $i++; ?>
-                  <?php endforeach ?>
-
-                
-                </tbody>
-                  
-                </table>
-              </div>
-                    <!-- /.card-body -->
-
-              <!--KARYA ILMIAH-->
-
-              <div class="card-body">
-              <h3>Karya Ilmiah</h3>
-              <hr>
-                <table id="" class="table table-bordered table-striped" style="width:100%">
-                <thead>
-                  <tr>
-                    <th style="width:5%;">No</th>
-                    <th>Author</th>
-                    <th>Judul</th>
-                    <th>Publisher/Jurnal</th>
-                    <th style="width:10%;">Year</th>
-                  
-                  </tr>
-                  </thead>
-                  <tbody>
-                  
-                  <?php $i=1; ?>
-                  <?php foreach ($kti as $ktie) : ?>
-
-                  <tr>
-                    <td style="text-align: center;"><?php echo $i;?></td>
-                    <td><?php echo $ktie['author'];?></td>
-                    <td><?php echo $ktie['judul'];?></td>
-                    <td><?php echo $ktie['jurnal'];?></td>
-                    <td style="text-align: center;"><?php echo $ktie['year'];?></td>
-                  
-                  </tr>
-                  <?php $i++; ?>
-                  <?php endforeach ?>
-                  
-                  </tbody>
-                  
-                </table>
-              </div>
-                    <!-- /.card-body -->
-
-          </div>               
+          </div>    <!--card-->           
               
-        </div>
+        </div> <!--col-->  
           <!-- TABLE: KARYA ILMIAH -->
            
-      </div>
+      </div><!--row-->  
+      </div><!--container-->
     </section>
 

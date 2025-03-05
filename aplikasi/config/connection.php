@@ -1,9 +1,9 @@
 <?php
 
 $host = "localhost";
-$dbusername = "jzvljezs_fairuzm";
-$dbpassword = "Fairuz29!";
-$db_name = "jzvljezs_milkio";
+$dbusername = "root";
+$dbpassword = "";
+$db_name = "db_aplikasi";
 
 
 

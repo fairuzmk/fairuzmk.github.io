@@ -213,7 +213,7 @@
                   <hr>
                   <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist" style="margin-bottom: 10px;">
                   <li class="nav-item">
-                    <a class="nav-link active" id="custom-content-below-home-tab" data-toggle="pill" href="#custom-content-below-proximate" role="tab" aria-controls="custom-content-below-home" aria-selected="true">Proximate</a>
+                    <a class="nav-link active" id="custom-content-below-home-tab" data-toggle="pill" href="#custom-content-below-proximate" role="tab" aria-controls="proximate" aria-selected="true">Proximate</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" id="custom-content-below-profile-tab" data-toggle="pill" href="#custom-content-below-ultimate" role="tab" aria-controls="custom-content-below-profile" aria-selected="false">Ultimate</a>
