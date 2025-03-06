@@ -27,7 +27,7 @@ $pendidikan = query("SELECT * from tb_pendidikan WHERE nama = '$nama' ");
 
     if (isset ($_POST["inputDataPendidikan"])){
 
-        if (tambahPendidikan(data: $_POST) > 0){
+        if (tambahPendidikan($_POST) > 0){
     
           echo "<script>
                 Swal.fire({
@@ -53,7 +53,7 @@ $pendidikan = query("SELECT * from tb_pendidikan WHERE nama = '$nama' ");
 
     if (isset ($_POST["editDataPendidikan"])){
 
-        if (editPendidikan(data: $_POST) > 0){
+        if (editPendidikan($_POST) > 0){
     
           echo "<script>
                 Swal.fire({

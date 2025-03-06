@@ -21,7 +21,7 @@ $diklat = query("SELECT * from tb_diklat WHERE nama = '$nama' ");
 
 if (isset ($_POST["inputDiklat"])){
 
-  if (tambahDiklat(data: $_POST) > 0){
+  if (tambahDiklat($_POST) > 0){
 
     echo "<script>
           Swal.fire({
@@ -47,7 +47,7 @@ if (isset ($_POST["inputDiklat"])){
 
 if (isset ($_POST["editDiklat"])){
 
-  if (editDiklat(data: $_POST) > 0){
+  if (editDiklat($_POST) > 0){
 
     echo "<script>
           Swal.fire({

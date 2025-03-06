@@ -27,7 +27,7 @@ $value_tmt_jabatan = isset($biodata["tmt_jabatan"]) ? date("d-M-Y", strtotime($b
 
 if (isset ($_POST["upd_datadiri"])){
 
-    if (updDataDiri($_POST) > 0){
+    if (updDataDiri ($_POST) > 0){
 
         echo "
             <script>

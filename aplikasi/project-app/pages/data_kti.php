@@ -25,7 +25,7 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ");
 
 if (isset ($_POST["inputDataKti"])){
 
-  if (tambahKti(data: $_POST) > 0){
+  if (tambahKti( $_POST) > 0){
 
     echo "<script>
           Swal.fire({
@@ -50,7 +50,7 @@ if (isset ($_POST["inputDataKti"])){
 
 if (isset ($_POST["editDataKti"])){
 
-  if (editKti(data: $_POST) > 0){
+  if (editKti($_POST) > 0){
 
     echo "<script>
           Swal.fire({

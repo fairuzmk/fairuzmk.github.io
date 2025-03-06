@@ -23,7 +23,7 @@ $work_exp = query("SELECT * from tb_experience WHERE nama = '$nama' ");
 
 if (isset ($_POST["inputWorkExp"])){
 
-  if (tambahWorkExp(data: $_POST) > 0){
+  if (tambahWorkExp($_POST) > 0){
 
     echo "<script>
           Swal.fire({
@@ -49,7 +49,7 @@ if (isset ($_POST["inputWorkExp"])){
 
 if (isset ($_POST["editWorkExp"])){
 
-  if (editWorkExp(data: $_POST) > 0){
+  if (editWorkExp($_POST) > 0){
 
     echo "<script>
           Swal.fire({
