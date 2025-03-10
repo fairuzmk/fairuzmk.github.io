@@ -61,15 +61,14 @@ $section = $phpWord->addSection();
 
 // Judul
 $section->addText("CURRICULUM VITAE", ['bold' => true, 'size' => 12], ['alignment' => 'center']);
-
+$section->addTextBreak();
 
 // **1. Biodata**
 $section->addText("PERSONAL DATA DETAILS", ['bold' => true, 'italic' => true, 'size' => 12], ['alignment' => 'LEFT']);
 $section->addTextBreak();
 // Tambahkan gaya tabel dengan border
 $tableStyle = [
-    'borderSize' => 0,  // Ketebalan garis (6 twips ≈ 0.5pt)
-    'borderColor' => '000000', // Warna garis hitam
+    
     'cellMargin' => 80, // Jarak teks dari tepi sel
     'alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER // Posisi tabel
     
@@ -77,7 +76,7 @@ $tableStyle = [
 
 // Terapkan gaya ke tabel
 $table = $section->addTable($tableStyle);
-$cellStyle = ['borderSize' => 0, 'borderColor' => '000000', 'valign' => 'center', 'MarginLeft' => 100, 'MarginRight' => 100,]; // Border untuk setiap sel
+$cellStyle = ['valign' => 'top', 'MarginLeft' => 100, 'MarginRight' => 100,]; // Border untuk setiap sel
 
 
 $no = 1;
