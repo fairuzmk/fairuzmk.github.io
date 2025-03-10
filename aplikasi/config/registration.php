@@ -11,7 +11,7 @@ function registrasi($data){
    //
    $nama = htmlspecialchars($data["nama"]);
    $email = htmlspecialchars($data["email"]);
-   $contact_hp = htmlspecialchars($data["contact_hp"]);
+   // $contact_hp = htmlspecialchars($data["contact_hp"]);
    
    //cek username sudah ada atau belum
    $cek_user = mysqli_query ($koneksi, "SELECT username FROM  tb_users WHERE username='$username'");
@@ -51,7 +51,25 @@ function registrasi($data){
          return false;
 
       }
+      
+      if (empty($nama) || empty($email)) {
+         echo "
+      <script>
+      
+      var Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+      });
 
+      toastr.warning('Pastikan Semua Field Sudah terisi')
+      
+        </script>";
+         return false;
+
+      }
+      
    //ENKRIPSI PASSWORD
    $password = password_hash($password, PASSWORD_DEFAULT);
 
@@ -60,8 +78,8 @@ function registrasi($data){
    mysqli_query($koneksi, "INSERT INTO tb_users (id_user,nama,username, password, level) 
                                        VALUES ('', '$nama', '$username', '$password', '$level')");
    
-   mysqli_query($koneksi, "INSERT INTO tb_personal (id, nama, email, contact_hp) 
-                                       VALUES ('', '$nama', '$email', '$contact_hp')");
+   mysqli_query($koneksi, "INSERT INTO tb_personal (id, nama, email) 
+                                       VALUES ('', '$nama', '$email')");
 
    return mysqli_affected_rows($koneksi);
 }

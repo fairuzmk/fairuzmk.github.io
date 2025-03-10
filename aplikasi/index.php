@@ -24,68 +24,134 @@
   <!-- icheck bootstrap -->
   <link rel="stylesheet" href="project-app/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="project-app/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="style.css">
 
     <!-- SweetAlert2 -->
   <link rel="stylesheet" href="project-app/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <!-- favicon -->
   <link rel="shortcut icon" type="image/png" href="milk-io.png">
-
+  <!-- Toastr -->
+  <link rel="stylesheet" href="project-app/plugins/toastr/toastr.min.css">
   </head>
   <!--end::Head-->
   <!--begin::Body-->
 
-
+  <?php require "config/connection.php"; ?>
   
-<body class="hold-transition login-page">
-
-    <div class="login-box">
-      <div class="login-logo">
-        <a href="index.php"><img class="login-box-msg" src="milk-io-panjang.png" alt="Milk.io logo" height="100" width="300"></a>
-      </div>
+<body>
+  
+  
+  <div class="container">
+    
       <!-- /.login-logo -->
-      <div class="card">
-        <div class="card-body login-card-body">
-          <p class="login-box-msg">Sign in to start your session</p>
-          
-
+      <div class="card-box login">
+            
           <form action="config/auth.php" method="post">
-            <div class="input-group mb-3">
+          
+          <h1>Login</h1>
+            <div class="input-box">
               <input name="username" id="username" type ="text" class="form-control" placeholder="Username">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                <i class="fas fa-user"></i>
-                </div>
-              </div>
-            </div>
-            <div class="input-group mb-3">
-              <input name="password" id="password" type="password" class="form-control" placeholder="Password">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-lock"></span>
-                </div>
-              </div>
-            </div>
-            <div class="row mb-4">
               
-              <div class="col-6">
-                <a href="register.php" class="btn btn-info btn-block">Register</a>
-              </div>
+                <i class="fas fa-user"></i>
+               
+            </div>
+            <div class="input-box">
+              <input name="password" id="password" type="password" class="form-control" placeholder="Password">
+              <i class="fas fa-lock"></i>
+                
+            </div>
+            
+              
+              
                 
             
-              <div class="col-6">
-                <button type="submit" name="signin" class="btn btn-primary btn-block">Sign In</button>
+              
+              <button type="submit" name="signin" class="btn btn-primary btn-block">Sign In</button>
+              
+              <div class="forgot-link">
+                <a href="#">Forgot Password</a>
               </div>
+
             
-
-            </div>
           </form>
-
-          
-        </div>
+               
         <!-- /.login-card-body -->
       </div>
-    </div>
+      <!-- /.login-logo -->
+      <div class="card-box register">
+            
+          <form action="" method="post">
+          <h1>Register</h1>
+            <div class="input-box">
+              <input name="nama" id="nama" type ="text" class="form-control" placeholder="Full Name" required>
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="input-box">
+              <input name="email" id="email" type ="email" class="form-control" placeholder="Email" required>
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="input-box">
+              <input name="username" id="username" type ="text" class="form-control" placeholder="Username" required>
+              <i class="far fa-user-circle"></i>
+            </div>
+            <div class="input-box">
+              <input name="password" id="password" type ="password" class="form-control" placeholder="Password" required>
+              <i class="fas fa-lock"></i>
+            </div>
+            <div class="input-box">
+              <input name="password2" id="password2" type="password" class="form-control" placeholder="Konfirmasi Password" required>
+              <i class="fas fa-lock"></i>
+                
+            </div>
+            <input name="level" id="level" type="text" class="" value="User" hidden>
+
+            
+              
+              
+                
+            
+              
+              <button type="submit" name="register" class="btn btn-primary btn-block">Register</button>
+              
+              
+
+            
+          </form>
+               
+        <!-- /.login-card-body -->
+      </div>
+      
+      <div class="toggle-box">
+          <div class="toggle-panel toggle-left">
+          
+          <h1>Hello, Welcome!</h1>
+          <p>Don't Have an Account?</p>
+          <button class="btn register-btn">Register</button>
+          <div class="login-logo">
+            <a href="../index.html"><img class="login-box-msg" src="MILKio-white.png" alt="Milk.io logo" height="100" width="100"></a>
+          </div>
+          </div>
+          <div class="toggle-panel toggle-right">
+          <div class="login-logo">
+            <a href="../index.html"><img class="login-box-msg" src="MILKio-white.png" alt="Milk.io logo" height="100" width="100"></a>
+          </div>
+          <h1>Welcome Back!</h1>
+          <p>Already have an account?</p>
+          <button class="btn login-btn">Login</button>
+
+          </div>
+
+      </div>
+      
+
+  </div>
+  
+
+    
+    
+      
+
+    
 
     <!-- jQuery -->
 <script src="project-app/plugins/jquery/jquery.min.js"></script>
@@ -93,13 +159,15 @@
 <script src="project-app/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="project-app/dist/js/adminlte.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<!-- SweetAlert2 -->
 <script src="project-app/plugins/sweetalert2/sweetalert2.min.js"></script>
+<script src="loginanimation.js"></script>
+<!-- Toastr -->
+<script src="project-app/plugins/toastr/toastr.min.js"></script>
 
-    <!--end::OverlayScrollbars Configure-->
-    <!--end::Script-->
+<?php require "config/registration.php"; ?>
 
 <!-- Logic Gagal Login-->
       <?php

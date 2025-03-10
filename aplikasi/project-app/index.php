@@ -82,6 +82,9 @@
         else if($_GET['page']=='chart-tradingview'){
           include 'apptrading/tradingview.php';
         }
+        else if($_GET['page']=='project-iot'){
+          include 'projectiot/fuxa.php';
+        }
 
       else {
         include '404.php';
