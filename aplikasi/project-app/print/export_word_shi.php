@@ -45,6 +45,12 @@ $paragraphKiri = [
     'indent' => 0.2, // Indentasi/margin kiri (satuan twip, 1 twip = 1/20 pt)
 ];
 
+$paragraphJustify = [
+    'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::BOTH, // Rata KANAN KIRI
+    'indent' => 0.2, // Indentasi/margin kiri (satuan twip, 1 twip = 1/20 pt)
+];
+
+
 $paragraphTTD = [
     'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::LEFT, // Rata kiri
     'indent' => 8, // Indentasi/margin kiri (satuan twip, 1 twip = 1/20 pt)
@@ -163,7 +169,7 @@ $section->addImage('../img/' . $biodata["foto"], [
 
 
 // **2. Pendidikan**
-$section->addText("Pendidikan", ['bold' => true, 'size' => 12]);
+$section->addText("EDUCATIONAL BACKGROUND", ['bold' => true, 'italic' => true, 'size' => 12, 'color' => '7c7c7c']);
 $table = $section->addTable();
 $table->addRow();
 $table->addCell(2000, $cellStyle)->addText("Jenjang", ['bold' => true], ['alignment' => 'center']);
@@ -184,39 +190,50 @@ $section->addTextBreak(2);
 
 // **6. Pengalaman Kerja**
 
-$section->addText("WORK EXPERIENCES", ['bold' => true, 'italic' => true, 'size' => 12]);
+$section->addText("WORK EXPERIENCES", ['bold' => true, 'italic' => true, 'size' => 12, 'color' => '7c7c7c']);
 $table = $section->addTable();
 $nowork=1;
 foreach ($work_exp as $work) {
     $table->addRow();
-    $table->addCell(500, $cellStyle)->addText($nowork . "." , [], $paragraphStyle);
-    $table->addCell(10000, $cellStyle)->addText($work["kegiatan"] . " (" . $work["year"] . ", " . $work["kerjasama"] . ")" , [], $paragraphKiri);
+    $table->addCell(500, $cellStyle)->addText($nowork . ".", [], $paragraphStyle);
+
+    $cell = $table->addCell(10000, $cellStyle);
+    $textrun = $cell->addTextRun($paragraphJustify);
+
+    // Tambahkan teks dengan format berbeda
+    $textrun->addText($work["kegiatan"] . " (", []); // Teks biasa
+    $textrun->addText($work["year"] . ", " . $work["kerjasama"] . ")", ['bold' => true]); // Tahun dibuat bold
     $nowork++;
 }
 
 $section->addTextBreak(2);
 
 // **5. Karya Ilmiah**
-$section->addText("Publication", ['bold' => true, 'size' => 12]);
+$section->addText("PUBLICATIONS", ['bold' => true, 'italic' => true, 'size' => 12, 'color' => '7c7c7c']);
 $table = $section->addTable();
 $nokti=1;
 foreach ($kti as $ktie) {
     $table->addRow();
     $table->addCell(500, $cellStyle)->addText($nokti  . ".", [], $paragraphStyle);
-    $table->addCell(10000, $cellStyle)->addText($ktie["judul"] . " (" . $ktie["jurnal"] . ", " . $ktie["year"] . ")" , [], $paragraphKiri);
+
+    $cell = $table->addCell(10000, $cellStyle);
+    $textrun = $cell->addTextRun($paragraphJustify);
+
+    $textrun->addText($ktie["judul"] . " (", []); // Teks biasa
+    $textrun->addText($ktie["jurnal"] . ", " . $ktie["year"] . ")", ['bold' => true]);
     $nokti++;
 }
 
 $section->addTextBreak(2);
 
 // **4. Pelatihan**
-$section->addText("COURSE AND TRAINING ", ['bold' => true, 'size' => 12]);
+$section->addText("COURSES AND TRAINING ", ['bold' => true, 'size' => 12, 'color' => '7c7c7c']);
 $table = $section->addTable();
 $nodik=1;
 foreach ($diklat as $dik) {
     $table->addRow();
     $table->addCell(500, $cellStyle)->addText($nodik . ".", [], $paragraphStyle);
-    $table->addCell(10000, $cellStyle)->addText($dik["diklat"] . ", " . $dik["penyelenggara"] . " - " . $dik["year"], [], $paragraphKiri);
+    $table->addCell(10000, $cellStyle)->addText($dik["diklat"] . ", " . $dik["penyelenggara"] . " - " . $dik["year"], [], $paragraphJustify);
     $nodik++;
 }
 

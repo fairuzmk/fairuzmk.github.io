@@ -69,7 +69,7 @@
               <button type="submit" name="signin" class="btn btn-primary btn-block">Sign In</button>
               
               <div class="forgot-link">
-                <a href="#">Forgot Password</a>
+                <a href="forgot-password.php">Forgot Password</a>
               </div>
 
             

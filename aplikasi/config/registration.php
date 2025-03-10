@@ -75,8 +75,8 @@ function registrasi($data){
 
 
    //TAMBAHKAN DATA ke DATABASE
-   mysqli_query($koneksi, "INSERT INTO tb_users (id_user,nama,username, password, level) 
-                                       VALUES ('', '$nama', '$username', '$password', '$level')");
+   mysqli_query($koneksi, "INSERT INTO tb_users (id_user,nama,username, password, level, email) 
+                                       VALUES ('', '$nama', '$username', '$password', '$level', '$email')");
    
    mysqli_query($koneksi, "INSERT INTO tb_personal (id, nama, email) 
                                        VALUES ('', '$nama', '$email')");
