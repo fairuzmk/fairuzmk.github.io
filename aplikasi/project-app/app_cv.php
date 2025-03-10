@@ -53,6 +53,7 @@ $kti = query("SELECT * from tb_karyailmiah WHERE nama = '$nama' ORDER BY year AS
                     <div class="dropdown-menu dropdown-menu-right" role="menu">
                       <a href="#" class="dropdown-item">Export PDF</a>
                       <a href="print/export_word.php" class="dropdown-item">Format Standard (.docx)</a>
+                      <a href="print/export_word_shi.php" class="dropdown-item">Format SHI (.docx)</a>
                       <a href="#" class="dropdown-item">Something else here</a>
                       <a class="dropdown-divider"></a>
                       <a href="#" class="dropdown-item">Separated link</a>
