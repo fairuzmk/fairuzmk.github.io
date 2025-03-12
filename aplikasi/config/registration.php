@@ -12,7 +12,7 @@ function registrasi($data){
    $nama = htmlspecialchars($data["nama"]);
    $email = htmlspecialchars($data["email"]);
    // $contact_hp = htmlspecialchars($data["contact_hp"]);
-   
+   $foto = htmlspecialchars($data["foto"]);
    //cek username sudah ada atau belum
    $cek_user = mysqli_query ($koneksi, "SELECT username FROM  tb_users WHERE username='$username'");
    if (mysqli_fetch_assoc($cek_user)){
@@ -78,8 +78,8 @@ function registrasi($data){
    mysqli_query($koneksi, "INSERT INTO tb_users (id_user,nama,username, password, level, email) 
                                        VALUES ('', '$nama', '$username', '$password', '$level', '$email')");
    
-   mysqli_query($koneksi, "INSERT INTO tb_personal (id, nama, email) 
-                                       VALUES ('', '$nama', '$email')");
+   mysqli_query($koneksi, "INSERT INTO tb_personal (id, nama, email, foto) 
+                                       VALUES ('', '$nama', '$email', '$foto')");
 
    return mysqli_affected_rows($koneksi);
 }

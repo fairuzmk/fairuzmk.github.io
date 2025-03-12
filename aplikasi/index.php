@@ -97,7 +97,7 @@
                 
             </div>
             <input name="level" id="level" type="text" class="" value="User" hidden>
-
+            <input name="foto" id="foto" type="text" class="" value="avatar5.png" hidden>
             
               
               

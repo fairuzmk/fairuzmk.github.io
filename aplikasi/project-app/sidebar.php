@@ -14,7 +14,7 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
         <img src="dist/img/MILKio-white.png" alt="Milk-io Logo" class="brand-image-xl" style="opacity:">
-        <span class="brand-text font-weight-light">MILK.io APP</span>
+        <span class="brand-text">MILK.io APP</span>
     </a>
 
     <!-- Sidebar -->
@@ -25,7 +25,7 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
                 <img src="dist/img/avatar4.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block"><?php echo $_SESSION['nama'] . ' | ' . $_SESSION['level']; ?></a>
+                <a href="#" class="d-block"><?php echo strtok($_SESSION['nama'], ' ') . ' | ' . $_SESSION['level']; ?></a>
             </div>
         </div>
 

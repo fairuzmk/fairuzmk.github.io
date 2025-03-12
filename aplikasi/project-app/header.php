@@ -10,7 +10,7 @@
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="dist/css/adminlte.css">
   <!-- fullCalendar -->
   <link rel="stylesheet" href="plugins/fullcalendar/main.css">
   <!-- DataTables -->
