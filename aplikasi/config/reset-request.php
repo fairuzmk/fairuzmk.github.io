@@ -7,11 +7,7 @@ require '../vendor/autoload.php'; // Jika menggunakan Composer
 require 'connection.php'; // File koneksi ke database
 date_default_timezone_set('Asia/Jakarta');
 
-if (empty($_POST["email"])) {
-    header('Location: ../forgot-password?error=2');
-    exit;
-    
-}
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
@@ -19,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Periksa apakah reCAPTCHA diisi
     if (!$recaptcha_response) {
-        die("Harap selesaikan reCAPTCHA.");
+        header('Location: ../forgot-password.php?error=2');
     }
 
     // Verifikasi reCAPTCHA dengan Google
@@ -33,10 +29,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // Cek apakah email ada di database
-    $stmt = $koneksi->prepare("SELECT id_user FROM tb_users WHERE email = ?");
+    $stmt = $koneksi->prepare("SELECT id_user, username, nama FROM tb_users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
+    $stmt->bind_result($id_user, $username, $nama); // Ambil id_user dan username
+    $stmt->fetch();
 
     if ($stmt->num_rows > 0) {
         $token = bin2hex(random_bytes(32));
@@ -63,16 +61,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $mail->Subject = "Permintaan Reset Password";
             $resetLink = "https://fairuzmk.my.id/aplikasi/reset-password.php?token=$token";
-            $mail->Body = "Klik link berikut untuk mereset password anda: $resetLink";
+            $mail->Body = "Halo $nama,\n\n Username anda: $username\n\nAnda telah meminta untuk mereset password.\n\nKlik link berikut untuk mereset password Anda:\n$resetLink\n\nJika Anda tidak merasa melakukan ini, abaikan saja email ini.";
 
             $mail->send();
-            header("Location: ../forgot-password?error=0");
+            header("Location: ../forgot-password.php?error=0");
             exit;
         } catch (Exception $e) {
             echo "Email tidak dapat dikirim. Error: {$mail->ErrorInfo}";
         }
     } else {
-        header("Location: ../forgot-password?error=1");
+        header("Location: ../forgot-password.php?error=1");
         exit;
     }
 }

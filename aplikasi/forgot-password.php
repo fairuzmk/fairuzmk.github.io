@@ -57,7 +57,8 @@
             </div>
             
             <!-- Tambahkan reCAPTCHA -->
-            <div class="g-recaptcha" data-sitekey="6LeB-PEqAAAAAH9ML_uXSkWV-G9TPpYDhj5AdVNn"></div>
+            <div class="g-recaptcha" data-sitekey="6LeB-PEqAAAAAH9ML_uXSkWV-G9TPpYDhj5AdVNn" style="width:100%; padding: 20px;"></div>
+            
               <button type="submit" class="btn btn-primary btn-block">Reset Password</button>
               
            
@@ -169,7 +170,7 @@
       Toast.fire({
         icon: 'warning',
         
-        text: 'Masukkan email dengan benar'
+        text: 'Harap Selesaikan Captcha!'
       })
         </script>";
       }
