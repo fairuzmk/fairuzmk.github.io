@@ -6,14 +6,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT); // Hash password
 
     // Cek token
-    $stmt = $koneksi->prepare("SELECT id_user FROM users WHERE reset_token = ? AND reset_expires > NOW()");
+    $stmt = $koneksi->prepare("SELECT id_user FROM tb_users WHERE reset_token = ? AND reset_expires > NOW()");
     $stmt->bind_param("s", $token);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
         // Update password
-        $stmt = $koneksi->prepare("UPDATE users SET password = ?, reset_token = NULL, reset_expires = NULL WHERE reset_token = ?");
+        $stmt = $koneksi->prepare("UPDATE tb_users SET password = ?, reset_token = NULL, reset_expires = NULL WHERE reset_token = ?");
         $stmt->bind_param("ss", $password, $token);
         $stmt->execute();
 
