@@ -200,6 +200,7 @@ font-weight: 400;
 
 }
 
+
 .input-box i{
 position : absolute;
 right: 20px;
@@ -207,9 +208,19 @@ top : 40%;
 transform : translateY (-10%);
 font-size : 15px;
 color: #888;
+cursor: pointer;
 
 }
 
+.toggle-password {
+  position: absolute;
+  right: 30px;
+  top: 40%;
+  transform: translateY(-10%);
+  cursor: pointer;
+  font-size: 18px;
+
+}
 .forgot-link {
 
   margin: 15px 0 15px;

@@ -2,7 +2,11 @@
 require 'connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     $token = $_POST["token"];
+    
+
+
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT); // Hash password
 
     // Cek token

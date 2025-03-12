@@ -60,19 +60,12 @@
               <i class="fas fa-lock"></i>
                 
             </div>
-            
-              
-              
-                
-            
-              
               <button type="submit" name="signin" class="btn btn-primary btn-block">Sign In</button>
               
               <div class="forgot-link">
                 <a href="forgot-password.php">Forgot Password</a>
               </div>
-
-            
+           
           </form>
                
         <!-- /.login-card-body -->
@@ -135,7 +128,7 @@
           <div class="login-logo">
             <a href="../index.html"><img class="login-box-msg" src="MILKio-white.png" alt="Milk.io logo" height="100" width="100"></a>
           </div>
-          <h1>Welcome Back!</h1>
+          <h1>Welcome to MILK.io!</h1>
           <p>Already have an account?</p>
           <button class="btn login-btn">Login</button>
 
