@@ -30,7 +30,10 @@
  
 </head>
 
+
+
 <body class="index-page">
+
 
   <header id="header" class="header d-flex flex-column justify-content-center">
 
@@ -44,12 +47,57 @@
         <li><a href="#portfolio"><i class="bi bi-images navicon"></i><span>Portfolio</span></a></li>
         <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i><span>Research</span></a></li>
         <li><a href="#contact"><i class="bi bi-envelope navicon"></i><span>Contact</span></a></li>
+        <li><a href="aplikasi"><i class="bi bi-columns-gap"></i><span>MILK.io</span></a></li>
       </ul>
     </nav>
 
   </header>
 
   <main class="main">
+  <!--API Scopus-->
+  <?php
+    $apiKey = "d3a7416a53291eb0bb1a85770755681a";
+    $authorId = "57931825700"; // Ganti dengan Scopus Author ID
+    $url = "https://api.elsevier.com/content/author/author_id/57931825700?view=metrics";
+    
+    $options = [
+        "http" => [
+            "header" => "X-ELS-APIKey: $apiKey\r\nAccept: application/json\r\n",
+            "method" => "GET",
+        ],
+    ];
+    
+    $context = stream_context_create($options);
+    $response = file_get_contents($url, false, $context);
+    $data = json_decode($response, true);
+    // var_dump($data);
+    // echo "Nama Penulis: " . $data['author-retrieval-response'][0]['author-profile']['preferred-name']['surname'] . "\n";
+    // echo "H-Index: " . $data['author-retrieval-response'][0]['h-index'];
+    ?>
+    <!--API Scopus-->
+
+    <!--Webscrapping Gscholar-->
+    <?php
+    include('htmldom/simple_html_dom.php');
+
+    $url = "https://scholar.google.com/citations?user=suWxEcoAAAAJ&hl=id";
+    $html = file_get_html($url);
+    
+    // Ambil Nama Penulis
+    $author_name = $html->find('.gsc_prf_in', 0);
+    
+    // Ambil Jumlah Sitasi
+    $citations = $html->find('td.gsc_rsb_std', 0)->plaintext;
+    
+    // Ambil Jumlah Dokumen (Publikasi)
+    $documents = count($html->find('.gsc_a_tr'));
+    
+    // echo "Nama: $author_name\n";
+    // echo "Jumlah Sitasi: $citations\n";
+    // echo "Jumlah Dokumen: $documents\n";
+    ?>
+
+
 
     <!-- Hero Section -->
     <section id="hero" class="hero section light-background">
@@ -136,7 +184,7 @@
           <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
             <i class="bi bi-file-text"></i>
             <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="33" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="<?= $documents ?>" data-purecounter-duration="1" class="purecounter"></span>
               <p>GScholar Documents</p>
             </div>
           </div><!-- End Stats Item -->
@@ -144,7 +192,7 @@
           <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
             <i class="bi bi-link"></i>
             <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="130" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="<?= $citations ?>" data-purecounter-duration="1" class="purecounter"></span>
               <p>Citations</p>
             </div>
           </div><!-- End Stats Item -->
@@ -152,7 +200,7 @@
           <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
             <i class="bi bi-h-circle"></i>
             <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="<?= $data['author-retrieval-response'][0]['h-index']?>" data-purecounter-duration="1" class="purecounter"></span>
               <p>Scopus H-index</p>
             </div>
           </div><!-- End Stats Item -->
@@ -348,125 +396,32 @@
         <h2>Research Paper</h2>
         <p>A high-quality research paper developed based on systematically collected data and findings over a five-year period, featuring in-depth analysis, rigorous methodology, and significant contributions to the relevant field of study.</p>
       </div><!-- End Section Title -->
-
+      <?php include 'test.php' ?>
       <div class="container" data-aos="fade-up">
 
         <div class="row gy-4">
         
-          <div class="service-item" data-aos="fade-left">
-            <div class="pemisah">
-                <img src = "assets/img/elsevier_logo.png" class="image">
-             
-              <a href="https://www.sciencedirect.com/science/article/pii/S2090447922003124" class="stretched-link">
-                <h3>Ain Shams Engineering Journal</h3>
-                <h4>A comprehensive evaluation of cofiring 
-                  biomass with coal and slagging-fouling tendency 
-                  in pulverized coal-fired boilers</h4>
-                  <h5> <strong>Authors :</strong> Hariana, Prabowo, E Hilmawan, <strong>FM Kuswa</strong>, ….</h5>
-              </a>
-              
-            </div>
-          </div>
+        <?php foreach ($scopusdoc as $doc): ?>
+                <div class="service-item" data-aos="fade-left">
+                    <div class="pemisah">
+                        <img src="assets/img/elsevier_logo.png" class="image">
+                        
+                        <a href="<?= 'https://doi.org/' . $doc['doi'] ?>" target="_blank" class="stretched-link">
+                            <h3><?= htmlspecialchars($doc['publisher']) ?></h3>
+                            <h4><?= htmlspecialchars($doc['title']) ?></h4>
+                            <h5> <strong>Published :</strong> <?= htmlspecialchars($doc['thterbit']) ?></h5>
+                        </a>
+                        
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+         
           
           <!-- End Service Item -->
 
-          <div class="service-item" data-aos="fade-right">
-            <div class="pemisah">
-                <img src = "assets/img/elsevier_logo.png" class="image">
-             
-              <a href="https://www.sciencedirect.com/science/article/pii/S2589014X23001603" class="stretched-link">
-                <h3>Bioresource Technology Reports</h3>
-                <h4>Slagging-fouling evaluation of empty fruit bunch and palm oil 
-                  frond mixture with bituminous ash coal as co-firing fuel</h4>
-                  <h5> <strong>Authors :</strong> HP Putra, <strong>FM Kuswa</strong>, H Ghazidin, …</h5>
-              </a>
-              
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="service-item " data-aos="fade-up">
-            <div class="pemisah">
-                <img src = "assets/img/springer-logo.png" class="image">
-             
-              <a href="https://link.springer.com/article/10.1007/s13399-023-04418-z" class="stretched-link">
-                <h3>Biomass Conversion and Biorefinery</h3>
-                <h4>Investigation of the combustion and ash 
-                  deposition characteristics of oil palm waste biomasses</h4>
-                  <h5><strong>Authors : FM Kuswa</strong>, HP Putra, A Darmawan, …</h5>
-              </a>
-              
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="service-item " data-aos="fade-left">
-            <div class="pemisah">
-                <img src = "assets/img/elsevier_logo.png" class="image">
-             
-              <a href="https://www.sciencedirect.com/science/article/pii/S0960852423016401" class="stretched-link">
-                <h3>Bioresource Technology</h3>
-                <h4>Investigation on combustion characteristics and ash-related issues of Calliandra calothyrsus and 
-                  Gliricidia sepium using thermogravimetric analysis and drop tube furnace</h4>
-                  <h5> <strong>Authors :</strong> HP Putra, <strong>FM Kuswa</strong>, …</h5>
-              </a>
-              
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="service-item " data-aos="fade-right">
-            <div class="pemisah">
-                <img src = "assets/img/elsevier_logo.png" class="image">
-             
-              <a href="https://www.sciencedirect.com/science/article/pii/S2451904924000659" class="stretched-link">
-                <h3>Thermal Science and Engineering Progress</h3>
-                <h4>Investigation of the slagging and fouling aspects 
-                  of co-firing coal and organic refuse-derived fuel</h4>
-                  <h5> <strong>Authors :</strong> IB Novendianto, … , <strong>FM Kuswa</strong>, … , Hariana</h5>
-              </a>
-              
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="service-item " data-aos="fade-up">
-            <div class="pemisah">
-                <img src = "assets/img/elsevier_logo.png" class="image">
-             
-              <a href="https://www.sciencedirect.com/science/article/pii/S2589014X24000938" class="stretched-link">
-                <h3>Bioresource Technology Reports</h3>
-                <h4>Comprehensive experimental assessment of Samanea saman wood and leaves waste 
-                  combustion in the aspect of ash-related problem</h4>
-                  <h5> <strong>Authors :</strong> S Suyatno, …, <strong>FM Kuswa</strong>, …, Hariana</h5>
-              </a>
-              
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="service-item " data-aos="fade-up">
-            <div class="pemisah">
-                <img src = "assets/img/taylor-and-francis.png" class="image">
-             
-              <a href="https://www.tandfonline.com/doi/abs/10.1080/00102202.2024.2361090" class="stretched-link">
-                <h3>Combustion Science and Technology</h3>
-                <h4>Investigation of Slagging-Fouling and Mineral Contents in 
-                  Low-Rank Coals for Improved Combustion Performance</h4>
-                  <h5> <strong>Authors :</strong> S Suyatno, …, <strong>FM Kuswa</strong>, …, Hariana</h5>
-              </a>
-              
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="service-item " data-aos="fade-up">
-            <div class="pemisah">
-                <img src = "assets/img/springer-logo.png" class="image">
-             
-              <a href="https://link.springer.com/article/10.1007/s13399-024-05893-8" class="stretched-link">
-                <h3>Biomass Conversion and Biorefinery</h3>
-                <h4>Evaluation for the combination of oil palm biomass as co-firing fuel: 
-                  Investigation into ash-related problems</h4>
-                  <h5> <strong>Authors : FM Kuswa</strong>, HP Putra, …, Hariana</h5>
-              </a>
-              
-            </div>
-          </div><!-- End Service Item -->
+         
 
 
 
