@@ -4440,9 +4440,41 @@ input[type="button"].btn-block {
   list-style: none;
 }
 
-.navbar-nav .nav-link {
+.navbar-nav .nav-link .nav-profile{
   padding-right: 0;
   padding-left: 0;
+}
+
+.nav-profile {
+  position: relative;
+}
+
+.nav-profile .image {
+  display: inline-block;
+  padding-left: 0.8rem;
+  cursor: pointer;
+}
+
+.nav-profile, 
+.nav-profile .sapaan {
+
+  white-space: nowrap;
+}
+
+.nav-profile .sapaan {
+  display: inline-block;
+  padding: 5px 5px 5px 5px;
+}
+
+.nav-profile img {
+  height: auto;
+  width: 2.1rem;
+}
+
+.nav-profile a {
+  font-size: 15px;
+  color: #000;
+
 }
 
 .navbar-nav .dropdown-menu {
