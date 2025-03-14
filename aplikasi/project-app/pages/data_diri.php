@@ -1,3 +1,6 @@
+<!-- Cropper.js -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -41,32 +44,6 @@ if (isset ($_POST["upd_datadiri"])){
             });
             </script>";
 
-        
-    } else {
-        echo mysqli_error($koneksi);
-
-    }
-
-
-
-} ;
-
-
-if (isset ($_POST["updFoto"])){
-
-    if (updFoto($_POST) > 0){
-
-        echo "<script>
-            Swal.fire({
-            icon: 'success',
-            title: 'Update Berhasil Dilakukan!',
-            showConfirmButton: false,
-            timer: 1500
-            }).then(() => {
-                window.location.href = 'index.php?page=data-diri';
-            });
-            </script>";
-    //header("Location : index.php");
         
     } else {
         echo mysqli_error($koneksi);
@@ -259,47 +236,75 @@ if (isset ($_POST["updFoto"])){
 
 </div>
 </section>
-
 <div class="modal fade" id="modal-foto">
-<div class="modal-dialog modal-lg">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title">Upload Foto Profil</h4>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-
-    <form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
-    <div class="modal-body">
-
-            <input type="text" class="form-control" name="id" placeholder="" value="<?=$biodata["id"]?>" hidden>
-            
-            <label for="foto" class="col-form-label">UPLOAD DISINI: </label>
-             <br>       
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="foto" >
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <br>
-                      <p style="padding: 5px;font-style: italic;">(FILE : .jpeg, .jpg, .png dengan ukuran Max. 5MB)</p>
-                    <!-- <input type="file" class="form-control" name="foto" placeholder="" readonly> -->
-                    
-                   
-                
-            
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Upload Foto Profil</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-info" name="updFoto">UPLOAD</button>
+            <form class="form-horizontal" method="POST" action="../config/upload-foto.php" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <input type="hidden" name="id" value="<?=$biodata['id']?>">
+                    <input type="hidden" name="nama" value="<?=$biodata['nama']?>">
+                    <label for="foto" class="col-form-label">UPLOAD DISINI:</label>
+                    <br>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="foto" id="inputFoto">
+                        <label class="custom-file-label" for="inputFoto">Choose file</label>
+                    </div>
+                    <br>
+                    <p style="padding: 5px;font-style: italic;">(FILE: .jpeg, .jpg, .png dengan ukuran Max. 5MB)</p>
+                    <div id="imagePreviewContainer" style="text-align: center;">
+                        <img id="imagePreview" style="max-width: 100%; display: none;">
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-info" name="updFoto">UPLOAD</button>
+                </div>
+            </form>
+        </div>
     </div>
-    </form>
-  
-
-    </div>
-  </div>
-  <!-- /.modal-content -->
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    let inputFoto = document.querySelector('input[name="foto"]');
+    let imagePreview = document.getElementById('imagePreview');
+    let cropper;
+    
+    inputFoto.addEventListener('change', function (event) {
+        let file = event.target.files[0];
+        if (file) {
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block';
+                
+                if (cropper) {
+                    cropper.destroy();
+                }
+                cropper = new Cropper(imagePreview, {
+                    aspectRatio: 1,
+                    viewMode: 1
+                });
+            };
+            reader.readAsDataURL(file);
+        }
+    });
 
-
+    document.querySelector('form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        let croppedImageData = cropper.getCroppedCanvas().toDataURL('image/png');
+        let hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = 'cropped_image';
+        hiddenInput.value = croppedImageData;
+        this.appendChild(hiddenInput);
+        this.submit();
+    });
+});
+</script>

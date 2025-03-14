@@ -1,4 +1,5 @@
 <!-- Navbar -->
+<?php $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0]; ?>
 <nav class="main-header navbar navbar-expand navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -39,27 +40,35 @@
       <li class="nav-item dropdown">
         <div class="nav-profile" data-toggle="dropdown" href="#">
             <div class="image">
-                <img src="dist/img/avatar4.png" class="img-circle elevation-2" alt="User Image">
+                <img src="img/<?= $biodata["foto"]; ?>" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="sapaan">
-                <a href="#" class="d-block"><strong>Hai</strong>, <?php echo strtok($_SESSION['nama'], ' '); ?></a>
+                <a href="#" class="d-block"><strong>Hai</strong>,</a>
             </div>
+            <span><?php echo strtok($_SESSION['nama'], ' '); ?></span>
         </div>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <div class="user-box">
+          
+            <div class="avatar-lg"><img src="img/<?= $biodata["foto"]; ?>" alt="image profile" class="avatar-img rounded"></div>
+            <div class="u-text">
+              <h4><?php echo strtok($_SESSION['nama'], ' '). ' | ' . $_SESSION['level']; ?></h4>
+              <p class="text-muted"><?= $_SESSION['email'] ?></p><a href="index.php?page=cv-generator" class="btn btn-xs btn-primary btn-sm">View Profile</a>
+            </div>
+									
+           </div>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
+          <a href="index.php?page=data-diri" class="dropdown-item">
+            <i class="fas fa-user mr-2"></i>Update Biodata
+            
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
+            <i class="fas fa-lock mr-2"></i>Ubah Password
           </a>
           <div class="dropdown-divider"></div>
-          <a href="../config/logout.php" class="dropdown-item dropdown-footer text-danger">
-            <i class="fas fa-sign-out-alt nav-icon mr-2"></i> Sign Out     
+          <a href="../config/logout.php" class="dropdown-item text-danger">
+            <i class="fas fa-sign-out-alt nav-icon mr-2"></i>Sign Out     
           </a>
           
         </div>

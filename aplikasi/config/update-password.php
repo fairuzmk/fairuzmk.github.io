@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="../project-app/plugins/toastr/toastr.min.css">
   </head>
    <!-- Theme style -->
-   <link rel="stylesheet" href="../project-app/dist/css/adminlte.min.css">
+   <link rel="stylesheet" href="../project-app/dist/css/adminlte.css">
 
 <body>
 

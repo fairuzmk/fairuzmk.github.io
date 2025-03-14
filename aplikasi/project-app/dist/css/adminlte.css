@@ -4440,19 +4440,25 @@ input[type="button"].btn-block {
   list-style: none;
 }
 
-.navbar-nav .nav-link .nav-profile{
+.navbar-nav .nav-link{
   padding-right: 0;
   padding-left: 0;
 }
 
 .nav-profile {
   position: relative;
+  background-color: rgb(0, 0, 0, 0);
+  border-color: transparent;
+  border-radius: 5px;
 }
 
 .nav-profile .image {
   display: inline-block;
-  padding-left: 0.8rem;
+  padding: 0.2rem 0.2rem 0.2rem;
   cursor: pointer;
+  width: 2.5rem;
+  height: 2.5rem;
+  
 }
 
 .nav-profile, 
@@ -4463,18 +4469,53 @@ input[type="button"].btn-block {
 
 .nav-profile .sapaan {
   display: inline-block;
-  padding: 5px 5px 5px 5px;
+  padding: 5px 1px 5px 5px;
 }
 
 .nav-profile img {
-  height: auto;
-  width: 2.1rem;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
 }
 
 .nav-profile a {
   font-size: 15px;
   color: #000;
 
+}
+
+.nav-profile:hover{
+  background-color: rgb(0, 0, 0, 0.05);
+  transition: .5s;
+  
+}
+
+.nav-profile span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.nav-profile span:after {
+  content: "\f107"; /* Unicode untuk fa-angle-down */
+  font-family: "Font Awesome 5 Free"; /* Pastikan FontAwesome di-load */
+  font-weight: 900;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: 0px;
+  transition: 0.5s;
+}
+
+.nav-profile:hover span {
+  padding-right: 25px;
+}
+
+.nav-profile:hover span:after {
+  opacity: 1;
+  right: 8px;
 }
 
 .navbar-nav .dropdown-menu {
@@ -4523,6 +4564,47 @@ input[type="button"].btn-block {
   max-height: 75vh;
   overflow-y: auto;
 }
+
+.user-box {
+  display: flex;
+  padding: .5rem 1rem; 
+}
+  .user-box .u-text {
+    padding: 0 10px; 
+  }
+    .user-box .u-text h4 {
+      margin-bottom: 5px;
+      margin-top: 4px;
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1; 
+    }
+    .user-box .u-text .text-muted {
+      font-size: 12px;
+      margin-bottom: 5px; 
+    }
+    .user-box .u-text .btn {
+      font-size: 11px; 
+    }
+    .user-box img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Memastikan gambar terpotong */
+      object-position: center top; /* Fokus ke wajah */
+    }
+
+.avatar-lg {
+width: 4.5rem;
+height: 4.5rem; }
+.avatar-lg .border {
+border-width: 3px !important; }
+.avatar-lg .rounded {
+border-radius: 8px !important; }
+.avatar-lg .avatar-title {
+font-size: 24px; }
+.avatar-lg.avatar-online::before, .avatar-lg.avatar-offline::before, .avatar-lg.avatar-away::before {
+border-width: 3px; }
+    
 
 @media (max-width: 575.98px) {
   .navbar-expand-sm > .container,

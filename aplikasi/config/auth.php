@@ -24,6 +24,8 @@ if ($result->num_rows === 1) {
         $_SESSION["nama"] = $user["nama"];
         $_SESSION["level"] = $user["level"];
         $_SESSION["id_user"] = $user["id_user"];
+        $_SESSION["email"] = $user["email"];
+        $_SESSION["username"] = $user["username"];
         header("Location: ../project-app");
         exit;
     } else {
