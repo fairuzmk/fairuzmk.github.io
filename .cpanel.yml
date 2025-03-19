@@ -2,6 +2,7 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/jzvljezs/public_html
-    - /bin/cp index.html $DEPLOYPATH
+    - /bin/cp index.php $DEPLOYPATH
+    - /bin/cp -R htmldom $DEPLOYPATH
     - /bin/cp -R aplikasi $DEPLOYPATH
     - /bin/cp -R assets $DEPLOYPATH
