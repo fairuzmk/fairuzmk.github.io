@@ -130,7 +130,7 @@ if (isset ($_POST["upd_datadiri"])){
                             </div>
                         </div>
                         <div class="form-group row">
-                        <label for="email" class="col-sm-3 col-form-label">Email</label>
+                        <label for="email" class="col-sm-3 col-form-label">Email CV</label>
                             <div class="col-sm-8">
                             <input type="text" class="form-control" name="email" placeholder="" value="<?=$biodata["email"]?>">
                             </div>
@@ -245,25 +245,33 @@ if (isset ($_POST["upd_datadiri"])){
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="form-horizontal" method="POST" action="../config/upload-foto.php" enctype="multipart/form-data">
+            <form id="uploadForm" class="form-horizontal" method="POST" action="../config/upload-foto.php">
                 <div class="modal-body">
                     <input type="hidden" name="id" value="<?=$biodata['id']?>">
                     <input type="hidden" name="nama" value="<?=$biodata['nama']?>">
+                    
                     <label for="foto" class="col-form-label">UPLOAD DISINI:</label>
                     <br>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="foto" id="inputFoto">
+                        <input type="file" class="custom-file-input" id="inputFoto">
                         <label class="custom-file-label" for="inputFoto">Choose file</label>
                     </div>
                     <br>
                     <p style="padding: 5px;font-style: italic;">(FILE: .jpeg, .jpg, .png dengan ukuran Max. 5MB)</p>
+
+                    <!-- Preview dan Cropper -->
                     <div id="imagePreviewContainer" style="text-align: center;">
-                        <img id="imagePreview" style="max-width: 100%; display: none;">
+                        <img id="imagePreview" style="max-width: 50%; display: none;">
                     </div>
+                    
+                    <!-- Hidden input untuk menyimpan gambar yang sudah dicrop -->
+                    <input type="hidden" name="cropped_image" id="croppedImage">
                 </div>
+
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-info" name="updFoto">UPLOAD</button>
+                    <button type="button" class="btn btn-warning" id="cropButton" style="display:none;">Crop</button>
+                    <button type="submit" class="btn btn-info" name="updFoto" id="uploadButton" style="display:none;">UPLOAD</button>
                 </div>
             </form>
         </div>
@@ -272,10 +280,14 @@ if (isset ($_POST["upd_datadiri"])){
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    let inputFoto = document.querySelector('input[name="foto"]');
+    let inputFoto = document.getElementById('inputFoto');
     let imagePreview = document.getElementById('imagePreview');
+    let cropButton = document.getElementById('cropButton');
+    let uploadButton = document.getElementById('uploadButton');
+    let croppedImageInput = document.getElementById('croppedImage');
     let cropper;
-    
+
+    // Ketika user memilih gambar
     inputFoto.addEventListener('change', function (event) {
         let file = event.target.files[0];
         if (file) {
@@ -283,12 +295,16 @@ document.addEventListener('DOMContentLoaded', function () {
             reader.onload = function (e) {
                 imagePreview.src = e.target.result;
                 imagePreview.style.display = 'block';
+                cropButton.style.display = 'inline-block'; // Tampilkan tombol Crop
                 
+                // Hapus cropper lama jika ada
                 if (cropper) {
                     cropper.destroy();
                 }
+
+                // Aktifkan Cropper.js
                 cropper = new Cropper(imagePreview, {
-                    aspectRatio: 1,
+                    aspectRatio: 3/4, // Bisa disesuaikan
                     viewMode: 1
                 });
             };
@@ -296,15 +312,32 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    document.querySelector('form').addEventListener('submit', function (event) {
-        event.preventDefault();
-        let croppedImageData = cropper.getCroppedCanvas().toDataURL('image/png');
-        let hiddenInput = document.createElement('input');
-        hiddenInput.type = 'hidden';
-        hiddenInput.name = 'cropped_image';
-        hiddenInput.value = croppedImageData;
-        this.appendChild(hiddenInput);
-        this.submit();
+    // Ketika tombol "Crop" ditekan
+    cropButton.addEventListener('click', function () {
+        let canvas = cropper.getCroppedCanvas({
+            width: 1500, // Batasi ukuran gambar
+            height: 2000
+        });
+
+        // Ubah menjadi JPEG dengan kualitas 70%
+        let croppedImageData = canvas.toDataURL('image/jpeg', 0.7);
+
+        croppedImageInput.value = croppedImageData; // Simpan di hidden input
+        
+        // Tampilkan hasil crop
+        imagePreview.src = croppedImageData;
+        cropper.destroy();
+
+        uploadButton.style.display = 'inline-block'; // Tampilkan tombol Upload
+        cropButton.style.display = 'none'; // Sembunyikan tombol Crop
+    });
+
+    // Mencegah pengiriman file asli
+    document.getElementById('uploadForm').addEventListener('submit', function (event) {
+        if (!croppedImageInput.value) {
+            alert('Silakan crop gambar terlebih dahulu!');
+            event.preventDefault();
+        }
     });
 });
 </script>

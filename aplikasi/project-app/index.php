@@ -38,7 +38,7 @@
     if (isset($_GET['page'])){
       if ($_GET['page']=='dashboard'){
 
-        include 'template.php';
+        include 'dashboard.php';
       }
       else if($_GET['page']=='cv-generator'){
         include 'app_cv.php';
@@ -91,7 +91,7 @@
       }
     }
     else {
-      include 'template.php';
+      include 'dashboard.php';
     }
     
      ?>

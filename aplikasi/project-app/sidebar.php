@@ -14,12 +14,12 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
         <img src="dist/img/MILKio-white.png" alt="Milk-io Logo" class="brand-image-xl" style="opacity:">
-        <span class="brand-text">MILK.io APP</span>
+        <span class="brand-text">MILK.io</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
+        <!-- Sidebar user panel (optional)
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
                 <img src="dist/img/avatar4.png" class="img-circle elevation-2" alt="User Image">
@@ -27,13 +27,13 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
             <div class="info">
                 <a href="#" class="d-block"><?php echo strtok($_SESSION['nama'], ' ') . ' | ' . $_SESSION['level']; ?></a>
             </div>
-        </div>
+        </div> -->
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Dashboard -->
-                <li class="nav-item <?php echo $page === 'dashboard' || $page === 'cv-generator' || $page === 'data-diri' || $page === 'data-pendidikan'|| $page === 'data-kti' || $page === 'data-work' || $page === 'data-pelatihan' ? 'menu-open' : ''; ?>">
+                <li class="nav-item mt-3 <?php echo $page === 'dashboard' || $page === 'cv-generator' || $page === 'data-diri' || $page === 'data-pendidikan'|| $page === 'data-kti' || $page === 'data-work' || $page === 'data-pelatihan' ? 'menu-open' : ''; ?>">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -197,13 +197,7 @@ $biodata = query("SELECT * from tb_personal WHERE nama = '$nama' ")[0];
                     </a>
                 </li>
 
-                <!-- Sign Out -->
-                <li class="nav-item">
-                    <a href="../config/logout.php" class="nav-link text-warning">
-                        <i class="fas fa-sign-out-alt nav-icon"></i>
-                        <p>Sign Out</p>
-                    </a>
-                </li>
+                
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

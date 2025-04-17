@@ -13,6 +13,13 @@ function query($query){
 
 }
 
+function querySingle($query) {
+   global $koneksi;
+   $result = mysqli_query($koneksi, $query);
+   $row = mysqli_fetch_assoc($result);
+   return $row ? array_values($row)[0] : null;
+}
+
 function updDataDiri($data){
 
    global $koneksi;

@@ -98,7 +98,7 @@ function updFoto($data){
 
    //UPLOAD FOTO GAMBAR
    $id = isset($data['id']) ? ($data['id']) : '';
-   $foto = upload();
+   $foto = uploadFoto();
    if (!$foto) {
     return false;
    }
@@ -113,6 +113,54 @@ mysqli_query($koneksi, $upd_foto);
 return mysqli_affected_rows($koneksi);
 
 }
+
+function uploadFoto(){
+    
+    if (!isset($_POST['cropped_image'])) {
+        echo "<script>alert('Silakan crop gambar terlebih dahulu');</script>";
+        return false;
+    }
+
+    global $nama;
+    $namadepan = strtok($nama, ' ');
+
+    // Ambil data gambar Base64
+    $data = $_POST['cropped_image'];
+
+    // Deteksi format gambar dari Base64
+    if (preg_match('/^data:image\/(png|jpeg|jpg);base64,/', $data, $matches)) {
+        $ext = $matches[1] === 'jpeg' ? 'jpg' : $matches[1]; // Ubah 'jpeg' jadi 'jpg'
+        $data = preg_replace('/^data:image\/\w+;base64,/', '', $data);
+        $data = base64_decode($data);
+    } else {
+        echo "<script>alert('Format gambar tidak valid');</script>";
+        return false;
+    }
+
+    // Nama file unik
+    $namaFileBaru = uniqid('img_', true) . '_' . $namadepan . '.' . $ext;
+    $targetDir = '../project-app/img/';
+
+    // Buat folder jika belum ada
+    if (!is_dir($targetDir)) {
+        mkdir($targetDir, 0777, true);
+    }
+
+    // Simpan gambar dengan kompresi (JPEG 80%)
+    $filePath = $targetDir . $namaFileBaru;
+    $imageResource = imagecreatefromstring($data);
+
+    if ($ext === 'png') {
+        imagepng($imageResource, $filePath, 2); // 0-9 (Semakin tinggi, semakin kecil ukuran)
+    } else {
+        imagejpeg($imageResource, $filePath, 80); // 0-100 (80% cukup untuk kualitas baik)
+    }
+
+    imagedestroy($imageResource);
+
+    return $namaFileBaru;
+}
+
 
 function upload(){
     global $nama;

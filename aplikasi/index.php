@@ -39,7 +39,14 @@
   <?php require "config/connection.php"; ?>
   
 <body>
-  
+    <?php
+    session_start();
+
+    if (isset($_SESSION["nama"])){
+        header('Location: project-app/index.php');
+        exit;
+    }
+    ?>
   
   <div class="container">
     

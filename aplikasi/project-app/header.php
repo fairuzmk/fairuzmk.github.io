@@ -51,5 +51,7 @@
   
   <!-- SweetAlert2 JS-->
   <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+  <!-- Bootstrap Icon-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   
 </head>

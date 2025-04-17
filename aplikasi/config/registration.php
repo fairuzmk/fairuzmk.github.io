@@ -78,8 +78,8 @@ function registrasi($data){
    mysqli_query($koneksi, "INSERT INTO tb_users (id_user,nama,username, password, level, email) 
                                        VALUES ('', '$nama', '$username', '$password', '$level', '$email')");
    
-   mysqli_query($koneksi, "INSERT INTO tb_personal (id, nama, email, foto) 
-                                       VALUES ('', '$nama', '$email', '$foto')");
+   mysqli_query($koneksi, "INSERT INTO tb_personal (id, nama, foto) 
+                                       VALUES ('', '$nama', '$foto')");
 
    return mysqli_affected_rows($koneksi);
 }
