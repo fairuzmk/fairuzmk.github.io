@@ -2,7 +2,7 @@
 $host = "localhost";
 
 $dbusername = "root";
-$dbpassword = "";
+$dbpassword = "Bluefire04";
 $db_name = "db_aplikasi";
 
 // $dbusername = "jzvljezs_fairuzm";
