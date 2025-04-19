@@ -44,25 +44,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $koneksi->prepare("UPDATE tb_users SET reset_token = ?, reset_expires = ? WHERE email = ?");
         $stmt->bind_param("sss", $token, $expires, $email);
         $stmt->execute();
-
+        //cbmm lbvj tbjr vnql
         // Kirim email dengan PHPMailer
         $mail = new PHPMailer(true);
         try {
             $mail->isSMTP();
-            $mail->Host = 'mail.fairuzmk.my.id'; // Ganti dengan SMTP dari cPanel
+            $mail->Host = 'smtp.gmail.com'; // Gmail SMTP server
             $mail->SMTPAuth = true;
-            $mail->Username = 'noreply@fairuzmk.my.id'; // Email hosting
-            $mail->Password = 'Fairuz29!'; // Password email
+            $mail->Username = 'fairuzdeveloper@gmail.com'; // Ganti dengan email Gmail kamu
+            $mail->Password = 'cbmm lbvj tbjr vnql'; // Ganti dengan App Password dari Gmail (bukan password biasa)
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Gunakan SSL
-            $mail->Port = 465; // Gunakan port 465 untuk SSL atau 587 untuk TLS
-
-            $mail->setFrom('noreply@fairuzmk.my.id', 'MILK-io Website');
+            $mail->Port = 465;
+        
+            $mail->setFrom('fairuzdeveloper@gmail.com', 'MILK-io Website'); // Bisa beda dari $mail->Username
             $mail->addAddress($email);
-
+        
             $mail->Subject = "Permintaan Reset Password";
             $resetLink = "https://fairuzmk.my.id/aplikasi/reset-password.php?token=$token";
             $mail->Body = "Halo $nama,\n\n Username anda: $username\n\nAnda telah meminta untuk mereset password.\n\nKlik link berikut untuk mereset password Anda:\n$resetLink\n\nJika Anda tidak merasa melakukan ini, abaikan saja email ini.";
-
+        
             $mail->send();
             header("Location: ../forgot-password.php?error=0");
             exit;
