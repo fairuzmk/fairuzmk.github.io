@@ -1,0 +1,17 @@
+[2025-04-19 03:33:15]
+error: insufficient permission for adding an object to repository database .git/objects
+fatal: failed to write object
+fatal: unpack-objects failed
+
+----------------------
+[2025-04-19 03:35:25]
+From https://github.com/fairuzmk/fairuzmk.github.io
+   6a95eb7..f82d238  main       -> origin/main
+error: Your local changes to the following files would be overwritten by merge:
+	aplikasi/config/test.php
+	aplikasi/project-app/404.php
+Please commit your changes or stash them before you merge.
+Aborting
+Updating 6811bfa..f82d238
+
+----------------------
