@@ -1,0 +1,14 @@
+<?php
+require "connection.php";
+
+if (isset($_POST["username_registrasi"])) {
+    $username = strtolower(stripslashes($_POST["username_registrasi"]));
+    $result = mysqli_query($koneksi, "SELECT * FROM tb_users WHERE username = '$username'");
+    
+    if (mysqli_num_rows($result) > 0) {
+        echo "taken";
+    } else {
+        echo "available";
+    }
+}
+?>

@@ -144,7 +144,7 @@ if (isset ($_POST["upd_datadiri"])){
                             <div class="col-sm-8">
                             <img src="img/<?= $biodata["foto"]; ?>" alt="Gambar" width="200">
                             <hr>
-                            <button type="button" class="btn btn-primary" id="btn-update" style="" data-toggle="modal" data-target="#modal-foto">Upload Foto</button>
+                            <button type="button" class="btn btn-primary" id="btn-update" data-toggle="modal" data-target="#modal-foto">Upload Foto</button>
                             </div>
                         </div> 
                         

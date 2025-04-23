@@ -92,7 +92,7 @@
               <i class="fas fa-envelope"></i>
             </div>
             <div class="input-box">
-              <input name="username" id="username" type ="text" class="form-control" placeholder="Username" required>
+              <input name="username_registrasi" id="username_registrasi" type ="text" class="form-control" placeholder="Username" required>
               <i class="far fa-user-circle"></i>
             </div>
             <div class="input-box">
@@ -168,7 +168,31 @@
 <!-- Toastr -->
 <script src="project-app/plugins/toastr/toastr.min.js"></script>
 
-<?php require "config/registration.php"; ?>
+<script>
+  $(document).ready(function () {
+    $("#username_registrasi").on("keyup", function () {
+      var username = $(this).val();
+      if (username.length > 3) {
+        $.ajax({
+          url: "config/checkusername.php",
+          type: "POST",
+          data: { username: username },
+          success: function (response) {
+            if (response == "taken") {
+              $("#usernameFeedback").text("Username sudah terpakai").show();
+            } else {
+              $("#usernameFeedback").text("").hide();
+            }
+          }
+        });
+      } else {
+        $("#usernameFeedback").text("Username minimal 4 karakter").show();
+      }
+    });
+  });
+</script>
+
+<!-- <?php require "config/registration.php"; ?> -->
 
 <!-- Logic Gagal Login-->
 <?php
@@ -232,24 +256,21 @@
       {
         echo "
         <script>
-        
-        var Toast = Swal.mixin({
-        toast: true,
-        position: 'top-center',
-        showConfirmButton: false,
-        timer: 3000
-      });
-  
-        Toast.fire({
-          icon: 'success',
-          
-          text: 'Silahkan cek email anda!'
-        })
-          </script>";
+            Swal.fire({
+            icon: 'success',
+            title: 'Registrasi Berhasil Dilakukan!',
+            text: 'Silahkan Cek Email Anda'
+            showConfirmButton: false,
+            timer: 3000
+            }).then(() => {
+                window.location.href = 'index.php';
+            });
+            </script>";
       }
     }
 ?> 
   <!-- Logic Gagal Login-->
+
 
   </body>
   <!--end::Body-->

@@ -6,7 +6,7 @@ require "../vendor/autoload.php";
 require "connection.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   $username = strtolower(stripslashes($_POST["username"]));
+   $username = strtolower(stripslashes($_POST["username_registrasi"]));
    $password = mysqli_real_escape_string($koneksi, $_POST["password"]);
    $password2 = mysqli_real_escape_string($koneksi, $_POST["password2"]);
    $level = mysqli_real_escape_string($koneksi, $_POST["level"]);
