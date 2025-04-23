@@ -103,6 +103,7 @@
             <div class="input-box">
               <input name="password2" id="password2" type="password" class="form-control" placeholder="Konfirmasi Password" required>
               <i class="fas fa-lock"></i>
+              <small id="passwordFeedback" style="color: red; display: none;"></small>
                 
             </div>
             <input name="level" id="level" type="text" class="" value="User" hidden>
@@ -130,12 +131,12 @@
           <p>Don't Have an Account?</p>
           <button class="btn register-btn">Register</button>
           <div class="login-logo">
-            <a href="../index.html"><img class="login-box-msg" src="MILKio-white.png" alt="Milk.io logo" height="100" width="100"></a>
+            <a href="../index.php"><img class="login-box-msg" src="MILKio-white.png" alt="Milk.io logo" height="100" width="100"></a>
           </div>
           </div>
           <div class="toggle-panel toggle-right">
           <div class="login-logo">
-            <a href="../index.html"><img class="login-box-msg" src="MILKio-white.png" alt="Milk.io logo" height="100" width="100"></a>
+            <a href="../index.php"><img class="login-box-msg" src="MILKio-white.png" alt="Milk.io logo" height="100" width="100"></a>
           </div>
           <h1>Welcome to MILK.io!</h1>
           <p>Already have an account?</p>
@@ -191,6 +192,25 @@
       }
     });
   });
+</script>
+
+<script>
+$(document).ready(function(){
+    $('#password2').on('input', function() {
+        var pass = $('#password').val();
+        var pass2 = $('#password2').val();
+
+        if (pass2.length > 0) {
+            if (pass === pass2) {
+                $('#passwordFeedback').text('Password cocok').css('color', 'green').show();
+            } else {
+                $('#passwordFeedback').text('Password tidak cocok').css('color', 'red').show();
+            }
+        } else {
+            $('#passwordFeedback').hide();
+        }
+    });
+});
 </script>
 
 <!-- <?php require "config/registration.php"; ?> -->
