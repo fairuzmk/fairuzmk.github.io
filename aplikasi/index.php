@@ -177,7 +177,7 @@
         $.ajax({
           url: "config/checkusername.php",
           type: "POST",
-          data: { username: username },
+          data: { username_registrasi: username },
           success: function (response) {
             if (response == "taken") {
               $("#usernameFeedback").text("Username sudah terpakai").show();
