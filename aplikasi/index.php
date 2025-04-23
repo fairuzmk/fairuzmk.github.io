@@ -37,9 +37,8 @@
   <!--begin::Body-->
 
   <?php 
-  require "config/vendor/autoload.php"; // Jika menggunakan Composer
-  require "config/connection.php"; // File koneksi ke database
-  date_default_timezone_set('Asia/Jakarta');   
+  require "config/vendor/autoload.php";
+  require "config/connection.php";
   ?>
 
 
