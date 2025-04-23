@@ -100,8 +100,8 @@ function tambahPendidikan($data){
    
   
   
-     $tambah_pendidikan = "INSERT INTO tb_pendidikan (id,nama,kampus, jenjang, jurusan, tahun_masuk , tahun) 
-                                            VALUES ('','$nama','$kampus', '$jenjang', '$jurusan','$tahun_masuk', '$tahun')";
+     $tambah_pendidikan = "INSERT INTO tb_pendidikan (nama,kampus, jenjang, jurusan, tahun_masuk , tahun) 
+                                            VALUES ('$nama','$kampus', '$jenjang', '$jurusan','$tahun_masuk', '$tahun')";
           
  
     mysqli_query($koneksi, $tambah_pendidikan);
