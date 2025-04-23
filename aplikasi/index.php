@@ -38,7 +38,7 @@
 
 
 <body>
-  <?php require "config/vendor/autoload.php"; ?>
+
   <?php require "config/connection.php"; ?>
     <?php
     session_start();
@@ -81,7 +81,7 @@
       <!-- /.login-logo -->
       <div class="card-box register">
             
-          <form action="" method="post">
+          <form action="config/registration2.php" method="post">
           <h1>Register</h1>
             <div class="input-box">
               <input name="nama" id="nama" type ="text" class="form-control" placeholder="Full Name" required>
@@ -171,7 +171,7 @@
 <?php require "config/registration.php"; ?>
 
 <!-- Logic Gagal Login-->
-      <?php
+<?php
     if(isset($_GET['error']))
     {
       $x = ($_GET['error']);
@@ -219,11 +219,37 @@
       }
 
     }
-            ?>
-    
-    
+?> 
   <!-- Logic Gagal Login-->
 
+
+  <!-- Logic Gagal Register-->
+<?php
+    if(isset($_GET['registrasi']))
+    {
+      $y = ($_GET['registrasi']);
+      if ($y==1)
+      {
+        echo "
+        <script>
+        
+        var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-center',
+        showConfirmButton: false,
+        timer: 3000
+      });
+  
+        Toast.fire({
+          icon: 'success',
+          
+          text: 'Silahkan cek email anda!'
+        })
+          </script>";
+      }
+    }
+?> 
+  <!-- Logic Gagal Login-->
 
   </body>
   <!--end::Body-->
