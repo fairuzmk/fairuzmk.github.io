@@ -94,6 +94,7 @@
             <div class="input-box">
               <input name="username_registrasi" id="username_registrasi" type ="text" class="form-control" placeholder="Username" required>
               <i class="far fa-user-circle"></i>
+              <small id="usernameFeedback" style="color: red; display: none;"></small>
             </div>
             <div class="input-box">
               <input name="password" id="password" type ="password" class="form-control" placeholder="Password" required>
