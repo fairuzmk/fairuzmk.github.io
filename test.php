@@ -19,7 +19,7 @@
     $response2 = file_get_contents($url2, false, $context2);
     $data2 = json_decode($response2, true);
 
-    // var_dump($data2);
+    var_dump($data2);
     // echo "Nama Penulis: " . $data['author-retrieval-response'][0]['author-profile']['preferred-name']['surname'] . "\n";
     echo "H-Index: " . $data2['author-retrieval-response'][0]['h-index'];
 
