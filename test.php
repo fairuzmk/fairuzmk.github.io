@@ -21,7 +21,7 @@
 
     // var_dump($data2);
     // echo "Nama Penulis: " . $data['author-retrieval-response'][0]['author-profile']['preferred-name']['surname'] . "\n";
-    // echo "H-Index: " . $data['author-retrieval-response'][0]['h-index'];
+    echo "H-Index: " . $data['author-retrieval-response'][0]['h-index'];
 
     
     $url = "https://api.elsevier.com/content/search/scopus?query=AU-ID($authorId)&apiKey=$apiKey";
