@@ -37,7 +37,8 @@
   <!--begin::Body-->
 
   <?php require "config/connection.php"; ?>
-  
+echo "User MySQL yang sedang digunakan: " . mysqli_get_user($koneksi);
+
 <body>
     <?php
     session_start();
