@@ -97,7 +97,7 @@
               <small id="usernameFeedback" style="color: red; display: none;"></small>
             </div>
             <div class="input-box">
-              <input name="password" id="password" type ="password" class="form-control" placeholder="Password" required>
+              <input name="password" id="password1" type ="password" class="form-control" placeholder="Password" required>
               <i class="fas fa-lock"></i>
             </div>
             <div class="input-box">
@@ -197,7 +197,7 @@
 <script>
 $(document).ready(function(){
     $('#password2').on('input', function() {
-        var pass = $('#password').val();
+        var pass = $('#password1').val();
         var pass2 = $('#password2').val();
 
         if (pass2.length > 0) {
