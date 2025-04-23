@@ -6,17 +6,13 @@ require "../vendor/autoload.php";
 require "connection.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   $username = strtolower(stripslashes($data["username"]));
-   $password = mysqli_real_escape_string($koneksi, $data["password"]);
-   $password2 = mysqli_real_escape_string($koneksi, $data["password2"]);
-   $level = mysqli_real_escape_string($koneksi, $data["level"]);
-   //
-   $nama = htmlspecialchars($data["nama"]);
-   $email = htmlspecialchars($data["email"]);
-   // $contact_hp = htmlspecialchars($data["contact_hp"]);
-   $foto = htmlspecialchars($data["foto"]);
-   //cek username sudah ada atau belum
-   //$cek_user = mysqli_query ($koneksi, "SELECT username FROM  tb_users WHERE username='$username'");
+   $username = strtolower(stripslashes($_POST["username"]));
+   $password = mysqli_real_escape_string($koneksi, $_POST["password"]);
+   $password2 = mysqli_real_escape_string($koneksi, $_POST["password2"]);
+   $level = mysqli_real_escape_string($koneksi, $_POST["level"]);
+   $nama = htmlspecialchars($_POST["nama"]);
+   $email = htmlspecialchars($_POST["email"]);
+   $foto = htmlspecialchars($_POST["foto"]);
  
 
       
