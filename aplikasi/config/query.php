@@ -157,8 +157,8 @@ function tambahPendidikan($data){
   
   
 
-    $tambah_kti = "INSERT INTO tb_karyailmiah (id,nama, judul, jurnal, author, year , reputasi, publisher) 
-                                            VALUES ('','$nama','$judul', '$jurnal', '$author','$year', '$reputasi', '$publisher')";
+    $tambah_kti = "INSERT INTO tb_karyailmiah (nama, judul, jurnal, author, year , reputasi, publisher) 
+                                            VALUES ('$nama','$judul', '$jurnal', '$author','$year', '$reputasi', '$publisher')";
           
  
     mysqli_query($koneksi, $tambah_kti);
@@ -212,8 +212,8 @@ function tambahPendidikan($data){
  
   
 
-    $tambah_workexp = "INSERT INTO tb_experience (id,nama, kegiatan, kerjasama, peran, year) 
-                                            VALUES ('','$nama','$kegiatan', '$kerjasama', '$peran','$year')";
+    $tambah_workexp = "INSERT INTO tb_experience (nama, kegiatan, kerjasama, peran, year) 
+                                            VALUES ('$nama','$kegiatan', '$kerjasama', '$peran','$year')";
           
  
     mysqli_query($koneksi, $tambah_workexp);
@@ -262,8 +262,8 @@ function tambahPendidikan($data){
  
   
 
-    $tambah_diklat = "INSERT INTO tb_diklat (id,nama, diklat, penyelenggara, tempat, year) 
-                                            VALUES ('','$nama','$diklat', '$penyelenggara', '$tempat','$year')";
+    $tambah_diklat = "INSERT INTO tb_diklat (nama, diklat, penyelenggara, tempat, year) 
+                                            VALUES ('$nama','$diklat', '$penyelenggara', '$tempat','$year')";
           
  
     mysqli_query($koneksi, $tambah_diklat);
