@@ -61,7 +61,7 @@
             <div class="card">
               <div class="row">
                 <div class="col-md-4 d-flex justify-content-center">
-                  <div class="grid-box mt-3 bg-primary" style="">
+                  <div class="grid-box mt-3 bg-primary" >
                       
                         <i class="bi bi-mortarboard-fill"></i>
                         <a href="index.php?page=data-pendidikan"><?php 
@@ -77,7 +77,7 @@
                   </div>
                 </div>
                 <div class="col-md-4 d-flex justify-content-center">
-                  <div class="grid-box mt-3 bg-success" style="">
+                  <div class="grid-box mt-3 bg-success" >
                     
                     <i class="bi bi-suitcase-lg-fill"></i>
                     <a href="index.php?page=data-work"><?= $jml_work ?> Works</a>
@@ -85,7 +85,7 @@
                 </div>
             
                 <div class="col-md-4 d-flex justify-content-center">
-                  <div class="grid-box mt-3 bg-info" style="">
+                  <div class="grid-box mt-3 bg-info" >
                       
                         <i class="fas fa-microscope" style="padding: 30px;"></i>
                         <a href="index.php?page=data-kti"><?= $jml_kti ?> Publications</a>
@@ -93,7 +93,7 @@
                   </div>
                 </div>
                 <div class="col-md-4 d-flex justify-content-center">
-                  <div class="grid-box mt-3 bg-secondary" style="">
+                  <div class="grid-box mt-3 bg-secondary" >
                   <i class="fas fa-chalkboard-teacher" style="padding: 30px;"></i>
                   <a href="index.php?page=data-pelatihan"><?= $jml_diklat ?> Training Exp</a>
                   </div>         

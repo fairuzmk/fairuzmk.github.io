@@ -75,11 +75,11 @@ function registrasi($data){
 
 
    //TAMBAHKAN DATA ke DATABASE
-   mysqli_query($koneksi, "INSERT INTO tb_users (id_user,nama,username, password, level, email) 
-                                       VALUES ('', '$nama', '$username', '$password', '$level', '$email')");
+   mysqli_query($koneksi, "INSERT INTO tb_users (nama,username, password, level, email, contact_hp) 
+                                       VALUES ('$nama', '$username', '$password', '$level', '$email', '')");
    
-   mysqli_query($koneksi, "INSERT INTO tb_personal (id, nama, foto) 
-                                       VALUES ('', '$nama', '$foto')");
+   mysqli_query($koneksi, "INSERT INTO tb_personal (nama, foto) 
+                                       VALUES ('$nama', '$foto')");
 
    return mysqli_affected_rows($koneksi);
 }

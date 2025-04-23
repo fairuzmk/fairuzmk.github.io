@@ -37,9 +37,7 @@
   <!--begin::Body-->
 
   <?php require "config/connection.php"; ?>
-<?php $result = mysqli_query($koneksi, "SELECT CURRENT_USER()");
-$row = mysqli_fetch_row($result);
-echo "User MySQL yang digunakan: " . $row[0]; ?>
+
 
 <body>
     <?php
