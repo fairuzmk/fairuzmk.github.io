@@ -38,7 +38,7 @@
 
 
 <body>
-  <?php require "config/vendor/autoload.php"; ?>
+ 
   <?php require "config/connection.php"; ?>
     <?php
     session_start();
