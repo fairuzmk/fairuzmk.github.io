@@ -2,10 +2,6 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '../vendor/autoload.php'; // Jika menggunakan Composer
-require 'connection.php'; // File koneksi ke database
-date_default_timezone_set('Asia/Jakarta');
-
 function registrasi($data){
 
    global $koneksi;
@@ -87,16 +83,7 @@ function registrasi($data){
    mysqli_query($koneksi, "INSERT INTO tb_personal (nama, foto) 
                                        VALUES ('$nama', '$foto')");
    
-   
-
-
-   return mysqli_affected_rows($koneksi);
-}
-
-if (isset ($_POST["register"])){
-
-    if (registrasi($_POST) > 0){
-         $mail = new PHPMailer(true);
+   $mail = new PHPMailer(true);
          try {
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';
@@ -150,6 +137,16 @@ if (isset ($_POST["register"])){
          } catch (Exception $e) {
             echo "Email tidak dapat dikirim. Error: {$mail->ErrorInfo}";
          }
+
+
+   return mysqli_affected_rows($koneksi);
+}
+
+if (isset ($_POST["register"])){
+
+    if (registrasi($_POST) > 0){
+
+         
 
       echo "<script>
             Swal.fire({
