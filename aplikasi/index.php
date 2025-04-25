@@ -208,7 +208,7 @@
           }
         });
       } else {
-        $("#emailFeedback").text("").show();
+        $("#emailFeedback").text("Masukkan email yang benar").show();
       }
     });
   });
