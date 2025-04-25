@@ -88,12 +88,12 @@
               <i class="fas fa-user"></i>
             </div>
             <div class="input-box">
-              <input name="email" id="email_registrasi" type ="email" class="form-control" placeholder="Email" required>
+              <input name="email" id="email_registrasi" type ="email" class="form-control" placeholder="Email" data-bs-toggle="tooltip" data-bs-placement="right" title="" required>
               <i class="fas fa-envelope"></i>
               <small id="emailFeedback" style="color: red; display: none;"></small>
             </div>
             <div class="input-box">
-              <input name="username_registrasi" id="username_registrasi" type ="text" class="form-control" placeholder="Username" required>
+              <input name="username_registrasi" id="username_registrasi" type ="text" class="form-control" placeholder="Username" data-bs-toggle="tooltip" data-bs-placement="right" title="" required>
               <i class="far fa-user-circle"></i>
               <small id="usernameFeedback" style="color: red; display: none;"></small>
             </div>
@@ -172,47 +172,66 @@
 <script src="project-app/plugins/toastr/toastr.min.js"></script>
 
 <script>
-  $(document).ready(function () {
-    $("#username_registrasi").on("keyup", function () {
-      var username = $(this).val();
-      if (username.length > 3) {
-        $.ajax({
-          url: "config/checkusername.php",
-          type: "POST",
-          data: { username_registrasi: username },
-          success: function (response) {
-            if (response == "taken") {
-              $("#usernameFeedback").text("Username sudah terpakai").show();
-            } else {
-              $("#usernameFeedback").text("").hide();
-            }
-          }
-        });
-      } else {
-        $("#usernameFeedback").text("Username minimal 4 karakter").show();
-      }
-    });
-
-    $("#email_registrasi").on("keyup", function () {
-      var email = $(this).val();
-      if (email.length > 3) {
-        $.ajax({
-          url: "config/checkusername.php",
-          type: "POST",
-          data: { email_registrasi: email },
-          success: function (response) {
-            if (response == "taken") {
-          $input.attr("title", "Email sudah terpakai").tooltip('show');
-        } else {
-          $input.removeAttr("title").tooltip('dispose');
-        }
-      }
-    });
-  } else {
-    $input.attr("title", "Masukkan email yang benar").tooltip('show');
-  }
-    });
+ $(document).ready(function () {
+  // Inisialisasi tooltip manual
+  const usernameTooltip = new bootstrap.Tooltip(document.getElementById('username_registrasi'), {
+    trigger: 'manual'
   });
+
+  const emailTooltip = new bootstrap.Tooltip(document.getElementById('email_registrasi'), {
+    trigger: 'manual'
+  });
+
+  $("#username_registrasi").on("keyup", function () {
+    const username = $(this).val();
+    const input = this;
+
+    if (username.length > 3) {
+      $.ajax({
+        url: "config/checkusername.php",
+        type: "POST",
+        data: { username_registrasi: username },
+        success: function (response) {
+          if (response == "taken") {
+            input.setAttribute("title", "Username sudah terpakai");
+            usernameTooltip.show();
+          } else {
+            input.setAttribute("title", "");
+            usernameTooltip.hide();
+          }
+        }
+      });
+    } else {
+      input.setAttribute("title", "Username minimal 4 karakter");
+      usernameTooltip.show();
+    }
+  });
+
+  $("#email_registrasi").on("keyup", function () {
+    const email = $(this).val();
+    const input = this;
+
+    if (email.length > 3) {
+      $.ajax({
+        url: "config/checkusername.php",
+        type: "POST",
+        data: { email_registrasi: email },
+        success: function (response) {
+          if (response == "taken") {
+            input.setAttribute("title", "Email sudah terpakai");
+            emailTooltip.show();
+          } else {
+            input.setAttribute("title", "");
+            emailTooltip.hide();
+          }
+        }
+      });
+    } else {
+      input.setAttribute("title", "Masukkan email yang benar");
+      emailTooltip.show();
+    }
+  });
+});
 </script>
 
 <script>
