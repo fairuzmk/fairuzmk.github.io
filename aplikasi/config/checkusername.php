@@ -12,8 +12,8 @@ if (isset($_POST["username_registrasi"])) {
     }
 }
 
-if (isset($_POST["email_registrasi"])) {
-    $email = strtolower(stripslashes($_POST["email_registrasi"]));
+if (isset($_POST["email"])) {
+    $email = strtolower(stripslashes($_POST["email"]));
     $result = mysqli_query($koneksi, "SELECT * FROM tb_users WHERE email = '$email'");
     
     if (mysqli_num_rows($result) > 0) {
