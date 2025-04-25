@@ -88,7 +88,7 @@
               <i class="fas fa-user"></i>
             </div>
             <div class="input-box">
-              <input name="email" id="email" type ="email" class="form-control" placeholder="Email" required>
+              <input name="email" id="email_registrasi" type ="email" class="form-control" placeholder="Email" required>
               <i class="fas fa-envelope"></i>
             </div>
             <div class="input-box">
@@ -189,6 +189,26 @@
         });
       } else {
         $("#usernameFeedback").text("Username minimal 4 karakter").show();
+      }
+    });
+
+    $("#email_registrasi").on("keyup", function () {
+      var username = $(this).val();
+      if (username.length > 3) {
+        $.ajax({
+          url: "config/checkusername.php",
+          type: "POST",
+          data: { email_registrasi: username },
+          success: function (response) {
+            if (response == "taken") {
+              $("#emailFeedback").text("Email sudah terpakai").show();
+            } else {
+              $("#emailFeedback").text("").hide();
+            }
+          }
+        });
+      } else {
+        $("#emailFeedback").text("").show();
       }
     });
   });
