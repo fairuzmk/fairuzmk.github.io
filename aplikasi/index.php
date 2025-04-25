@@ -170,21 +170,32 @@
 <script src="loginanimation.js"></script>
 <!-- Toastr -->
 <script src="project-app/plugins/toastr/toastr.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <script>
- $(document).ready(function () {
-  // Inisialisasi tooltip manual
-  const usernameTooltip = new bootstrap.Tooltip(document.getElementById('username_registrasi'), {
-    trigger: 'manual'
-  });
+$(document).ready(function () {
+  function showTooltip(inputId, message) {
+    const input = document.getElementById(inputId);
+    input.setAttribute("title", message);
 
-  const emailTooltip = new bootstrap.Tooltip(document.getElementById('email_registrasi'), {
-    trigger: 'manual'
-  });
+    // Hapus tooltip lama, buat baru
+    bootstrap.Tooltip.getInstance(input)?.dispose();
+    const tooltip = new bootstrap.Tooltip(input, {
+      trigger: 'manual',
+      placement: 'right'
+    });
+    tooltip.show();
+  }
+
+  function hideTooltip(inputId) {
+    const input = document.getElementById(inputId);
+    bootstrap.Tooltip.getInstance(input)?.dispose();
+  }
 
   $("#username_registrasi").on("keyup", function () {
     const username = $(this).val();
-    const input = this;
 
     if (username.length > 3) {
       $.ajax({
@@ -192,24 +203,20 @@
         type: "POST",
         data: { username_registrasi: username },
         success: function (response) {
-          if (response == "taken") {
-            input.setAttribute("title", "Username sudah terpakai");
-            usernameTooltip.show();
+          if (response === "taken") {
+            showTooltip("username_registrasi", "Username sudah terpakai");
           } else {
-            input.setAttribute("title", "");
-            usernameTooltip.hide();
+            hideTooltip("username_registrasi");
           }
         }
       });
     } else {
-      input.setAttribute("title", "Username minimal 4 karakter");
-      usernameTooltip.show();
+      showTooltip("username_registrasi", "Username minimal 4 karakter");
     }
   });
 
   $("#email_registrasi").on("keyup", function () {
     const email = $(this).val();
-    const input = this;
 
     if (email.length > 3) {
       $.ajax({
@@ -217,21 +224,19 @@
         type: "POST",
         data: { email_registrasi: email },
         success: function (response) {
-          if (response == "taken") {
-            input.setAttribute("title", "Email sudah terpakai");
-            emailTooltip.show();
+          if (response === "taken") {
+            showTooltip("email_registrasi", "Email sudah terpakai");
           } else {
-            input.setAttribute("title", "");
-            emailTooltip.hide();
+            hideTooltip("email_registrasi");
           }
         }
       });
     } else {
-      input.setAttribute("title", "Masukkan email yang benar");
-      emailTooltip.show();
+      showTooltip("email_registrasi", "Masukkan email yang benar");
     }
   });
 });
+
 </script>
 
 <script>
