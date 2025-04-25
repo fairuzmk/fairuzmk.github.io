@@ -193,12 +193,12 @@
     });
 
     $("#email_registrasi").on("keyup", function () {
-      var username = $(this).val();
-      if (username.length > 3) {
+      var email = $(this).val();
+      if (email.length > 3) {
         $.ajax({
           url: "config/checkusername.php",
           type: "POST",
-          data: { email_registrasi: username },
+          data: { email_registrasi: email },
           success: function (response) {
             if (response == "taken") {
               $("#emailFeedback").text("Email sudah terpakai").show();
