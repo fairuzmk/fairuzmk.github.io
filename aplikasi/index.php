@@ -202,15 +202,15 @@
           data: { email_registrasi: email },
           success: function (response) {
             if (response == "taken") {
-              $("#emailFeedback").text("Email sudah terpakai").show();
-            } else {
-              $("#emailFeedback").text("").hide();
-            }
-          }
-        });
-      } else {
-        $("#emailFeedback").text("Masukkan email yang benar").show();
+          $input.attr("title", "Email sudah terpakai").tooltip('show');
+        } else {
+          $input.removeAttr("title").tooltip('dispose');
+        }
       }
+    });
+  } else {
+    $input.attr("title", "Masukkan email yang benar").tooltip('show');
+  }
     });
   });
 </script>
