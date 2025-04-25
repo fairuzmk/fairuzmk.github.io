@@ -35,7 +35,40 @@
   </head>
   <!--end::Head-->
   <!--begin::Body-->
+  <style>
+  .tooltip-input {
+    position: relative;
+  }
 
+  .tooltip-input input {
+    width: 100%;
+  }
+
+  .tooltip-message {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f44336;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    margin-top: 4px;
+    display: none;
+    z-index: 999;
+  }
+
+  .tooltip-message::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 10px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #f44336 transparent;
+  }
+</style>
 
 <body>
 
@@ -90,12 +123,12 @@
             <div class="input-box">
               <input name="email" id="email_registrasi" type ="email" class="form-control" placeholder="Email" data-bs-toggle="tooltip" data-bs-placement="right" title="" required>
               <i class="fas fa-envelope"></i>
-              <small id="emailFeedback" style="color: red; display: none;"></small>
+              <div class="tooltip-message" id="emailTooltip"></div>
             </div>
             <div class="input-box">
               <input name="username_registrasi" id="username_registrasi" type ="text" class="form-control" placeholder="Username" data-bs-toggle="tooltip" data-bs-placement="right" title="" required>
               <i class="far fa-user-circle"></i>
-              <small id="usernameFeedback" style="color: red; display: none;"></small>
+              <div class="tooltip-message" id="usernameTooltip"></div>
             </div>
             <div class="input-box">
               <input name="password" id="password1" type ="password" class="form-control" placeholder="Password" required>
@@ -176,26 +209,16 @@
 
 <script>
 $(document).ready(function () {
-  function showTooltip(inputId, message) {
-    const input = document.getElementById(inputId);
-    input.setAttribute("title", message);
-
-    // Hapus tooltip lama, buat baru
-    bootstrap.Tooltip.getInstance(input)?.dispose();
-    const tooltip = new bootstrap.Tooltip(input, {
-      trigger: 'manual',
-      placement: 'right'
-    });
-    tooltip.show();
+  function showTooltip(id, message) {
+    $("#" + id).text(message).fadeIn();
   }
 
-  function hideTooltip(inputId) {
-    const input = document.getElementById(inputId);
-    bootstrap.Tooltip.getInstance(input)?.dispose();
+  function hideTooltip(id) {
+    $("#" + id).fadeOut();
   }
 
   $("#username_registrasi").on("keyup", function () {
-    const username = $(this).val();
+    var username = $(this).val();
 
     if (username.length > 3) {
       $.ajax({
@@ -204,19 +227,19 @@ $(document).ready(function () {
         data: { username_registrasi: username },
         success: function (response) {
           if (response === "taken") {
-            showTooltip("username_registrasi", "Username sudah terpakai");
+            showTooltip("usernameTooltip", "Username sudah terpakai");
           } else {
-            hideTooltip("username_registrasi");
+            hideTooltip("usernameTooltip");
           }
         }
       });
     } else {
-      showTooltip("username_registrasi", "Username minimal 4 karakter");
+      showTooltip("usernameTooltip", "Username minimal 4 karakter");
     }
   });
 
   $("#email_registrasi").on("keyup", function () {
-    const email = $(this).val();
+    var email = $(this).val();
 
     if (email.length > 3) {
       $.ajax({
@@ -225,14 +248,14 @@ $(document).ready(function () {
         data: { email_registrasi: email },
         success: function (response) {
           if (response === "taken") {
-            showTooltip("email_registrasi", "Email sudah terpakai");
+            showTooltip("emailTooltip", "Email sudah terpakai");
           } else {
-            hideTooltip("email_registrasi");
+            hideTooltip("emailTooltip");
           }
         }
       });
     } else {
-      showTooltip("email_registrasi", "Masukkan email yang benar");
+      showTooltip("emailTooltip", "Masukkan email yang benar");
     }
   });
 });
