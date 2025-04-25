@@ -90,6 +90,7 @@
             <div class="input-box">
               <input name="email" id="email_registrasi" type ="email" class="form-control" placeholder="Email" required>
               <i class="fas fa-envelope"></i>
+              <small id="emailFeedback" style="color: red; display: none;"></small>
             </div>
             <div class="input-box">
               <input name="username_registrasi" id="username_registrasi" type ="text" class="form-control" placeholder="Username" required>
