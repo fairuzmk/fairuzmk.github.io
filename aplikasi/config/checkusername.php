@@ -22,4 +22,15 @@ if (isset($_POST["email_registrasi"])) {
         echo "available";
     }
 }
+
+if (isset($_POST["nama_registrasi"])) {
+    $nama = htmlspecialchars($_POST["nama_registrasi"]);
+    $result = mysqli_query($koneksi, "SELECT * FROM tb_users WHERE nama = '$nama'");
+    
+    if (mysqli_num_rows($result) > 0) {
+        echo "taken";
+    } else {
+        echo "available";
+    }
+}
 ?>

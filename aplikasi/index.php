@@ -117,8 +117,9 @@
           <form action="config/registration2.php" method="post">
           <h1>Register</h1>
             <div class="input-box">
-              <input name="nama" id="nama" type ="text" class="form-control" placeholder="Full Name" required>
+              <input name="nama" id="nama_registrasi" type ="text" class="form-control" placeholder="Full Name" required>
               <i class="fas fa-user"></i>
+              <div class="tooltip-message" id="namaTooltip"></div>
             </div>
             <div class="input-box">
               <input name="email" id="email_registrasi" type ="email" class="form-control" placeholder="Email" data-bs-toggle="tooltip" data-bs-placement="right" title="" required>
@@ -256,6 +257,27 @@ $(document).ready(function () {
       });
     } else {
       showTooltip("emailTooltip", "Masukkan email yang benar");
+    }
+  });
+
+  $("#nama_registrasi").on("keyup", function () {
+    var nama = $(this).val();
+
+    if (nama.length > 3) {
+      $.ajax({
+        url: "config/checkusername.php",
+        type: "POST",
+        data: { nama_registrasi: nama },
+        success: function (response) {
+          if (response === "taken") {
+            showTooltip("namaTooltip", "Nama ini sudah ada di Database");
+          } else {
+            hideTooltip("namaTooltip");
+          }
+        }
+      });
+    } else {
+      showTooltip("namaTooltip", "Masukkan Nama yang benar");
     }
   });
 });
